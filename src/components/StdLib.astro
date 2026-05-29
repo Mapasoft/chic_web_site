@@ -1,15 +1,7 @@
 ---
-const modules = [
-  { name: 'core', desc: 'Core utilities and argument parsing' },
-  { name: 'core.io', desc: 'File I/O and console operations' },
-  { name: 'core.strings', desc: 'String manipulation' },
-  { name: 'core.math', desc: 'Math functions (sqrt, trig, abs)' },
-  { name: 'core.json', desc: 'JSON parsing' },
-  { name: 'core.memory', desc: 'Custom allocators (ArenaAllocator)' },
-  { name: 'core.collections', desc: 'Generic Array<T> and List<T>' },
-  { name: 'core.os', desc: 'OS-specific functions (macOS, Linux)' },
-  { name: 'core.libc', desc: 'C library bindings (malloc, memcpy)' },
-];
+import { getStdlibPackages } from '../lib/stdlib';
+
+const modules = getStdlibPackages();
 ---
 
 <section id="stdlib" class="py-20 px-6">
@@ -21,10 +13,19 @@ const modules = [
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {modules.map(mod => (
-        <div class="p-5 rounded-2xl border border-chic-border bg-chic-surface/60 hover:border-chic-mint/40 transition-colors">
-          <code class="text-chic-mint text-sm font-mono">{mod.name}</code>
-          <p class="text-chic-muted text-sm mt-1">{mod.desc}</p>
-        </div>
+        <a
+          href={`/stdlib/${mod.slug}/`}
+          class="block p-5 rounded-lg border border-chic-border bg-chic-surface/60 hover:border-chic-mint/40 transition-colors"
+        >
+          <div class="flex items-start justify-between gap-4">
+            <code class="text-chic-mint text-sm font-mono">{mod.name}</code>
+            <span class="text-xs text-chic-muted whitespace-nowrap">{mod.itemCount} docs</span>
+          </div>
+          <p class="text-chic-muted text-sm mt-2">{mod.description}</p>
+          <p class="text-xs text-chic-muted mt-4">
+            {mod.structCount} structs / {mod.funcCount} funcs
+          </p>
+        </a>
       ))}
     </div>
   </div>

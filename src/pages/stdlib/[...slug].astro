@@ -1,0 +1,101 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import { getStdlibPackages, type StdlibPackage, type StdlibDocItem } from '../../lib/stdlib';
+
+export function getStaticPaths() {
+  return getStdlibPackages().map((pkg) => ({
+    params: { slug: pkg.slug },
+    props: { pkg },
+  }));
+}
+
+const { pkg } = Astro.props as { pkg: StdlibPackage };
+const structs = pkg.items.filter((item) => item.kind === 'struct');
+const funcs = pkg.items.filter((item) => item.kind === 'func');
+const pageDescription = `${pkg.name} package reference for documented Chic structs and functions.`;
+
+const groups: Array<{ title: string; items: StdlibDocItem[] }> = [
+  { title: 'Structs', items: structs },
+  { title: 'Functions', items: funcs },
+];
+---
+
+<Layout title={`${pkg.name} - Chic Standard Library`} description={pageDescription}>
+  <Navbar />
+  <main class="pt-24 px-6 pb-20">
+    <div class="max-w-6xl mx-auto">
+      <a href="/#stdlib" class="text-sm text-chic-muted hover:text-chic-text transition-colors">
+        Back to Standard Library
+      </a>
+
+      <header class="mt-8 border-b border-chic-border pb-8">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <div>
+            <p class="text-sm text-chic-mint font-mono mb-3">Standard Library</p>
+            <h1 class="section-title text-4xl md:text-5xl">
+              <code class="font-mono">{pkg.name}</code>
+            </h1>
+            <p class="text-chic-muted max-w-2xl mt-4">{pkg.description}</p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="rounded-lg border border-chic-border bg-chic-surface/60 px-4 py-3">
+              <p class="text-2xl font-semibold text-chic-cream">{pkg.itemCount}</p>
+              <p class="text-xs text-chic-muted">documented</p>
+            </div>
+            <div class="rounded-lg border border-chic-border bg-chic-surface/60 px-4 py-3">
+              <p class="text-2xl font-semibold text-chic-mint">{pkg.structCount}</p>
+              <p class="text-xs text-chic-muted">structs</p>
+            </div>
+            <div class="rounded-lg border border-chic-border bg-chic-surface/60 px-4 py-3">
+              <p class="text-2xl font-semibold text-chic-lavender">{pkg.funcCount}</p>
+              <p class="text-xs text-chic-muted">funcs</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {pkg.itemCount === 0 ? (
+        <section class="mt-12 rounded-lg border border-chic-border bg-chic-surface/60 p-6">
+          <h2 class="text-xl font-semibold text-chic-cream">No documented declarations yet</h2>
+          <p class="text-chic-muted mt-2">
+            This package has Chic source files, but no commented `func` or `struct` declarations were found.
+          </p>
+        </section>
+      ) : (
+        <div class="mt-12 space-y-14">
+          {groups.filter((group) => group.items.length > 0).map((group) => (
+            <section>
+              <h2 class={`text-2xl font-bold tracking-tight mb-5 ${group.title === 'Structs' ? 'text-chic-mint' : 'text-chic-lavender'}`}>
+                {group.title}
+              </h2>
+              <div class="space-y-4">
+                {group.items.map((item) => (
+                  <article class="rounded-lg border border-chic-border bg-chic-surface/60 p-5">
+                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
+                      <div>
+                        <div class="flex items-center gap-3">
+                          <h3 class="text-xl font-semibold text-chic-text">{item.name}</h3>
+                          <span class="rounded-md border border-chic-border px-2 py-1 text-xs text-chic-muted font-mono">
+                            {item.kind}
+                          </span>
+                        </div>
+                        <p class="text-xs text-chic-muted mt-1 font-mono">{item.source}:{item.line}</p>
+                      </div>
+                    </div>
+
+                    <pre class="mt-4 overflow-x-auto rounded-lg border border-chic-border bg-chic-bg/70 p-4 text-sm text-chic-periwinkle font-mono leading-relaxed"><code>{item.signature}</code></pre>
+                    <pre class="mt-4 whitespace-pre-wrap text-sm text-chic-muted leading-relaxed font-sans">{item.comment}</pre>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
+    </div>
+  </main>
+  <Footer />
+</Layout>
