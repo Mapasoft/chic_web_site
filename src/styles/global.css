@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-chic-bg text-chic-text font-sans antialiased;
+  }
+
+  ::selection {
+    @apply bg-chic-lavender/30 text-white;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-chic-cream font-bold tracking-tight;
+  }
+
+  .chic-card {
+    @apply rounded-3xl border border-chic-border bg-chic-surface/70;
+  }
+
+  .chic-card-inner {
+    @apply rounded-2xl border border-chic-border bg-chic-surface-2/60;
+  }
+
+  .code-block {
+    @apply bg-chic-surface-2/80 border border-chic-border rounded-2xl p-6 font-mono text-sm leading-relaxed overflow-x-auto;
+  }
+
+  .code-block .keyword {
+    @apply text-chic-pink;
+  }
+
+  .code-block .type {
+    @apply text-chic-periwinkle;
+  }
+
+  .code-block .string {
+    @apply text-chic-mint;
+  }
+
+  .code-block .comment {
+    @apply text-chic-muted;
+  }
+
+  .code-block .func {
+    @apply text-chic-lavender;
+  }
+
+  .code-block .number {
+    @apply text-chic-cream;
+  }
+
+  .code-block .operator {
+    @apply text-chic-pink;
+  }
+}

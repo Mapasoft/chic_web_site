@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/martinparadis/CLionProjects/chic log --oneline -20)",
+      "Bash(cat:*)",
+      "Bash(git -C /Users/martinparadis/CLionProjects/chic remote:*)",
+      "Bash(npm create astro@latest:*)",
+      "Bash(npm install:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(source:*)",
+      "Bash(nvm ls:*)",
+      "Bash(nvm install:*)",
+      "Bash(nvm use:*)",
+      "Bash(PATH=\"/Users/martinparadis/.nvm/versions/node/v20.20.0/bin:$PATH\" npm install:*)",
+      "Bash(curl:*)",
+      "Bash(PATH=\"/Users/martinparadis/.nvm/versions/node/v20.20.0/bin:$PATH\" npx astro build:*)",
+      "Bash(/Users/martinparadis/.nvm/versions/node/v20.20.0/bin/node /Users/martinparadis/dev/chic_web_site/node_modules/.bin/astro build:*)"
+    ]
+  }
+}

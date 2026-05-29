@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "chic-website",
+      "runtimeExecutable": "/Users/martinparadis/.nvm/versions/node/v20.20.0/bin/node",
+      "runtimeArgs": ["/Users/martinparadis/dev/chic_web_site/node_modules/.bin/astro", "dev", "--host", "0.0.0.0"],
+      "port": 4321
+    }
+  ]
+}

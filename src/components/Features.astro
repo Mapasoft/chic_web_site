@@ -1,0 +1,33 @@
+---
+const features = [
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>`,
+    title: 'Clean Syntax',
+    description: 'Explicit over implicit, minimal over ceremonial. Chic syntax is designed to say exactly what it means — first-class error handling, clean control flow, and modern constructs like pattern matching keep code readable without sacrificing precision. Write expressive code without verbosity.',
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+    title: 'Zero-Cost Abstractions',
+    description: 'Abstractions that disappear at compile time. Chic gives you generics, custom allocators, and composable data structures without hidden overhead — what you write maps directly to what runs. No runtime, no garbage collector, no surprises.',
+  },
+  {
+    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>`,
+    title: 'Explicit Control',
+    description: 'You decide how memory is allocated and freed. Chic gives you manual control with explicit new and release and a range of allocator strategies — from arena allocators for bulk lifetimes to scratch allocators for temporary work and heap allocator. Drop down to C interop via core.libc when you need it. No hidden allocations, no runtime surprises.',
+  },
+];
+---
+
+<section id="features" class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-8">
+      {features.map(feature => (
+        <div class="p-7 rounded-3xl border border-chic-border bg-chic-surface/70 hover:border-chic-lavender/40 transition-colors">
+          <div class="text-chic-lavender mb-4" set:html={feature.icon} />
+          <h3 class="text-xl font-semibold mb-3">{feature.title}</h3>
+          <p class="text-chic-muted leading-relaxed">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

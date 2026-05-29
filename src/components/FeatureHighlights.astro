@@ -1,0 +1,89 @@
+---
+const highlights = [
+  {
+    title: 'Extension Methods',
+    description: 'Add methods to any existing type without inheritance or wrappers. Extend structs, primitives, or any user-defined type with clean, discoverable APIs.',
+    code: `<span class="keyword">struct</span> <span class="type">Point</span> &#123;
+    x : <span class="type">i32</span>
+    y : <span class="type">i32</span>
+&#125;
+
+<span class="keyword">extension</span> &lt;<span class="type">Point</span>&gt; &#123;
+    <span class="func">distance</span> : <span class="keyword">func</span>(self : <span class="type">^Point</span>, other : <span class="type">^Point</span>) -&gt; <span class="type">float</span> &#123;
+        dx := (self.x <span class="operator">-</span> other.x) <span class="keyword">as</span>&lt;<span class="type">float</span>&gt;
+        dy := (self.y <span class="operator">-</span> other.y) <span class="keyword">as</span>&lt;<span class="type">float</span>&gt;
+        <span class="keyword">return</span> <span class="func">sqrt</span>(dx<span class="operator">*</span>dx <span class="operator">+</span> dy<span class="operator">*</span>dy)
+    &#125;
+&#125;`,
+  },
+  {
+    title: 'Slice Types',
+    description: 'Lightweight views into contiguous memory. Fat pointers carry both a pointer and length, enabling safe iteration over arrays without runtime overhead.',
+    code: `arr : <span class="type">i32</span>[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;
+s : <span class="type">[]i32</span> = arr[:]          <span class="comment">// Full array slice</span>
+head : <span class="type">[]i32</span> = arr[:<span class="number">3</span>]     <span class="comment">// First 3 elements</span>
+tail : <span class="type">[]i32</span> = arr[<span class="number">2</span>:]     <span class="comment">// From index 2</span>
+
+<span class="comment">// Iterate with for-in</span>
+<span class="keyword">for</span> x <span class="keyword">in</span> s &#123;
+    <span class="func">println</span>(<span class="string">"%d"</span>, x)
+&#125;`,
+  },
+  {
+    title: 'Generic Structs',
+    description: 'Template-based generic types that are instantiated lazily and cached. Write data structures once, use them with any type — all resolved at compile time.',
+    code: `<span class="type">Array</span> : <span class="keyword">struct</span>&lt;<span class="type">T</span>&gt; &#123;
+    data : <span class="type">^T</span> = <span class="keyword">null</span>
+    count : <span class="type">i64</span> = <span class="number">0</span>
+    capacity : <span class="type">i64</span> = <span class="number">0</span>
+&#125;
+
+<span class="comment">// Instantiate with different types</span>
+ints : <span class="type">Array</span>&lt;<span class="type">i32</span>&gt;
+floats : <span class="type">Array</span>&lt;<span class="type">f64</span>&gt;
+points : <span class="type">Array</span>&lt;<span class="type">Point</span>&gt;`,
+  },
+  {
+    title: 'Pattern Matching',
+    description: 'Expressive switch/match statements with range patterns and enum matching. Handle complex branching logic clearly and concisely.',
+    code: `<span class="type">Color</span> : <span class="keyword">enum</span> &#123;
+    Red,
+    Green,
+    Blue
+&#125;
+
+<span class="keyword">match</span> color &#123;
+    <span class="type">Color</span>.Red   <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Red"</span>)
+    <span class="type">Color</span>.Green <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Green"</span>)
+    <span class="keyword">else</span>        <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Other"</span>)
+&#125;
+
+<span class="comment">// Range matching</span>
+<span class="keyword">my_color := match</span> score &#123;
+    <span class="number">0</span>..<span class="number">59</span>   <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"F"</span>)
+    <span class="number">60</span>..<span class="number">79</span>  <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"C"</span>)
+    <span class="number">80</span>..<span class="number">100</span> <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"A"</span>)
+&#125;`,
+  },
+];
+---
+
+<section class="py-20 px-6">
+  <div class="max-w-6xl mx-auto space-y-24">
+    {highlights.map((item, i) => (
+      <div class={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 items-center`}>
+        <div class="flex-1 space-y-4">
+          <h3 class="section-title text-2xl">{item.title}</h3>
+          <p class="text-chic-muted leading-relaxed">{item.description}</p>
+        </div>
+        <div class="flex-1 w-full">
+          <div class="chic-card p-3">
+            <div class="code-block">
+              <pre><code set:html={item.code} /></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

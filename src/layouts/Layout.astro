@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'A modern systems programming language with clean syntax, static typing, and zero-cost abstractions.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/png" href="/static/chic_logo.png" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/static/chic_logo_big.png" />
+    <meta property="og:type" content="website" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-chic-bg text-chic-text font-sans antialiased">
+    <slot />
+  </body>
+</html>
