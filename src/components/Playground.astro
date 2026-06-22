@@ -1,0 +1,159 @@
+---
+const starterCode = `main : func() -> i32 {
+    println("Hello from Chic")
+    return 0
+}`;
+
+const arraysCode = `sum : func(s : []i32) -> i32 {
+    total := 0
+    for x in s {
+        total += x
+    }
+    return total
+}
+
+main : func() -> i32 {
+    numbers : [?]i32 = {1, 2, 3, 4, 5}
+    all := numbers[:]
+    println(sum(all))
+    return 0
+}`;
+---
+
+<section id="playground" class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-10">
+      <div>
+        <h2 class="section-title text-3xl mb-4">Try Chic in the Browser</h2>
+        <p class="text-chic-muted max-w-2xl">
+          Edit a small Chic program here. The playground is ready for a hosted compiler runner, so visitors can experiment without installing the toolchain.
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-3" aria-label="Playground examples">
+        <button
+          type="button"
+          class="playground-example rounded-lg border border-chic-border px-4 py-2 text-sm text-chic-text hover:border-chic-muted transition-colors"
+          data-example="hello"
+        >
+          Hello
+        </button>
+        <button
+          type="button"
+          class="playground-example rounded-lg border border-chic-border px-4 py-2 text-sm text-chic-muted hover:text-chic-text hover:border-chic-muted transition-colors"
+          data-example="arrays"
+        >
+          Arrays
+        </button>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.65fr)] gap-5">
+      <div class="min-w-0 rounded-lg border border-chic-border bg-chic-surface/70 overflow-hidden">
+        <div class="flex items-center justify-between gap-4 border-b border-chic-border px-4 py-3">
+          <span class="font-mono text-sm text-chic-muted">main.chic</span>
+          <button
+            id="playground-run"
+            type="button"
+            class="inline-flex items-center justify-center rounded-lg bg-chic-red px-5 py-2 text-sm font-medium text-white hover:bg-chic-red/90 transition-colors"
+          >
+            Run
+          </button>
+        </div>
+        <textarea
+          id="playground-editor"
+          class="min-h-[360px] w-full resize-y bg-chic-surface-2/80 p-5 font-mono text-sm leading-relaxed text-chic-text outline-none placeholder:text-chic-muted"
+          spellcheck="false"
+          autocomplete="off"
+          autocapitalize="off"
+        >{starterCode}</textarea>
+      </div>
+
+      <div class="min-w-0 rounded-lg border border-chic-border bg-chic-surface/70 overflow-hidden">
+        <div class="border-b border-chic-border px-4 py-3">
+          <span class="font-mono text-sm text-chic-muted">Output</span>
+        </div>
+        <div
+          id="playground-output"
+          class="min-h-[360px] whitespace-pre-wrap bg-chic-surface-2/80 p-5 font-mono text-sm leading-relaxed text-chic-muted"
+          role="status"
+          aria-live="polite"
+        >Runner not connected yet.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ starterCode, arraysCode }}>
+  const examples = {
+    hello: starterCode,
+    arrays: arraysCode,
+  };
+
+  const editor = document.getElementById('playground-editor');
+  const output = document.getElementById('playground-output');
+  const runButton = document.getElementById('playground-run');
+  const exampleButtons = Array.from(document.querySelectorAll('.playground-example'));
+
+  const setOutput = (message, tone = 'muted') => {
+    if (!output) return;
+    output.textContent = message;
+    output.classList.toggle('text-chic-mint', tone === 'success');
+    output.classList.toggle('text-chic-red-light', tone === 'error');
+    output.classList.toggle('text-chic-muted', tone === 'muted');
+  };
+
+  const setActiveExample = (activeButton) => {
+    exampleButtons.forEach((button) => {
+      const isActive = button === activeButton;
+      button.classList.toggle('text-chic-text', isActive);
+      button.classList.toggle('text-chic-muted', !isActive);
+    });
+  };
+
+  exampleButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const example = button.dataset.example;
+      if (!editor || !example || !(example in examples)) return;
+      editor.value = examples[example];
+      setActiveExample(button);
+      setOutput('Ready to run.');
+    });
+  });
+
+  runButton?.addEventListener('click', async () => {
+    if (!(editor instanceof HTMLTextAreaElement) || !(runButton instanceof HTMLButtonElement)) return;
+
+    const source = editor.value.trim();
+    if (!source) {
+      setOutput('Write a Chic program first.', 'error');
+      return;
+    }
+
+    runButton.disabled = true;
+    runButton.textContent = 'Running...';
+    setOutput('Sending source to the Chic runner...');
+
+    try {
+      const response = await fetch('/api/playground/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Runner unavailable (${response.status})`);
+      }
+
+      const result = await response.json();
+      setOutput(result.output || 'Program finished without output.', 'success');
+    } catch (error) {
+      setOutput(
+        'Playground runner is not connected yet.\n\nMissing piece: a hosted Chic compiler/runtime endpoint at /api/playground/run, or a WebAssembly build of the compiler that can run safely in the browser.',
+        'error',
+      );
+    } finally {
+      runButton.disabled = false;
+      runButton.textContent = 'Run';
+    }
+  });
+</script>

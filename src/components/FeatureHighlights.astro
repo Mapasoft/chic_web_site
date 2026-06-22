@@ -17,12 +17,30 @@ const highlights = [
 &#125;`,
   },
   {
+    title: 'Array Types',
+    description: 'Fixed arrays put their dimensions before the element type. Use ? when the initializer should determine the compile-time length, or use a typed composite literal anywhere an array expression is needed.',
+    code: `<span class="comment">// Fixed array with explicit length</span>
+numbers : <span class="type">[3]i32</span> = &#123;<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>&#125;
+
+<span class="comment">// Length inferred from the initializer</span>
+bytes : <span class="type">[?]u8</span> = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;
+
+<span class="comment">// Canonical array composite literal</span>
+more := <span class="type">[?]u8</span>&#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;
+
+matrix : <span class="type">[2][3]i32</span> = &#123;
+    &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;,
+    &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;
+&#125;`,
+  },
+  {
     title: 'Slice Types',
     description: 'Lightweight views into contiguous memory. Fat pointers carry both a pointer and length, enabling safe iteration over arrays without runtime overhead.',
-    code: `arr : <span class="type">i32</span>[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;
+    code: `arr : <span class="type">[5]i32</span> = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;
 s : <span class="type">[]i32</span> = arr[:]          <span class="comment">// Full array slice</span>
 head : <span class="type">[]i32</span> = arr[:<span class="number">3</span>]     <span class="comment">// First 3 elements</span>
 tail : <span class="type">[]i32</span> = arr[<span class="number">2</span>:]     <span class="comment">// From index 2</span>
+mid : <span class="type">[]i32</span> = arr[<span class="number">1</span>:<span class="number">4</span>]       <span class="comment">// Indices 1..3</span>
 
 <span class="comment">// Iterate with for-in</span>
 <span class="keyword">for</span> x <span class="keyword">in</span> s &#123;
@@ -76,8 +94,8 @@ points : <span class="type">Array</span>&lt;<span class="type">Point</span>&gt;`
           <h3 class="section-title text-2xl">{item.title}</h3>
           <p class="text-chic-muted leading-relaxed">{item.description}</p>
         </div>
-        <div class="flex-1 w-full">
-          <div class="chic-card p-3">
+        <div class="flex-1 w-full min-w-0">
+          <div class="chic-card min-w-0 p-3">
             <div class="code-block">
               <pre><code set:html={item.code} /></pre>
             </div>

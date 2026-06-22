@@ -1,5 +1,5 @@
 ---
-const code = `<span class="comment">// Generic function — monomorphizes at compile time</span>
+const code = `<span class="comment">// Generic function - monomorphizes at compile time</span>
 <span class="func">max</span> : <span class="keyword">func</span>&lt;<span class="type">T</span>&gt;(a : <span class="type">T</span>, b : <span class="type">T</span>) -&gt; <span class="type">T</span> &#123;
     <span class="keyword">if</span> (a &gt; b) &#123;
         <span class="keyword">return</span> a
@@ -7,7 +7,7 @@ const code = `<span class="comment">// Generic function — monomorphizes at com
     <span class="keyword">return</span> b
 &#125;
 
-<span class="comment">// Slice types — fat pointers with embedded length</span>
+<span class="comment">// Slices are []T views over existing contiguous storage</span>
 <span class="func">sum</span> : <span class="keyword">func</span>(s : <span class="type">[]i32</span>) -&gt; <span class="type">i32</span> &#123;
     total := <span class="number">0</span>
     <span class="keyword">for</span> x <span class="keyword">in</span> s &#123;
@@ -16,10 +16,18 @@ const code = `<span class="comment">// Generic function — monomorphizes at com
     <span class="keyword">return</span> total
 &#125;
 
-<span class="comment">// Usage</span>
-arr : <span class="type">i32</span>[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;
-result := <span class="func">sum</span>(arr[:])          <span class="comment">// 15</span>
-biggest := <span class="func">max</span>(<span class="number">10</span>, <span class="number">20</span>)       <span class="comment">// max&lt;i32&gt; → 20</span>`;
+<span class="func">main</span> : <span class="keyword">func</span>() -&gt; <span class="type">i32</span> &#123;
+    <span class="comment">// Arrays use prefix dimensions; ? infers length from the initializer</span>
+    numbers : <span class="type">[?]i32</span> = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;
+    more := <span class="type">[?]i32</span>&#123;<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;
+
+    window : <span class="type">[]i32</span> = numbers[<span class="number">1</span>:<span class="number">4</span>]
+    all := numbers[:]
+    result := <span class="func">sum</span>(all)      <span class="comment">// 15</span>
+    biggest := <span class="func">max</span>(<span class="number">10</span>, <span class="number">20</span>)  <span class="comment">// 20</span>
+
+    <span class="keyword">return</span> biggest <span class="operator">-</span> result <span class="operator">-</span> more[<span class="number">0</span>] <span class="operator">+</span> window[<span class="number">0</span>] <span class="operator">-</span> <span class="number">1</span>
+&#125;`;
 ---
 
 <section class="py-20 px-6">
@@ -29,7 +37,7 @@ biggest := <span class="func">max</span>(<span class="number">10</span>, <span c
       Clean, expressive syntax with powerful type inference and zero-cost generics.
     </p>
 
-    <div class="chic-card p-3">
+    <div class="chic-card min-w-0 p-3">
       <div class="code-block">
         <pre><code set:html={code} /></pre>
       </div>

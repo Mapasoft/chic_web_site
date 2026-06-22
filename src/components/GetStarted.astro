@@ -9,69 +9,21 @@ const helloCode = `<span class="func">main</span> : <span class="keyword">func</
   <div class="max-w-4xl mx-auto">
     <h2 class="section-title text-3xl text-center mb-4">Get Started</h2>
     <p class="text-chic-muted text-center mb-10 max-w-xl mx-auto">
-      Build the Chic compiler from source and start writing programs.
+      Start with a tiny Chic program and run it locally.
     </p>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <!-- Prerequisites -->
-      <div class="p-7 rounded-3xl border border-chic-border bg-chic-surface/70">
-        <h3 class="text-lg font-semibold mb-4">Prerequisites</h3>
-        <ul class="space-y-3 text-chic-muted">
-          <li class="flex items-start gap-3">
-            <span class="text-chic-pink mt-1">&#9656;</span>
-            <span>C++20 compatible compiler</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-chic-pink mt-1">&#9656;</span>
-            <span>CMake 3.30+</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-chic-pink mt-1">&#9656;</span>
-            <span>LLVM 19.1.7</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <span class="text-chic-pink mt-1">&#9656;</span>
-            <span>Ninja (recommended)</span>
-          </li>
-        </ul>
-      </div>
-
-      <!-- Build steps -->
-      <div class="p-7 rounded-3xl border border-chic-border bg-chic-surface/70">
-        <h3 class="text-lg font-semibold mb-4">Build from Source</h3>
-        <div class="bg-chic-surface-2/80 rounded-2xl p-4 font-mono text-sm space-y-1">
-          <div class="text-chic-muted">
-            <span class="text-chic-pink">$</span> git clone https://github.com/Mapasoft/chic.git
-          </div>
-          <div class="text-chic-muted">
-            <span class="text-chic-pink">$</span> cd chic
-          </div>
-          <div class="text-chic-muted">
-            <span class="text-chic-pink">$</span> mkdir build && cd build
-          </div>
-          <div class="text-chic-muted">
-            <span class="text-chic-pink">$</span> cmake -DCMAKE_BUILD_TYPE=Release ..
-          </div>
-          <div class="text-chic-muted">
-            <span class="text-chic-pink">$</span> cmake --build .
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- First program -->
-    <div class="mt-10 p-7 rounded-3xl border border-chic-border bg-chic-surface/70">
+    <div class="min-w-0 p-7 rounded-3xl border border-chic-border bg-chic-surface/70">
       <h3 class="text-lg font-semibold mb-4">Your First Program</h3>
       <div class="grid md:grid-cols-2 gap-6">
-        <div>
+        <div class="min-w-0">
           <p class="text-sm text-chic-muted mb-3">hello.chic</p>
           <div class="code-block !p-4">
             <pre><code set:html={helloCode} /></pre>
           </div>
         </div>
-        <div>
+        <div class="min-w-0">
           <p class="text-sm text-chic-muted mb-3">Compile and run</p>
-          <div class="bg-chic-surface-2/80 rounded-2xl border border-chic-border p-4 font-mono text-sm space-y-1">
+          <div class="overflow-x-auto bg-chic-surface-2/80 rounded-2xl border border-chic-border p-4 font-mono text-sm space-y-1">
             <div class="text-chic-muted">
               <span class="text-chic-pink">$</span> ./chic compile hello.chic
             </div>
