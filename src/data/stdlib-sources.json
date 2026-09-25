@@ -1,0 +1,460 @@
+{
+  "files": [
+    {
+      "path": "core/core.chic",
+      "package": "core",
+      "sha256": "27721ef0c97283705c65dcfd7cff7bb7e9fd31d1651c4dcea0bfe5d178793bea",
+      "publicStructs": 1,
+      "publicFunctions": 35,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/atomic/atomic.chic",
+      "package": "core.atomic",
+      "sha256": "890e72fe6577998da7c857449bbcaafbf8e7c5072a2c39445d94e6f886d0dd3e",
+      "publicStructs": 0,
+      "publicFunctions": 40,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/containers/array_list.chic",
+      "package": "core.containers",
+      "sha256": "69e6fa3a71101379a170bc14f0990bf09ccb0f7d2f17824c347a6517d7957358",
+      "publicStructs": 1,
+      "publicFunctions": 17,
+      "internalDeclarations": 5
+    },
+    {
+      "path": "core/containers/array.chic",
+      "package": "core.containers",
+      "sha256": "f6296090074c566a25b5a7d9cf1377b358dd34ec3c1253509f01a49d76393821",
+      "publicStructs": 1,
+      "publicFunctions": 12,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/containers/common.chic",
+      "package": "core.containers",
+      "sha256": "d505f436b43048384d3c85124ee3d7627460004f73a1d0fe236768114ed651bf",
+      "publicStructs": 1,
+      "publicFunctions": 1,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/containers/map.chic",
+      "package": "core.containers",
+      "sha256": "97b0004463e4d09d6f5bd92e01c7f9dfea1181294fa3655c43aeb59182ee39dc",
+      "publicStructs": 3,
+      "publicFunctions": 10,
+      "internalDeclarations": 8
+    },
+    {
+      "path": "core/containers/set.chic",
+      "package": "core.containers",
+      "sha256": "badc739f33ac9f0e258fe9ea0110643fb150255e3b0273f90452085beaf749c9",
+      "publicStructs": 1,
+      "publicFunctions": 11,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/containers/stack.chic",
+      "package": "core.containers",
+      "sha256": "b4cdbca78ec7b3f83ee4e4b8acaefc2b57166b9a7a8af5bda5fd158f5c816c0b",
+      "publicStructs": 1,
+      "publicFunctions": 11,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/fmt/fmt.chic",
+      "package": "core.fmt",
+      "sha256": "ee55edbf589ac896b1423ac3c74b99c0e2016071be73d32565509a8fbc045bb4",
+      "publicStructs": 0,
+      "publicFunctions": 6,
+      "internalDeclarations": 13
+    },
+    {
+      "path": "core/imgui/debug.chic",
+      "package": "core.imgui",
+      "sha256": "fde42dc13feba576734d00708de52d9ca12874968e2cd0b5af38b844cf8af231",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 2
+    },
+    {
+      "path": "core/imgui/draw_geometry.chic",
+      "package": "core.imgui",
+      "sha256": "135911bb42ad2b6187347f0ee5d0e9d98708cf520818c85407cde45a503c0cf2",
+      "publicStructs": 1,
+      "publicFunctions": 3,
+      "internalDeclarations": 7
+    },
+    {
+      "path": "core/imgui/draw.chic",
+      "package": "core.imgui",
+      "sha256": "bb622321c73978a311458b34206355f6322efd4081d328036659981046177fb8",
+      "publicStructs": 2,
+      "publicFunctions": 0,
+      "internalDeclarations": 6
+    },
+    {
+      "path": "core/imgui/font_atlas.chic",
+      "package": "core.imgui",
+      "sha256": "405c7d062cfed575c41d76b25becf98e6096d5ddbfc27b12eee732df6d7983c0",
+      "publicStructs": 4,
+      "publicFunctions": 2,
+      "internalDeclarations": 4
+    },
+    {
+      "path": "core/imgui/font_bitmap_5x7.chic",
+      "package": "core.imgui",
+      "sha256": "994af1e798b4a5435b586227571f14cd57a0e8fb69edd9d2b53c31f312825027",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 4
+    },
+    {
+      "path": "core/imgui/font_system.chic",
+      "package": "core.imgui",
+      "sha256": "26517eabd70f12ba6ce05899e4d0df3448289de0b2d46c89281199fc46be276c",
+      "publicStructs": 8,
+      "publicFunctions": 18,
+      "internalDeclarations": 2
+    },
+    {
+      "path": "core/imgui/imgui.chic",
+      "package": "core.imgui",
+      "sha256": "2331965c324095e03984c42b840b532019330bb398669e4a27dfd5ac48cca10b",
+      "publicStructs": 0,
+      "publicFunctions": 31,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/imgui/input.chic",
+      "package": "core.imgui",
+      "sha256": "b715b8450ae38723dc98010573338d5ef67177520915ea5dc85117019bc4944e",
+      "publicStructs": 3,
+      "publicFunctions": 0,
+      "internalDeclarations": 9
+    },
+    {
+      "path": "core/imgui/layout.chic",
+      "package": "core.imgui",
+      "sha256": "9f465dc19fb0c40f2e0d2cb82cffb36a9254ff1f5bcfde9b23007366a5ac9808",
+      "publicStructs": 1,
+      "publicFunctions": 6,
+      "internalDeclarations": 17
+    },
+    {
+      "path": "core/imgui/popup.chic",
+      "package": "core.imgui",
+      "sha256": "3cc23be8ad6964647a99de732ab027fa5fc1d453b8da156b10990ac784c44123",
+      "publicStructs": 1,
+      "publicFunctions": 0,
+      "internalDeclarations": 9
+    },
+    {
+      "path": "core/imgui/screen.chic",
+      "package": "core.imgui",
+      "sha256": "b47bfd47f87a4fce78ea24f01812c49599a7d1fef50941878ac6cb595ee969a1",
+      "publicStructs": 1,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/imgui/state.chic",
+      "package": "core.imgui",
+      "sha256": "d13b075c490b28287ad80886135034d1938a95048283ce4c3e21feac17f9a145",
+      "publicStructs": 1,
+      "publicFunctions": 4,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/imgui/style.chic",
+      "package": "core.imgui",
+      "sha256": "5347b22a52c5841f2eaf353a6c6c93b6652979746ecc859a3e1bab6710ecd36b",
+      "publicStructs": 6,
+      "publicFunctions": 14,
+      "internalDeclarations": 15
+    },
+    {
+      "path": "core/imgui/text_edit.chic",
+      "package": "core.imgui",
+      "sha256": "b228f7844bcc336bbd41f8bd7ce5374f12988a14d506ec16f94cf6871f38a8f7",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 6
+    },
+    {
+      "path": "core/imgui/text.chic",
+      "package": "core.imgui",
+      "sha256": "26323398c2ab71e147fb61bd7f5c36977d1ae51d90650cf3edd641b57b702eec",
+      "publicStructs": 1,
+      "publicFunctions": 0,
+      "internalDeclarations": 5
+    },
+    {
+      "path": "core/imgui/widget.chic",
+      "package": "core.imgui",
+      "sha256": "9104c2004891c3a5a363cd97fd11dedcdd66ec478754056192ebe3989b59bda7",
+      "publicStructs": 1,
+      "publicFunctions": 4,
+      "internalDeclarations": 9
+    },
+    {
+      "path": "core/io/file.chic",
+      "package": "core.io",
+      "sha256": "0c7a8f7a055dbb48b3d5f4c6309fbc14c58fa3e183fedb87205a2f74d579eb6c",
+      "publicStructs": 1,
+      "publicFunctions": 24,
+      "internalDeclarations": 5
+    },
+    {
+      "path": "core/io/filesystem.chic",
+      "package": "core.io",
+      "sha256": "633ad5c376f695e6720d26bab717433160c76bce9aecd77565d47128a30c3662",
+      "publicStructs": 1,
+      "publicFunctions": 10,
+      "internalDeclarations": 2
+    },
+    {
+      "path": "core/io/io.chic",
+      "package": "core.io",
+      "sha256": "de5ddf70922ba5d043225b37f455e10a3a8f1a59ff20bb5ddbeee25d0e8bdc90",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 1
+    },
+    {
+      "path": "core/io/path.chic",
+      "package": "core.io",
+      "sha256": "c6d69ff7eee96fc1746e7bcda7e35901da275f7b80977380bfff0e78b91428b0",
+      "publicStructs": 0,
+      "publicFunctions": 12,
+      "internalDeclarations": 4
+    },
+    {
+      "path": "core/json/json.chic",
+      "package": "core.json",
+      "sha256": "43c0155b435b36a57d36a662153c2d26ffe171637fb9904869b5a7a744f8843a",
+      "publicStructs": 2,
+      "publicFunctions": 6,
+      "internalDeclarations": 21
+    },
+    {
+      "path": "core/libc/cstring.chic",
+      "package": "core.libc",
+      "sha256": "86aa4248a4f38d78e93cb017c97b118a06f11f064b3557ee91c81127e7585571",
+      "publicStructs": 0,
+      "publicFunctions": 13,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/libc/libc.chic",
+      "package": "core.libc",
+      "sha256": "5e74b5a967b6778f044022c9d7a1b55df3c6428adb33e14b9f1b4526e8d5ba6e",
+      "publicStructs": 1,
+      "publicFunctions": 30,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/math/math.chic",
+      "package": "core.math",
+      "sha256": "ee434d5dffad415285ad96bec00ff72fff1bad9eb2350cf42e2692ce5f5f93a9",
+      "publicStructs": 0,
+      "publicFunctions": 21,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/math/rect.chic",
+      "package": "core.math",
+      "sha256": "1e8a14cd52cfe8b543ecc98fcd364d08793850677c71f120f38df845bd2df031",
+      "publicStructs": 6,
+      "publicFunctions": 20,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/math/vector.chic",
+      "package": "core.math",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/memory/allocators.chic",
+      "package": "core.memory",
+      "sha256": "b06364123140a2dc9ce78b6afbf95232e93c9e9a3b06b8b886561dba7dc2a8d0",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 2
+    },
+    {
+      "path": "core/memory/arena_allocator.chic",
+      "package": "core.memory",
+      "sha256": "f7b7873f3eaa440bbc359def8346aab38a6a16cdc6772dbbb6eea565ef7b5660",
+      "publicStructs": 2,
+      "publicFunctions": 8,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/memory/heap_allocator.chic",
+      "package": "core.memory",
+      "sha256": "b173636f0ac58a524a76102fd7b2d2047f861b719473799d918bedca206ea938",
+      "publicStructs": 1,
+      "publicFunctions": 7,
+      "internalDeclarations": 1
+    },
+    {
+      "path": "core/memory/mem.chic",
+      "package": "core.memory",
+      "sha256": "3c578163bc8adae7d27aa0a2a1ec135a0e7fbadcac3954fa2b7f85f1ab34894c",
+      "publicStructs": 0,
+      "publicFunctions": 4,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/memory/permanent_allocator.chic",
+      "package": "core.memory",
+      "sha256": "faca7689c0ad0d8a37b57ab6cfda6e1c7e1b35158d13c2a10b8847cc8ff32fd9",
+      "publicStructs": 2,
+      "publicFunctions": 8,
+      "internalDeclarations": 2
+    },
+    {
+      "path": "core/memory/pool_allocator.chic",
+      "package": "core.memory",
+      "sha256": "9aa830d8f69d2195bcb8f48817a1eab779621511542b1ac97aa5e296b64f9ec3",
+      "publicStructs": 1,
+      "publicFunctions": 8,
+      "internalDeclarations": 4
+    },
+    {
+      "path": "core/net/dns.chic",
+      "package": "core.net",
+      "sha256": "116977969e83e7ac0ce330095977f70d9f9053fa51c9742761953a5cc33a22cb",
+      "publicStructs": 2,
+      "publicFunctions": 5,
+      "internalDeclarations": 12
+    },
+    {
+      "path": "core/net/ip.chic",
+      "package": "core.net",
+      "sha256": "989ac4c6c6648676dcfeabd0a73468437d31776540eb3550a3a80a7fe52ebbcc",
+      "publicStructs": 0,
+      "publicFunctions": 1,
+      "internalDeclarations": 7
+    },
+    {
+      "path": "core/net/net.chic",
+      "package": "core.net",
+      "sha256": "9505fb24ccf71a6112ece3bc0f66813f9f6c47e5acb6bcdcf8f8c3967933207b",
+      "publicStructs": 2,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/net/socket.chic",
+      "package": "core.net",
+      "sha256": "323ca469a44eb0aa86aad64700d5841eb2e7c29193c03888128914209710a851",
+      "publicStructs": 2,
+      "publicFunctions": 26,
+      "internalDeclarations": 19
+    },
+    {
+      "path": "core/os/os.chic",
+      "package": "core.os",
+      "sha256": "c11cf2b16ccd3490abf20824df1b6a9d91c933cd586c16cd902f1cf2dbce058a",
+      "publicStructs": 4,
+      "publicFunctions": 21,
+      "internalDeclarations": 4
+    },
+    {
+      "path": "core/posix/posix_macos.chic",
+      "package": "core.posix",
+      "sha256": "e8258a38b193b45c6e045e9962d86505ea734fb733d4d49ea799cb2dff457398",
+      "publicStructs": 11,
+      "publicFunctions": 95,
+      "internalDeclarations": 11
+    },
+    {
+      "path": "core/posix/posix_windows.chic",
+      "package": "core.posix",
+      "sha256": "7e631715dd377a2b79f931a08b6ca7dcff1508e81353c00621fe5c08120191be",
+      "publicStructs": 3,
+      "publicFunctions": 75,
+      "internalDeclarations": 48
+    },
+    {
+      "path": "core/posix/posix.chic",
+      "package": "core.posix",
+      "sha256": "c86b90fb19fca654959e00b5c4e861307ecd5e8125615179ed383deedb95ab79",
+      "publicStructs": 8,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/process/process.chic",
+      "package": "core.process",
+      "sha256": "1985f5f3637e5648b27f19383f7f6f626740023a8590fd9ad49ab70728544572",
+      "publicStructs": 0,
+      "publicFunctions": 4,
+      "internalDeclarations": 17
+    },
+    {
+      "path": "core/runtime/runtime.chic",
+      "package": "core.runtime",
+      "sha256": "06eb4d4c65e9319a2ab289b214565beb244101f0643d8a95d05ec5077734b15f",
+      "publicStructs": 0,
+      "publicFunctions": 1,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/strings/string_builder.chic",
+      "package": "core.strings",
+      "sha256": "5d12d7173d0712fd11ecee1126166687c536b09d6eba9f44339e4daf72cb4c61",
+      "publicStructs": 1,
+      "publicFunctions": 10,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/strings/string.chic",
+      "package": "core.strings",
+      "sha256": "d1925508c001f4bfb687a0cbe60ea62bfcd3f88dedb5649943a5e43c632d15a6",
+      "publicStructs": 0,
+      "publicFunctions": 30,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "core/strings/utf8.chic",
+      "package": "core.strings",
+      "sha256": "5a7d8e6dba74589b318e3cce1672297811f3fdb5143f795ac3af60501df62922",
+      "publicStructs": 1,
+      "publicFunctions": 12,
+      "internalDeclarations": 1
+    },
+    {
+      "path": "core/threading/threading_macos.chic",
+      "package": "core.threading",
+      "sha256": "6eb3e1bf31818378957b41bd1617e614f445ac971bb7c6a325298c261031438a",
+      "publicStructs": 1,
+      "publicFunctions": 1,
+      "internalDeclarations": 17
+    },
+    {
+      "path": "core/threading/threading_windows.chic",
+      "package": "core.threading",
+      "sha256": "e10b55145660a80629942a51bf9b46ffccde5f0e3b372d14f7655f6b2043e41c",
+      "publicStructs": 2,
+      "publicFunctions": 1,
+      "internalDeclarations": 17
+    },
+    {
+      "path": "core/threading/threading.chic",
+      "package": "core.threading",
+      "sha256": "4c8f5cfc873312ad395365cad752ddd5295b6174ad713b3dd259217842027f1c",
+      "publicStructs": 3,
+      "publicFunctions": 19,
+      "internalDeclarations": 0
+    }
+  ]
+}

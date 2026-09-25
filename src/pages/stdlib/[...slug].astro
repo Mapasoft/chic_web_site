@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import Footer from '../../components/Footer.astro';
-import { getStdlibPackages, type StdlibPackage, type StdlibDocItem } from '../../lib/stdlib';
+import { getStdlibPackages, getDocItemId, type StdlibPackage, type StdlibDocItem } from '../../lib/stdlib';
 
 export function getStaticPaths() {
   return getStdlibPackages().map((pkg) => ({
@@ -57,11 +57,18 @@ const groups: Array<{ title: string; items: StdlibDocItem[] }> = [
         </div>
       </header>
 
+      <p class="mt-6 text-sm text-chic-muted max-w-3xl leading-relaxed">
+        Public structures and functions, including overloads and imported functions.
+        Structure declarations include their fields and defaults. Internal declarations are excluded.
+        Platform-specific variants are listed with their source conditions; conditions inside structures apply to their fields.
+        Constants, enums, unions and type aliases are outside this reference's scope.
+      </p>
+
       {pkg.itemCount === 0 ? (
         <section class="mt-12 rounded-lg border border-chic-border bg-chic-surface/60 p-6">
-          <h2 class="text-xl font-semibold text-chic-cream">No documented declarations yet</h2>
+          <h2 class="text-xl font-semibold text-chic-cream">No public structures or functions</h2>
           <p class="text-chic-muted mt-2">
-            This package has Chic source files, but no commented `func` or `struct` declarations were found.
+            This package has no public structure or function declarations in the current source snapshot.
           </p>
         </section>
       ) : (
@@ -71,23 +78,37 @@ const groups: Array<{ title: string; items: StdlibDocItem[] }> = [
               <h2 class={`text-2xl font-bold tracking-tight mb-5 ${group.title === 'Structs' ? 'text-chic-mint' : 'text-chic-lavender'}`}>
                 {group.title}
               </h2>
+              <details class="mb-5 rounded-lg border border-chic-border p-4">
+                <summary class="cursor-pointer text-chic-muted">Browse {group.items.length} {group.title.toLowerCase()}</summary>
+                <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {group.items.map((item) => (
+                    <li class="min-w-0">
+                      <a href={`#${getDocItemId(item)}`} class="text-sm text-chic-lavender underline underline-offset-4 break-words">
+                        {item.name}
+                        <span class="block text-xs text-chic-muted">{item.source}:{item.line}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
               <div class="space-y-4">
                 {group.items.map((item) => (
-                  <article class="rounded-lg border border-chic-border bg-chic-surface/60 p-5">
+                  <article id={getDocItemId(item)} class="scroll-mt-24 min-w-0 rounded-lg border border-chic-border bg-chic-surface/60 p-5">
                     <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
                       <div>
                         <div class="flex items-center gap-3">
-                          <h3 class="text-xl font-semibold text-chic-text">{item.name}</h3>
+                          <h3 class="text-xl font-semibold text-chic-text break-all"><a href={`#${getDocItemId(item)}`}>{item.name}</a></h3>
                           <span class="rounded-md border border-chic-border px-2 py-1 text-xs text-chic-muted font-mono">
                             {item.kind}
                           </span>
                         </div>
-                        <p class="text-xs text-chic-muted mt-1 font-mono">{item.source}:{item.line}</p>
+                        <p class="text-xs text-chic-muted mt-1 font-mono break-all">{item.source}:{item.line}</p>
                       </div>
                     </div>
 
-                    <pre class="mt-4 overflow-x-auto rounded-lg border border-chic-border bg-chic-bg/70 p-4 text-sm text-chic-periwinkle font-mono leading-relaxed"><code>{item.signature}</code></pre>
-                    <pre class="mt-4 whitespace-pre-wrap text-sm text-chic-muted leading-relaxed font-sans">{item.comment}</pre>
+                    {item.conditions.length > 0 && <p class="mt-3 text-sm text-chic-mint break-words">Available when: <code>{item.conditions.join(' && ')}</code></p>}
+                    <pre class="mt-4 overflow-x-auto rounded-lg border border-chic-border bg-chic-bg/70 p-4 text-sm text-chic-periwinkle font-mono leading-relaxed"><code>{[...item.attributes, item.signature].join('\n')}</code></pre>
+                    {item.comment && <pre class="mt-4 whitespace-pre-wrap break-words text-sm text-chic-muted leading-relaxed font-sans">{item.comment}</pre>}
                   </article>
                 ))}
               </div>

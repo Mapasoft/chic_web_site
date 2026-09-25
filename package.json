@@ -6,6 +6,8 @@
     "dev": "astro dev",
     "build": "astro build && node scripts/verify-build.mjs",
     "docs:refresh": "node --experimental-strip-types scripts/update-stdlib-docs.mjs",
+    "docs:check": "node --experimental-strip-types scripts/update-stdlib-docs.mjs --check",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -13,5 +15,8 @@
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.17.1",
     "tailwindcss": "^3.4.19"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.4"
   }
 }
