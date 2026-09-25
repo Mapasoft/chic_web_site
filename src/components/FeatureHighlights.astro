@@ -63,7 +63,7 @@ points : <span class="type">Array</span>&lt;<span class="type">Point</span>&gt;`
   },
   {
     title: 'Pattern Matching',
-    description: 'Expressive switch/match statements with range patterns and enum matching. Handle complex branching logic clearly and concisely.',
+    description: 'Use switch statements to choose actions and match expressions to produce values, with range patterns and enum matching.',
     code: `<span class="type">Color</span> : <span class="keyword">enum</span> &#123;
     Red,
     Green,
@@ -71,20 +71,20 @@ points : <span class="type">Array</span>&lt;<span class="type">Point</span>&gt;`
 &#125;
 
 color := <span class="type">Color</span>.Red
-<span class="keyword">match</span> (color) &#123;
-    <span class="type">Color</span>.Red   <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Red"</span>)
-    <span class="type">Color</span>.Green <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Green"</span>)
-    <span class="keyword">else</span>        <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Other"</span>)
+<span class="keyword">switch</span> (color) &#123;
+    <span class="keyword">case</span> <span class="type">Color</span>.Red: <span class="func">println</span>(<span class="string">"Red"</span>)
+    <span class="keyword">case</span> <span class="type">Color</span>.Green: <span class="func">println</span>(<span class="string">"Green"</span>)
+    <span class="keyword">default</span>: <span class="func">println</span>(<span class="string">"Other"</span>)
 &#125;
 
 <span class="comment">// Range matching (inclusive upper bounds)</span>
 score := <span class="number">85</span>
-<span class="keyword">match</span> (score) &#123;
-    <span class="number">0</span>..=<span class="number">59</span>   <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"F"</span>)
-    <span class="number">60</span>..=<span class="number">79</span>  <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"C"</span>)
-    <span class="number">80</span>..=<span class="number">100</span> <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"A"</span>)
-    <span class="keyword">else</span>      <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Invalid score"</span>)
-&#125;`,
+grade : <span class="type">string</span> = <span class="keyword">match</span> (score) &#123;
+    <span class="number">0</span>..=<span class="number">59</span>   <span class="operator">=&gt;</span> <span class="string">"F"</span>,
+    <span class="number">60</span>..=<span class="number">79</span>  <span class="operator">=&gt;</span> <span class="string">"C"</span>,
+    <span class="number">80</span>..=<span class="number">100</span> <span class="operator">=&gt;</span> <span class="string">"A"</span>,
+    <span class="keyword">else</span>      <span class="operator">=&gt;</span> <span class="string">"Invalid score"</span>,
+&#125; <span class="comment">// grade is "A"</span>`,
   },
 ];
 ---
