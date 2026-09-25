@@ -1,5 +1,23 @@
 # Astro Starter Kit: Minimal
 
+## Chic documentation builds
+
+Production builds use `src/data/stdlib.json`, a snapshot of the public API signatures,
+comments, and relative source references already displayed on the documentation pages.
+No compiler source checkout or private repository credentials are needed in CI.
+Package descriptions are maintained separately in `src/lib/stdlib.ts`.
+
+To refresh the snapshot locally, use Node.js 22.18 or newer:
+
+```sh
+CHIC_SOURCE_DIR=/path/to/chic npm run docs:refresh
+npm run build
+```
+
+Review the generated documentation before committing it. Setting `CHIC_SOURCE_DIR`
+during a build reads that checkout directly; leaving it unset uses the committed
+snapshot, as GitHub Actions does. The build verifies all 17 package pages.
+
 ```sh
 npm create astro@latest -- --template minimal
 ```

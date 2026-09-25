@@ -14,7 +14,7 @@ export function getStaticPaths() {
 const { pkg } = Astro.props as { pkg: StdlibPackage };
 const structs = pkg.items.filter((item) => item.kind === 'struct');
 const funcs = pkg.items.filter((item) => item.kind === 'func');
-const pageDescription = `${pkg.name} package reference for documented Chic structs and functions.`;
+const pageDescription = pkg.description;
 
 const groups: Array<{ title: string; items: StdlibDocItem[] }> = [
   { title: 'Structs', items: structs },

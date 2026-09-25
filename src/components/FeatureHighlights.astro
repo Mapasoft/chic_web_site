@@ -3,17 +3,18 @@ const highlights = [
   {
     title: 'Extension Methods',
     description: 'Add methods to any existing type without inheritance or wrappers. Extend structs, primitives, or any user-defined type with clean, discoverable APIs.',
-    code: `<span class="keyword">struct</span> <span class="type">Point</span> &#123;
+    code: `<span class="keyword">import</span> math = core.math
+
+<span class="type">Point</span> : <span class="keyword">struct</span> &#123;
     x : <span class="type">i32</span>
     y : <span class="type">i32</span>
 &#125;
 
-<span class="keyword">extension</span> &lt;<span class="type">Point</span>&gt; &#123;
-    <span class="func">distance</span> : <span class="keyword">func</span>(self : <span class="type">^Point</span>, other : <span class="type">^Point</span>) -&gt; <span class="type">float</span> &#123;
-        dx := (self.x <span class="operator">-</span> other.x) <span class="keyword">as</span>&lt;<span class="type">float</span>&gt;
-        dy := (self.y <span class="operator">-</span> other.y) <span class="keyword">as</span>&lt;<span class="type">float</span>&gt;
-        <span class="keyword">return</span> <span class="func">sqrt</span>(dx<span class="operator">*</span>dx <span class="operator">+</span> dy<span class="operator">*</span>dy)
-    &#125;
+<span class="keyword">@extension</span>
+<span class="func">distance</span> : <span class="keyword">func</span>(self : <span class="type">^Point</span>, other : <span class="type">^Point</span>) -&gt; <span class="type">f64</span> &#123;
+    dx := <span class="keyword">cast</span>&lt;<span class="type">f64</span>&gt;(self.x) <span class="operator">-</span> <span class="keyword">cast</span>&lt;<span class="type">f64</span>&gt;(other.x)
+    dy := <span class="keyword">cast</span>&lt;<span class="type">f64</span>&gt;(self.y) <span class="operator">-</span> <span class="keyword">cast</span>&lt;<span class="type">f64</span>&gt;(other.y)
+    <span class="keyword">return</span> math.<span class="func">sqrt_f64</span>(dx<span class="operator">*</span>dx <span class="operator">+</span> dy<span class="operator">*</span>dy)
 &#125;`,
   },
   {
@@ -70,17 +71,20 @@ points : <span class="type">Array</span>&lt;<span class="type">Point</span>&gt;`
     Blue
 &#125;
 
-<span class="keyword">match</span> color &#123;
+color := <span class="type">Color</span>.Red
+<span class="keyword">match</span> (color) &#123;
     <span class="type">Color</span>.Red   <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Red"</span>)
     <span class="type">Color</span>.Green <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Green"</span>)
     <span class="keyword">else</span>        <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Other"</span>)
 &#125;
 
-<span class="comment">// Range matching</span>
-<span class="keyword">my_color := match</span> score &#123;
-    <span class="number">0</span>..<span class="number">59</span>   <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"F"</span>)
-    <span class="number">60</span>..<span class="number">79</span>  <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"C"</span>)
-    <span class="number">80</span>..<span class="number">100</span> <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"A"</span>)
+<span class="comment">// Range matching (inclusive upper bounds)</span>
+score := <span class="number">85</span>
+<span class="keyword">match</span> (score) &#123;
+    <span class="number">0</span>..=<span class="number">59</span>   <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"F"</span>)
+    <span class="number">60</span>..=<span class="number">79</span>  <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"C"</span>)
+    <span class="number">80</span>..=<span class="number">100</span> <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"A"</span>)
+    <span class="keyword">else</span>      <span class="operator">=&gt;</span> <span class="func">println</span>(<span class="string">"Invalid score"</span>)
 &#125;`,
   },
 ];

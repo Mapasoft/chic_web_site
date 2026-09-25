@@ -4,5 +4,5 @@ import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
   integrations: [tailwind()],
-  site: 'https://chiclang.org',
+  site: 'https://www.chic-lang.org',
 });

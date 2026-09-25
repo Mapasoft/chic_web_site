@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/verify-build.mjs",
+    "docs:refresh": "node --experimental-strip-types scripts/update-stdlib-docs.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
