@@ -8,11 +8,15 @@ assert.ok(packages.length > 0, 'The public documentation must include core packa
 assert.deepEqual(packages.map(p => p.name).sort(), [...new Set(sources.map(f => f.package))].sort(), 'Every source package needs a page.');
 const decode = text => text.replace(/&(amp|lt|gt|quot|#39|#x27);/g, (_, entity) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", '#x27': "'" })[entity]);
 const home = fs.readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
+const packageIndex = fs.readFileSync(new URL('../dist/stdlib/index.html', import.meta.url), 'utf8');
 assert.match(home, /Chic Programming Language/);
 assert.match(home, /Downloadable builds for macOS and Windows are not yet available/);
+assert.match(home, /href="\/stdlib\/"[^>]*>Packages<\/a>/);
+assert.match(packageIndex, /<h1\b[^>]*>Packages<\/h1>/);
 for (const pkg of packages) {
   const slug = pkg.name.replaceAll('.', '/');
-  assert.ok(home.includes(`/stdlib/${slug}/`), `Missing package link: ${pkg.name}`);
+  assert.ok(packageIndex.includes(`/stdlib/${slug}/`), `Missing package link: ${pkg.name}`);
+  assert.ok(!home.includes(`/stdlib/${slug}/`), `Package listing still on homepage: ${pkg.name}`);
   const html = fs.readFileSync(new URL(`../dist/stdlib/${slug}/index.html`, import.meta.url), 'utf8');
   assert.equal((html.match(/<article\b/g) ?? []).length, pkg.items.length, `Missing API entries: ${pkg.name}`);
   const renderedSignatures = [...html.matchAll(/<pre\b[^>]*><code>([\s\S]*?)<\/code><\/pre>/g)].map(m => decode(m[1])).sort();
@@ -55,4 +59,4 @@ for (const file of pages) {
     if (target.hash) assert.ok(pageIds.get(path.posix.normalize(targetFile))?.has(decodeURIComponent(target.hash.slice(1))), `Broken anchor in ${file}: ${href}`);
   }
 }
-console.log(`Verified homepage and ${packages.length} package pages with ${packages.reduce((sum, pkg) => sum + pkg.items.length, 0)} API entries.`);
+console.log(`Verified homepage, package index and ${packages.length} package pages with ${packages.reduce((sum, pkg) => sum + pkg.items.length, 0)} API entries.`);
