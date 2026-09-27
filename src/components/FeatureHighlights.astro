@@ -4,17 +4,26 @@ const highlights = [
     title: 'Extension Methods',
     description: 'Add methods to any existing type without inheritance or wrappers. Extend structs, primitives, or any user-defined type with clean, discoverable APIs.',
     code: `<span class="type">Point</span> : <span class="keyword">struct</span> &#123;
-    x : <span class="type">i32</span>
-    y : <span class="type">i32</span>
+    x : <span class="type">f32</span>
+    y : <span class="type">f32</span>
 &#125;
 
 <span class="keyword">@extension</span>
-<span class="func">direction</span> : <span class="keyword">func</span>(self : <span class="type">^Point</span>, other : <span class="type">^Point</span>) -&gt; <span class="type">Point</span> &#123;
-    <span class="keyword">return</span> <span class="type">Point</span>&#123;.x = other.x <span class="operator">-</span> self.x, .y = other.y <span class="operator">-</span> self.y&#125;
+<span class="func">direction</span> : <span class="keyword">func</span>(a : <span class="type">^Point</span>, b : <span class="type">^Point</span>) -&gt; <span class="type">Point</span> &#123;
+    <span class="keyword">return</span> <span class="type">Point</span> &#123;
+        .x = b.x <span class="operator">-</span> a.x,
+        .y = b.y <span class="operator">-</span> a.y
+    &#125;
 &#125;
 
-points := <span class="type">[2]Point</span>&#123;<span class="type">Point</span>&#123;.x = <span class="number">0</span>, .y = <span class="number">0</span>&#125;, <span class="type">Point</span>&#123;.x = <span class="number">3</span>, .y = <span class="number">4</span>&#125;&#125;
-delta := points[<span class="number">0</span>].<span class="func">direction</span>(<span class="operator">&amp;</span>points[<span class="number">1</span>]) <span class="comment">// Point&#123;.x = 3, .y = 4&#125;</span>`,
+p0 : <span class="type">Point</span> &#123; .x = <span class="number">0.0</span>, .y = <span class="number">0.0</span> &#125;
+p1 : <span class="type">Point</span> &#123; .x = <span class="number">10.0</span>, .y = <span class="number">10.0</span> &#125;
+
+<span class="comment">// with extension</span>
+dir0 := p0.<span class="func">direction</span>(<span class="operator">&amp;</span>p1)
+
+<span class="comment">//without extension. still works</span>
+dir1 := <span class="func">direction</span>(<span class="operator">&amp;</span>p0, <span class="operator">&amp;</span>p1)`,
   },
   {
     title: 'Array Types',
