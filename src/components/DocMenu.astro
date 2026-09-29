@@ -1,0 +1,41 @@
+<details class="doc-menu relative group">
+  <summary class="flex w-fit cursor-pointer list-none items-center gap-2 rounded-sm text-sm text-chic-muted hover:text-chic-text group-open:text-chic-text transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-chic-lavender [&::-webkit-details-marker]:hidden">
+    Doc
+    <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m6 9 6 6 6-6" />
+    </svg>
+  </summary>
+  <div class="mt-4 rounded-2xl border border-chic-border bg-chic-bg p-2 shadow-xl md:absolute md:right-0 md:top-full md:w-80">
+    <a href="/stdlib/" class="flex items-start gap-3 rounded-xl p-4 hover:bg-chic-surface focus-visible:bg-chic-surface focus-visible:outline focus-visible:outline-2 focus-visible:outline-chic-lavender transition-colors">
+      <svg class="mt-0.5 w-6 h-6 shrink-0 text-chic-lavender" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m12 3 9 5v8l-9 5-9-5V8l9-5Zm0 18V11M3 8l9 5 9-5M7.5 5.5l9 5" />
+      </svg>
+      <span>
+        <span class="block font-medium text-chic-text">Packages</span>
+        <span class="mt-1 block text-sm leading-relaxed text-chic-muted">Explore the Chic standard library.</span>
+      </span>
+    </a>
+  </div>
+</details>
+
+<script>
+  const docMenus = document.querySelectorAll<HTMLDetailsElement>('.doc-menu');
+  docMenus.forEach(menu => {
+    menu.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        menu.open = false;
+        menu.querySelector('summary')?.focus();
+        event.stopPropagation();
+      }
+    });
+    menu.addEventListener('focusout', event => {
+      if (!menu.contains(event.relatedTarget as Node | null)) menu.open = false;
+    });
+    menu.querySelector('a')?.addEventListener('click', () => { menu.open = false; });
+  });
+  document.addEventListener('click', event => {
+    docMenus.forEach(menu => {
+      if (!menu.contains(event.target as Node)) menu.open = false;
+    });
+  });
+</script>

@@ -10,7 +10,8 @@ const decode = text => text.replace(/&(amp|lt|gt|quot|#39|#x27);/g, (_, entity) 
 const home = fs.readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
 const packageIndex = fs.readFileSync(new URL('../dist/stdlib/index.html', import.meta.url), 'utf8');
 assert.match(home, /Chic Programming Language/);
-assert.match(home, /Downloadable builds for macOS and Windows are not yet available/);
+assert.match(home, /Downloads are not yet available/);
+assert.doesNotMatch(home, /get-started|Get Started|>Learn<\/a>/);
 assert.match(home, /href="\/stdlib\/"[^>]*>Packages<\/a>/);
 assert.match(packageIndex, /<h1\b[^>]*>Packages<\/h1>/);
 for (const pkg of packages) {
