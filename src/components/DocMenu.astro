@@ -29,7 +29,11 @@
       }
     });
     menu.addEventListener('focusout', event => {
-      if (!menu.contains(event.relatedTarget as Node | null)) menu.open = false;
+      // Safari can blur the summary without focusing the clicked link. Keep the
+      // menu open until the click completes; outside clicks are handled below.
+      if (event.relatedTarget && !menu.contains(event.relatedTarget as Node)) {
+        menu.open = false;
+      }
     });
     menu.querySelector('a')?.addEventListener('click', () => { menu.open = false; });
   });

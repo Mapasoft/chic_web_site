@@ -12,7 +12,7 @@ const packageIndex = fs.readFileSync(new URL('../dist/stdlib/index.html', import
 assert.match(home, /Chic Programming Language/);
 assert.match(home, /Downloads are not yet available/);
 assert.doesNotMatch(home, /get-started|Get Started|>Learn<\/a>/);
-assert.match(home, /href="\/stdlib\/"[^>]*>Packages<\/a>/);
+assert.match(home, /href="\/stdlib\/"[^>]*>\s*Packages\s*<\/a>/);
 assert.match(packageIndex, /<h1\b[^>]*>Packages<\/h1>/);
 for (const pkg of packages) {
   const slug = pkg.name.replaceAll('.', '/');
