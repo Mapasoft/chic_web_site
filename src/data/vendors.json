@@ -1,0 +1,3710 @@
+[
+  {
+    "name": "vendors.fmod",
+    "items": [
+      {
+        "name": "FMOD_Guid",
+        "kind": "struct",
+        "signature": "FMOD_Guid : struct\n{\n    Data1 : u32\n    Data2 : u16\n    Data3 : u16\n    Data4 : [8]char\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_common.chic",
+        "line": 69
+      },
+      {
+        "name": "FMOD_Create_Sound_ExInfo",
+        "kind": "struct",
+        "signature": "FMOD_Create_Sound_ExInfo : struct\n{\n    cbsize                          : i32\n    length                          : u32\n    fileoffset                      : u32\n    numchannels                     : i32\n    defaultfrequency                : i32\n    format                          : FMOD_Sound_Format\n    decodebuffersize                : u32\n    initialsubsound                 : i32\n    numsubsounds                    : i32\n    inclusionlist                   : ^i32\n    inclusionlistnum                : i32\n    pcmreadcallback                 : FMOD_SOUND_PCMREAD_CALLBACK\n    pcmsetposcallback               : FMOD_SOUND_PCMSETPOS_CALLBACK\n    nonblockcallback                : FMOD_SOUND_NONBLOCK_CALLBACK\n    dlsname                         : cstring\n    encryptionkey                   : cstring\n    maxpolyphony                    : i32\n    userdata                        : RawPtr\n    suggestedsoundtype              : FMOD_Sound_Type\n    fileuseropen                    : FMOD_FILE_OPEN_CALLBACK\n    fileuserclose                   : FMOD_FILE_CLOSE_CALLBACK\n    fileuserread                    : FMOD_FILE_READ_CALLBACK\n    fileuserseek                    : FMOD_FILE_SEEK_CALLBACK\n    fileuserasyncread               : FMOD_FILE_ASYNCREAD_CALLBACK\n    fileuserasynccancel             : FMOD_FILE_ASYNCCANCEL_CALLBACK\n    fileuserdata                    : RawPtr\n    filebuffersize                  : i32\n    channelorder                    : FMOD_CHANNEL_ORDER\n    initialsoundgroup               : ^FMOD_SoundGroup\n    initialseekposition             : u32\n    initialseekpostype              : FMOD_Time_Unit\n    ignoresetfilesystem             : i32\n    audioqueuepolicy                : u32\n    minmidigranularity              : u32\n    nonblockthreadid                : i32\n    fsbguid                         : ^FMOD_Guid\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_common.chic",
+        "line": 131
+      },
+      {
+        "name": "FMOD_Reverb_Properties",
+        "kind": "struct",
+        "signature": "FMOD_Reverb_Properties : struct {\n    DecayTime         : f32\n    EarlyDelay        : f32\n    LateDelay         : f32\n    HFReference       : f32\n    HFDecayRatio      : f32\n    Diffusion         : f32\n    Density           : f32\n    LowShelfFrequency : f32\n    LowShelfGain      : f32\n    HighCut           : f32\n    EarlyLateMix      : f32\n    WetLevel          : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_common.chic",
+        "line": 171
+      },
+      {
+        "name": "FMOD_Studio_System",
+        "kind": "struct",
+        "signature": "FMOD_Studio_System : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 5
+      },
+      {
+        "name": "FMOD_Studio_Bank",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Bank : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 6
+      },
+      {
+        "name": "FMOD_Studio_EventDescription",
+        "kind": "struct",
+        "signature": "FMOD_Studio_EventDescription : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 7
+      },
+      {
+        "name": "FMOD_Studio_EventInstance",
+        "kind": "struct",
+        "signature": "FMOD_Studio_EventInstance : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 8
+      },
+      {
+        "name": "FMOD_Studio_Bus",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Bus : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 9
+      },
+      {
+        "name": "FMOD_Studio_VCA",
+        "kind": "struct",
+        "signature": "FMOD_Studio_VCA : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 10
+      },
+      {
+        "name": "FMOD_Studio_CommandReplay",
+        "kind": "struct",
+        "signature": "FMOD_Studio_CommandReplay : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 11
+      },
+      {
+        "name": "FMOD_Studio_Parameter_ID",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Parameter_ID : struct\n{\n    data1 : u32\n    data2 : u32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 160
+      },
+      {
+        "name": "FMOD_Studio_Parameter_Description",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Parameter_Description : struct\n{\n    name         : cstring\n    id           : FMOD_Studio_Parameter_ID\n    minimum      : f32\n    maximum      : f32\n    defaultvalue : f32\n    type         : FMOD_Studio_Parameter_Type\n    flags        : u32\n    guid         : FMOD_Guid\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 166
+      },
+      {
+        "name": "FMOD_Studio_User_Property",
+        "kind": "struct",
+        "signature": "FMOD_Studio_User_Property : struct\n{\n    name  : cstring\n    type  : FMOD_Studio_User_Property_Type\n    value : FMOD_Studio_User_Property_Value\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 186
+      },
+      {
+        "name": "FMOD_Vector",
+        "kind": "struct",
+        "signature": "FMOD_Vector : struct\n{\n    x : f32\n    y : f32\n    z : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Core types (from fmod_common.h)",
+        "summary": "Core types (from fmod_common.h)",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 194
+      },
+      {
+        "name": "FMOD_3D_Attributes",
+        "kind": "struct",
+        "signature": "FMOD_3D_Attributes : struct\n{\n    position : FMOD_Vector\n    velocity : FMOD_Vector\n    forward  : FMOD_Vector\n    up       : FMOD_Vector\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 201
+      },
+      {
+        "name": "FMOD_CPU_Usage",
+        "kind": "struct",
+        "signature": "FMOD_CPU_Usage : struct\n{\n    dsp          : f32\n    stream       : f32\n    geometry     : f32\n    update       : f32\n    convolution1 : f32\n    convolution2 : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 209
+      },
+      {
+        "name": "FMOD_Dsp_Description",
+        "kind": "struct",
+        "signature": "FMOD_Dsp_Description : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 219
+      },
+      {
+        "name": "FMOD_Studio_AdvancedSettings",
+        "kind": "struct",
+        "signature": "FMOD_Studio_AdvancedSettings : struct\n{\n    cbsize                 : i32\n    commandqueuesize       : u32\n    handleinitialsize      : u32\n    studioupdateperiod     : i32\n    idlesampledatapoolsize : i32\n    streamingscheduledelay : u32\n    encryptionkey          : cstring\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "opaque — use ^FMOD_Dsp_Description when passing to RegisterPlugin\nFMOD Studio structs",
+        "summary": "opaque — use ^FMOD_Dsp_Description when passing to RegisterPlugin FMOD Studio structs",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 222
+      },
+      {
+        "name": "FMOD_Studio_Bank_Info",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Bank_Info : struct\n{\n    size           : i32\n    userdata       : RawPtr\n    userdatalength : i32\n    opencallback   : FMOD_FILE_OPEN_CALLBACK\n    closecallback  : FMOD_FILE_CLOSE_CALLBACK\n    readcallback   : FMOD_FILE_READ_CALLBACK\n    seekcallback   : FMOD_FILE_SEEK_CALLBACK\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 233
+      },
+      {
+        "name": "FMOD_Studio_Sound_Info",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Sound_Info : struct\n{\n    name_or_data  : cstring\n    mode          : FMOD_Mode\n    exinfo        : FMOD_Create_Sound_ExInfo\n    subsoundindex : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 244
+      },
+      {
+        "name": "FMOD_Studio_CPU_Usage",
+        "kind": "struct",
+        "signature": "FMOD_Studio_CPU_Usage : struct\n{\n    update : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 252
+      },
+      {
+        "name": "FMOD_Studio_Buffer_Info",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Buffer_Info : struct\n{\n    currentusage : i32\n    peakusage    : i32\n    capacity     : i32\n    stallcount   : i32\n    stalltime    : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 257
+      },
+      {
+        "name": "FMOD_Studio_Buffer_Usage",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Buffer_Usage : struct\n{\n    studiocommandqueue : FMOD_Studio_Buffer_Info\n    studiohandle       : FMOD_Studio_Buffer_Info\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 266
+      },
+      {
+        "name": "FMOD_Studio_Programmer_Sound_Properties",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Programmer_Sound_Properties : struct\n{\n    name          : cstring\n    sound         : ^FMOD_Sound\n    subsoundIndex : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 272
+      },
+      {
+        "name": "FMOD_Studio_Plugin_Instance_Properties",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Plugin_Instance_Properties : struct\n{\n    name : cstring\n    dsp  : ^FMOD_Dsp\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 279
+      },
+      {
+        "name": "FMOD_Studio_Timeline_Marker_Properties",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Timeline_Marker_Properties : struct\n{\n    name     : cstring\n    position : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 285
+      },
+      {
+        "name": "FMOD_Studio_Timeline_Beat_Properties",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Timeline_Beat_Properties : struct\n{\n    bar                : i32\n    beat               : i32\n    position           : i32\n    tempo              : f32\n    timesignatureupper : i32\n    timesignaturelower : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 291
+      },
+      {
+        "name": "FMOD_Studio_Timeline_Nested_Beat_Properties",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Timeline_Nested_Beat_Properties : struct\n{\n    eventid    : FMOD_Guid\n    properties : FMOD_Studio_Timeline_Beat_Properties\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 301
+      },
+      {
+        "name": "FMOD_Studio_Command_Info",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Command_Info : struct\n{\n    commandname        : cstring\n    parentcommandindex : i32\n    framenumber        : i32\n    frametime          : f32\n    instancetype       : FMOD_Studio_Instance_Type\n    outputtype         : FMOD_Studio_Instance_Type\n    instancehandle     : u32\n    outputhandle       : u32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 307
+      },
+      {
+        "name": "FMOD_Studio_Memory_Usage",
+        "kind": "struct",
+        "signature": "FMOD_Studio_Memory_Usage : struct\n{\n    exclusive  : i32\n    inclusive  : i32\n    sampledata : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 319
+      },
+      {
+        "name": "FMOD_Studio_System_IsValid",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_IsValid                        : func(system : ^FMOD_Studio_System) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "FMOD Studio System Functions",
+        "summary": "FMOD Studio System Functions",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 333
+      },
+      {
+        "name": "FMOD_Studio_System_Create",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_Create                         : func(system : ^^FMOD_Studio_System, headerversion : u32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 334
+      },
+      {
+        "name": "FMOD_Studio_System_SetAdvancedSettings",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetAdvancedSettings            : func(system : ^FMOD_Studio_System, settings : ^FMOD_Studio_AdvancedSettings) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 335
+      },
+      {
+        "name": "FMOD_Studio_System_GetAdvancedSettings",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetAdvancedSettings            : func(system : ^FMOD_Studio_System, settings : ^FMOD_Studio_AdvancedSettings) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 336
+      },
+      {
+        "name": "FMOD_Studio_System_Initialize",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_Initialize                     : func(system : ^FMOD_Studio_System, maxchannels : i32, studioflags : FMOD_Studio_InitFlags, flags : FMOD_InitFlags, extradriverdata : RawPtr) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 337
+      },
+      {
+        "name": "FMOD_Studio_System_Release",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_Release                        : func(system : ^FMOD_Studio_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 338
+      },
+      {
+        "name": "FMOD_Studio_System_Update",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_Update                         : func(system : ^FMOD_Studio_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 339
+      },
+      {
+        "name": "FMOD_Studio_System_GetCoreSystem",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetCoreSystem                  : func(system : ^FMOD_Studio_System, coresystem : ^^FMOD_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 340
+      },
+      {
+        "name": "FMOD_Studio_System_GetEvent",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetEvent                       : func(system : ^FMOD_Studio_System, pathOrID : cstring, event : ^^FMOD_Studio_EventDescription) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 341
+      },
+      {
+        "name": "FMOD_Studio_System_GetBus",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetBus                         : func(system : ^FMOD_Studio_System, pathOrID : cstring, bus : ^^FMOD_Studio_Bus) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 342
+      },
+      {
+        "name": "FMOD_Studio_System_GetVCA",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetVCA                         : func(system : ^FMOD_Studio_System, pathOrID : cstring, vca : ^^FMOD_Studio_VCA) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 343
+      },
+      {
+        "name": "FMOD_Studio_System_GetBank",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetBank                        : func(system : ^FMOD_Studio_System, pathOrID : cstring, bank : ^^FMOD_Studio_Bank) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 344
+      },
+      {
+        "name": "FMOD_Studio_System_GetEventByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetEventByID                   : func(system : ^FMOD_Studio_System, id : ^FMOD_Guid, event : ^^FMOD_Studio_EventDescription) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 345
+      },
+      {
+        "name": "FMOD_Studio_System_GetBusByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetBusByID                     : func(system : ^FMOD_Studio_System, id : ^FMOD_Guid, bus : ^^FMOD_Studio_Bus) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 346
+      },
+      {
+        "name": "FMOD_Studio_System_GetVCAByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetVCAByID                     : func(system : ^FMOD_Studio_System, id : ^FMOD_Guid, vca : ^^FMOD_Studio_VCA) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 347
+      },
+      {
+        "name": "FMOD_Studio_System_GetBankByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetBankByID                    : func(system : ^FMOD_Studio_System, id : ^FMOD_Guid, bank : ^^FMOD_Studio_Bank) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 348
+      },
+      {
+        "name": "FMOD_Studio_System_GetSoundInfo",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetSoundInfo                   : func(system : ^FMOD_Studio_System, key : cstring, info : ^FMOD_Studio_Sound_Info) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 349
+      },
+      {
+        "name": "FMOD_Studio_System_GetParameterDescriptionByName",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetParameterDescriptionByName  : func(system : ^FMOD_Studio_System, name : cstring, parameter : ^FMOD_Studio_Parameter_Description) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 350
+      },
+      {
+        "name": "FMOD_Studio_System_GetParameterDescriptionByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetParameterDescriptionByID    : func(system : ^FMOD_Studio_System, id : FMOD_Studio_Parameter_ID, parameter : ^FMOD_Studio_Parameter_Description) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 351
+      },
+      {
+        "name": "FMOD_Studio_System_GetParameterLabelByName",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetParameterLabelByName        : func(system : ^FMOD_Studio_System, name : cstring, labelindex : i32, label : cstring, size : i32, retrieved : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 352
+      },
+      {
+        "name": "FMOD_Studio_System_GetParameterLabelByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetParameterLabelByID          : func(system : ^FMOD_Studio_System, id : FMOD_Studio_Parameter_ID, labelindex : i32, label : cstring, size : i32, retrieved : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 353
+      },
+      {
+        "name": "FMOD_Studio_System_GetParameterByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetParameterByID               : func(system : ^FMOD_Studio_System, id : FMOD_Studio_Parameter_ID, value : ^f32, finalvalue : ^f32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 354
+      },
+      {
+        "name": "FMOD_Studio_System_SetParameterByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetParameterByID               : func(system : ^FMOD_Studio_System, id : FMOD_Studio_Parameter_ID, value : f32, ignoreseekspeed : bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 355
+      },
+      {
+        "name": "FMOD_Studio_System_SetParameterByIDWithLabel",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetParameterByIDWithLabel      : func(system : ^FMOD_Studio_System, id : FMOD_Studio_Parameter_ID, label : cstring, ignoreseekspeed : bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 356
+      },
+      {
+        "name": "FMOD_Studio_System_SetParametersByIDs",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetParametersByIDs             : func(system : ^FMOD_Studio_System, ids : ^FMOD_Studio_Parameter_ID, values : ^f32, count : i32, ignoreseekspeed : bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 357
+      },
+      {
+        "name": "FMOD_Studio_System_GetParameterByName",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetParameterByName             : func(system : ^FMOD_Studio_System, name : cstring, value : ^f32, finalvalue : ^f32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 358
+      },
+      {
+        "name": "FMOD_Studio_System_SetParameterByName",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetParameterByName             : func(system : ^FMOD_Studio_System, name : cstring, value : f32, ignoreseekspeed : bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 359
+      },
+      {
+        "name": "FMOD_Studio_System_SetParameterByNameWithLabel",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetParameterByNameWithLabel    : func(system : ^FMOD_Studio_System, name : cstring, label : cstring, ignoreseekspeed : bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 360
+      },
+      {
+        "name": "FMOD_Studio_System_LookupID",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_LookupID                       : func(system : ^FMOD_Studio_System, path : cstring, id : ^FMOD_Guid) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 361
+      },
+      {
+        "name": "FMOD_Studio_System_LookupPath",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_LookupPath                     : func(system : ^FMOD_Studio_System, id : ^FMOD_Guid, path : cstring, size : i32, retrieved : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 362
+      },
+      {
+        "name": "FMOD_Studio_System_GetNumListeners",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetNumListeners                : func(system : ^FMOD_Studio_System, numlisteners : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 363
+      },
+      {
+        "name": "FMOD_Studio_System_SetNumListeners",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetNumListeners                : func(system : ^FMOD_Studio_System, numlisteners : i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 364
+      },
+      {
+        "name": "FMOD_Studio_System_GetListenerAttributes",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetListenerAttributes          : func(system : ^FMOD_Studio_System, index : i32, attributes : ^FMOD_3D_Attributes, attenuationposition : ^FMOD_Vector) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 365
+      },
+      {
+        "name": "FMOD_Studio_System_SetListenerAttributes",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetListenerAttributes          : func(system : ^FMOD_Studio_System, index : i32, attributes : ^FMOD_3D_Attributes, attenuationposition : ^FMOD_Vector) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 366
+      },
+      {
+        "name": "FMOD_Studio_System_GetListenerWeight",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetListenerWeight              : func(system : ^FMOD_Studio_System, index : i32, weight : ^f32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 367
+      },
+      {
+        "name": "FMOD_Studio_System_SetListenerWeight",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetListenerWeight              : func(system : ^FMOD_Studio_System, index : i32, weight : f32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 368
+      },
+      {
+        "name": "FMOD_Studio_System_LoadBankFile",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_LoadBankFile                   : func(system : ^FMOD_Studio_System, filename : cstring, flags : FMOD_Studio_Load_Bank_Flags, bank : ^^FMOD_Studio_Bank) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 369
+      },
+      {
+        "name": "FMOD_Studio_System_LoadBankMemory",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_LoadBankMemory                 : func(system : ^FMOD_Studio_System, buffer : RawPtr, length : i32, mode : FMOD_Studio_Load_Memory_Mode, flags : FMOD_Studio_Load_Bank_Flags, bank : ^^FMOD_Studio_Bank) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 370
+      },
+      {
+        "name": "FMOD_Studio_System_LoadBankCustom",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_LoadBankCustom                 : func(system : ^FMOD_Studio_System, info : ^FMOD_Studio_Bank_Info, flags : FMOD_Studio_Load_Bank_Flags, bank : ^^FMOD_Studio_Bank) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 371
+      },
+      {
+        "name": "FMOD_Studio_System_RegisterPlugin",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_RegisterPlugin                 : func(system : ^FMOD_Studio_System, description : ^FMOD_Dsp_Description) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 372
+      },
+      {
+        "name": "FMOD_Studio_System_UnregisterPlugin",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_UnregisterPlugin               : func(system : ^FMOD_Studio_System, name : cstring) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 373
+      },
+      {
+        "name": "FMOD_Studio_System_UnloadAll",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_UnloadAll                      : func(system : ^FMOD_Studio_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 374
+      },
+      {
+        "name": "FMOD_Studio_System_FlushCommands",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_FlushCommands                  : func(system : ^FMOD_Studio_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 375
+      },
+      {
+        "name": "FMOD_Studio_System_FlushSampleLoading",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_FlushSampleLoading             : func(system : ^FMOD_Studio_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 376
+      },
+      {
+        "name": "FMOD_Studio_System_StartCommandCapture",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_StartCommandCapture            : func(system : ^FMOD_Studio_System, filename : cstring, flags : FMOD_Studio_CommandCapture_Flags) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 377
+      },
+      {
+        "name": "FMOD_Studio_System_StopCommandCapture",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_StopCommandCapture             : func(system : ^FMOD_Studio_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 378
+      },
+      {
+        "name": "FMOD_Studio_System_LoadCommandReplay",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_LoadCommandReplay              : func(system : ^FMOD_Studio_System, filename : cstring, flags : FMOD_Studio_CommandReplay_Flags, replay : ^^FMOD_Studio_CommandReplay) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 379
+      },
+      {
+        "name": "FMOD_Studio_System_GetBankCount",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetBankCount                   : func(system : ^FMOD_Studio_System, count : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 380
+      },
+      {
+        "name": "FMOD_Studio_System_GetBankList",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetBankList                    : func(system : ^FMOD_Studio_System, array : ^^FMOD_Studio_Bank, capacity : i32, count : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 381
+      },
+      {
+        "name": "FMOD_Studio_System_GetParameterDescriptionCount",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetParameterDescriptionCount   : func(system : ^FMOD_Studio_System, count : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 382
+      },
+      {
+        "name": "FMOD_Studio_System_GetParameterDescriptionList",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetParameterDescriptionList    : func(system : ^FMOD_Studio_System, array : ^FMOD_Studio_Parameter_Description, capacity : i32, count : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 383
+      },
+      {
+        "name": "FMOD_Studio_System_GetCPUUsage",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetCPUUsage                    : func(system : ^FMOD_Studio_System, usage : ^FMOD_Studio_CPU_Usage, usage_core : ^FMOD_CPU_Usage) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 384
+      },
+      {
+        "name": "FMOD_Studio_System_GetBufferUsage",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetBufferUsage                 : func(system : ^FMOD_Studio_System, usage : ^FMOD_Studio_Buffer_Usage) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 385
+      },
+      {
+        "name": "FMOD_Studio_System_ResetBufferUsage",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_ResetBufferUsage               : func(system : ^FMOD_Studio_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 386
+      },
+      {
+        "name": "FMOD_Studio_System_SetCallback",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetCallback                    : func(system : ^FMOD_Studio_System, callback : FMOD_STUDIO_SYSTEM_CALLBACK, callbackmask : FMOD_Studio_System_Callback_Type) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 387
+      },
+      {
+        "name": "FMOD_Studio_System_SetUserData",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_SetUserData                    : func(system : ^FMOD_Studio_System, userdata : RawPtr) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 388
+      },
+      {
+        "name": "FMOD_Studio_System_GetUserData",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetUserData                    : func(system : ^FMOD_Studio_System, userdata : ^RawPtr) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 389
+      },
+      {
+        "name": "FMOD_Studio_System_GetMemoryUsage",
+        "kind": "func",
+        "signature": "FMOD_Studio_System_GetMemoryUsage                 : func(system : ^FMOD_Studio_System, memoryusage : ^FMOD_Studio_Memory_Usage) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 390
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_IsValid",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_IsValid                        : func(eventdesc : ^FMOD_Studio_EventDescription) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 394
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetID",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetID                          : func(eventdesc : ^FMOD_Studio_EventDescription, id : ^FMOD_Guid) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 395
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetPath",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetPath                        : func(eventdesc : ^FMOD_Studio_EventDescription, path : cstring, size : i32, retrieved : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 396
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetParameterDescriptionCount",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetParameterDescriptionCount   : func(eventdesc : ^FMOD_Studio_EventDescription, count : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 397
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetParameterDescriptionByIndex",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetParameterDescriptionByIndex : func(eventdesc : ^FMOD_Studio_EventDescription, index : i32, parameter : ^FMOD_Studio_Parameter_Description) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 398
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetParameterDescriptionByName",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetParameterDescriptionByName  : func(eventdesc : ^FMOD_Studio_EventDescription, name : cstring, parameter : ^FMOD_Studio_Parameter_Description) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 399
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetParameterDescriptionByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetParameterDescriptionByID    : func(eventdesc : ^FMOD_Studio_EventDescription, id : FMOD_Studio_Parameter_ID, parameter : ^FMOD_Studio_Parameter_Description) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 400
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetParameterLabelByIndex",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetParameterLabelByIndex       : func(eventdesc : ^FMOD_Studio_EventDescription, index : i32, labelindex : i32, label : cstring, size : i32, retrieved : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 401
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetParameterLabelByName",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetParameterLabelByName        : func(eventdesc : ^FMOD_Studio_EventDescription, name : cstring, labelindex : i32, label : cstring, size : i32, retrieved : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 402
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetParameterLabelByID",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetParameterLabelByID          : func(eventdesc : ^FMOD_Studio_EventDescription, id : FMOD_Studio_Parameter_ID, labelindex : i32, label : cstring, size : i32, retrieved : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 403
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetUserPropertyCount",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetUserPropertyCount           : func(eventdesc : ^FMOD_Studio_EventDescription, count : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 404
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetUserPropertyByIndex",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetUserPropertyByIndex         : func(eventdesc : ^FMOD_Studio_EventDescription, index : i32, property : ^FMOD_Studio_User_Property) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 405
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetUserProperty",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetUserProperty                : func(eventdesc : ^FMOD_Studio_EventDescription, name : cstring, property : ^FMOD_Studio_User_Property) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 406
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetLength",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetLength                      : func(eventdesc : ^FMOD_Studio_EventDescription, length : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 407
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetMinMaxDistance",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetMinMaxDistance              : func(eventdesc : ^FMOD_Studio_EventDescription, min : ^f32, max : ^f32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 408
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetSoundSize",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetSoundSize                   : func(eventdesc : ^FMOD_Studio_EventDescription, size : ^f32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 409
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_IsSnapshot",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_IsSnapshot                     : func(eventdesc : ^FMOD_Studio_EventDescription, snapshot : ^bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 410
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_IsOneshot",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_IsOneshot                      : func(eventdesc : ^FMOD_Studio_EventDescription, oneshot : ^bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 411
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_IsStream",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_IsStream                       : func(eventdesc : ^FMOD_Studio_EventDescription, isStream : ^bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 412
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_Is3D",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_Is3D                           : func(eventdesc : ^FMOD_Studio_EventDescription, is3D : ^bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 413
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_IsDopplerEnabled",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_IsDopplerEnabled               : func(eventdesc : ^FMOD_Studio_EventDescription, doppler : ^bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 414
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_HasSustainPoint",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_HasSustainPoint                : func(eventdesc : ^FMOD_Studio_EventDescription, sustainPoint : ^bool) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 415
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_CreateInstance",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_CreateInstance                 : func(eventdesc : ^FMOD_Studio_EventDescription, instance : ^^FMOD_Studio_EventInstance) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 416
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetInstanceCount",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetInstanceCount               : func(eventdesc : ^FMOD_Studio_EventDescription, count : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 417
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetInstanceList",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetInstanceList                : func(eventdesc : ^FMOD_Studio_EventDescription, array : ^^FMOD_Studio_EventInstance, capacity : i32, count : ^i32) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 418
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_LoadSampleData",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_LoadSampleData                 : func(eventdesc : ^FMOD_Studio_EventDescription) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 419
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_UnloadSampleData",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_UnloadSampleData               : func(eventdesc : ^FMOD_Studio_EventDescription) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 420
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetSampleLoadingState",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetSampleLoadingState          : func(eventdesc : ^FMOD_Studio_EventDescription, state : ^FMOD_Studio_Loading_State) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 421
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_ReleaseAllInstances",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_ReleaseAllInstances            : func(eventdesc : ^FMOD_Studio_EventDescription) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 422
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_SetCallback",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_SetCallback                    : func(eventdesc : ^FMOD_Studio_EventDescription, callback : FMOD_STUDIO_EVENT_CALLBACK, callbackmask : FMOD_Studio_Event_Callback_Type) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 423
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_GetUserData",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_GetUserData                    : func(eventdesc : ^FMOD_Studio_EventDescription, userdata : ^RawPtr) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 424
+      },
+      {
+        "name": "FMOD_Studio_EventDescription_SetUserData",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventDescription_SetUserData                    : func(eventdesc : ^FMOD_Studio_EventDescription, userdata : RawPtr) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 425
+      },
+      {
+        "name": "FMOD_Studio_EventInstance_Start",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventInstance_Start : func(instance : ^FMOD_Studio_EventInstance) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 428
+      },
+      {
+        "name": "FMOD_Studio_EventInstance_Stop",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventInstance_Stop : func(instance : ^FMOD_Studio_EventInstance, mode : FMOD_Studio_Stop_Mode)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 429
+      },
+      {
+        "name": "FMOD_Studio_EventInstance_GetPlaybackState",
+        "kind": "func",
+        "signature": "FMOD_Studio_EventInstance_GetPlaybackState : func(instance : ^FMOD_Studio_EventInstance, state : ^FMOD_Studio_Playback_State) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 430
+      },
+      {
+        "name": "FMOD_Studio_Bank_IsValid",
+        "kind": "func",
+        "signature": "FMOD_Studio_Bank_IsValid : func(bank : ^FMOD_Studio_Bank) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 433
+      },
+      {
+        "name": "FMOD_Studio_Bank_Unload",
+        "kind": "func",
+        "signature": "FMOD_Studio_Bank_Unload : func(bank : ^FMOD_Studio_Bank) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod_studio.chic",
+        "line": 434
+      },
+      {
+        "name": "FMOD_System",
+        "kind": "struct",
+        "signature": "FMOD_System : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 196
+      },
+      {
+        "name": "FMOD_Sound",
+        "kind": "struct",
+        "signature": "FMOD_Sound  : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 197
+      },
+      {
+        "name": "FMOD_SoundGroup",
+        "kind": "struct",
+        "signature": "FMOD_SoundGroup : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 198
+      },
+      {
+        "name": "FMOD_ChannelControl",
+        "kind": "struct",
+        "signature": "FMOD_ChannelControl : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 199
+      },
+      {
+        "name": "FMOD_Channel",
+        "kind": "struct",
+        "signature": "FMOD_Channel : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 200
+      },
+      {
+        "name": "FMOD_ChannelGroup",
+        "kind": "struct",
+        "signature": "FMOD_ChannelGroup : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 201
+      },
+      {
+        "name": "FMOD_Reverb3D",
+        "kind": "struct",
+        "signature": "FMOD_Reverb3D : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 202
+      },
+      {
+        "name": "FMOD_Dsp",
+        "kind": "struct",
+        "signature": "FMOD_Dsp : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 203
+      },
+      {
+        "name": "FMOD_DspConnection",
+        "kind": "struct",
+        "signature": "FMOD_DspConnection : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 204
+      },
+      {
+        "name": "FMOD_Polygon",
+        "kind": "struct",
+        "signature": "FMOD_Polygon : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 205
+      },
+      {
+        "name": "FMOD_Geometry",
+        "kind": "struct",
+        "signature": "FMOD_Geometry : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 206
+      },
+      {
+        "name": "FMOD_SyncPoint",
+        "kind": "struct",
+        "signature": "FMOD_SyncPoint : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 207
+      },
+      {
+        "name": "FMOD_AsyncReadInfo",
+        "kind": "struct",
+        "signature": "FMOD_AsyncReadInfo : struct {}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 208
+      },
+      {
+        "name": "FMOD_System_Create",
+        "kind": "func",
+        "signature": "FMOD_System_Create : func(system : ^^FMOD_System, version : u32 ) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 212
+      },
+      {
+        "name": "FMOD_System_Release",
+        "kind": "func",
+        "signature": "FMOD_System_Release : func(system : ^FMOD_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 213
+      },
+      {
+        "name": "FMOD_System_Init",
+        "kind": "func",
+        "signature": "FMOD_System_Init : func (system : ^FMOD_System, max_channels : i32, flags : FMOD_InitFlags, extradriverdata : RawPtr) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 215
+      },
+      {
+        "name": "FMOD_System_Close",
+        "kind": "func",
+        "signature": "FMOD_System_Close : func(system : ^FMOD_System) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 216
+      },
+      {
+        "name": "FMOD_System_SetCallback",
+        "kind": "func",
+        "signature": "FMOD_System_SetCallback : func (system : ^FMOD_System, callback : FMOD_SYSTEM_CALLBACK, callbackmask : FMOD_System_Callback_Type) -> FMOD_Result",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/fmod/fmod.chic",
+        "line": 218
+      }
+    ]
+  },
+  {
+    "name": "vendors.raylib",
+    "items": [
+      {
+        "name": "Vector2",
+        "kind": "struct",
+        "signature": "Vector2 : struct {\n\n    x, y : f32 = 0.0\n\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 91
+      },
+      {
+        "name": "Vector3",
+        "kind": "struct",
+        "signature": "Vector3 : struct {\n\n    x, y, z : f32 = 0.0\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 97
+      },
+      {
+        "name": "Vector4",
+        "kind": "struct",
+        "signature": "Vector4 : struct {\n\n    x, y, z, w : f32 = 0.0\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 102
+      },
+      {
+        "name": "Matrix",
+        "kind": "struct",
+        "signature": "Matrix : struct {\n    m0, m4, m8, m12  : f32 = 0.0\n    m1, m5, m9, m13  : f32 = 0.0\n    m2, m6, m10, m14 : f32 = 0.0\n    m3, m7, m11, m15 : f32 = 0.0\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 109
+      },
+      {
+        "name": "Image",
+        "kind": "struct",
+        "signature": "Image : struct {\n\n    data    : ^void = null\n    width   : i32 = 0\n    height  : i32 = 0\n    mipmaps : i32 = 0\n    format  : i32 = 0\n\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 116
+      },
+      {
+        "name": "Texture",
+        "kind": "struct",
+        "signature": "Texture : struct {\n\n    id      : u32 = -1      // OpenGL texture id\n    width   : i32 = 0       // Texture base width\n    height  : i32 = 0       // Texture base height\n    mipmaps : i32 = 0       // Mipmap levels, 1 by default\n    format  : i32 = 0       // Data format (PixelFormat type)\n\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 126
+      },
+      {
+        "name": "Color",
+        "kind": "struct",
+        "signature": "Color : struct {\n\n    R : u8 = 255\n    G : u8 = 255\n    B : u8 = 255\n    A : u8 = 255\n\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 139
+      },
+      {
+        "name": "Rectangle",
+        "kind": "struct",
+        "signature": "Rectangle : struct {\n\n    x       : f32        // Rectangle top-left corner position x\n    y       : f32        // Rectangle top-left corner position y\n    width   : f32        // Rectangle width\n    height  : f32        // Rectangle height\n\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 148
+      },
+      {
+        "name": "RenderTexture",
+        "kind": "struct",
+        "signature": "RenderTexture : struct {\n\n    id : u32             // OpenGL framebuffer object id\n    texture : Texture    // Color buffer attachment texture\n    depth : Texture      // Depth buffer attachment texture\n\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 157
+      },
+      {
+        "name": "GlyphInfo",
+        "kind": "struct",
+        "signature": "GlyphInfo : struct {\n    value    : i32\n    offsetX  : i32\n    offsetY  : i32\n    advanceX : i32\n    image    : Image\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 167
+      },
+      {
+        "name": "Font",
+        "kind": "struct",
+        "signature": "Font : struct {\n\n    baseSize      : i32\n    glyphCount    : i32\n    glyphPadding  : i32\n    texture       : Texture2D\n    rects         : ^Rectangle\n    glyphs        : ^GlyphInfo\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 175
+      },
+      {
+        "name": "Camera3D",
+        "kind": "struct",
+        "signature": "Camera3D : struct {\n\n    position    : Vector3\n    target      : Vector3\n    up          : Vector3\n    fovy        : f32\n    projection  : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 185
+      },
+      {
+        "name": "Camera2D",
+        "kind": "struct",
+        "signature": "Camera2D : struct {\n\n    offset    : Vector2\n    target    : Vector2\n    rotation  : f32\n    zoom      : f32\n\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 196
+      },
+      {
+        "name": "NPatchInfo",
+        "kind": "struct",
+        "signature": "NPatchInfo : struct  {\n    source : Rectangle  // Texture source rectangle\n    left,               // Left border offset\n    top,                // Top border offset\n    right,              // Right border offset\n    bottom,             // Bottom border offset\n    layout : i64        // Layout type: NPatchLayout (3x3, 1x3, 3x1)\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 205
+      },
+      {
+        "name": "InitWindow",
+        "kind": "func",
+        "signature": "InitWindow : func(width : i32, height : i32, title : cstring) -> void",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "Windows Functions (Module: rcore)",
+        "summary": "Windows Functions (Module: rcore)",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 391
+      },
+      {
+        "name": "CloseWindow",
+        "kind": "func",
+        "signature": "CloseWindow : func ()",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 392
+      },
+      {
+        "name": "WindowShouldClose",
+        "kind": "func",
+        "signature": "WindowShouldClose : func() -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 393
+      },
+      {
+        "name": "IsWindowReady",
+        "kind": "func",
+        "signature": "IsWindowReady : func() -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 394
+      },
+      {
+        "name": "IsWindowFullscreen",
+        "kind": "func",
+        "signature": "IsWindowFullscreen : func() -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 395
+      },
+      {
+        "name": "IsWindowHidden",
+        "kind": "func",
+        "signature": "IsWindowHidden : func() -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 396
+      },
+      {
+        "name": "IsWindowMinimized",
+        "kind": "func",
+        "signature": "IsWindowMinimized : func() -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 397
+      },
+      {
+        "name": "IsWindowMaximized",
+        "kind": "func",
+        "signature": "IsWindowMaximized : func() -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 398
+      },
+      {
+        "name": "IsWindowFocused",
+        "kind": "func",
+        "signature": "IsWindowFocused : func() -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 399
+      },
+      {
+        "name": "IsWindowResized",
+        "kind": "func",
+        "signature": "IsWindowResized : func() -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 400
+      },
+      {
+        "name": "GetMonitorWidth",
+        "kind": "func",
+        "signature": "GetMonitorWidth : func(monitor : i32) -> i32",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 401
+      },
+      {
+        "name": "GetMonitorHeight",
+        "kind": "func",
+        "signature": "GetMonitorHeight : func(monitor : i32) -> i32",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 402
+      },
+      {
+        "name": "SetConfigFlags",
+        "kind": "func",
+        "signature": "SetConfigFlags : func(flags : ConfigFlags )",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 403
+      },
+      {
+        "name": "SetWindowTitle",
+        "kind": "func",
+        "signature": "SetWindowTitle : func(title : cstring)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 404
+      },
+      {
+        "name": "ClearBackground",
+        "kind": "func",
+        "signature": "ClearBackground : func(color : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 410
+      },
+      {
+        "name": "BeginDrawing",
+        "kind": "func",
+        "signature": "BeginDrawing : func()",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 411
+      },
+      {
+        "name": "EndDrawing",
+        "kind": "func",
+        "signature": "EndDrawing : func()",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 412
+      },
+      {
+        "name": "BeginMode2D",
+        "kind": "func",
+        "signature": "BeginMode2D : func(camera : Camera2D)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 413
+      },
+      {
+        "name": "EndMode2D",
+        "kind": "func",
+        "signature": "EndMode2D : func()",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 414
+      },
+      {
+        "name": "BeginMode3D",
+        "kind": "func",
+        "signature": "BeginMode3D : func(camera : Camera3D)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 415
+      },
+      {
+        "name": "EndMode3D",
+        "kind": "func",
+        "signature": "EndMode3D : func()",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 416
+      },
+      {
+        "name": "DrawText",
+        "kind": "func",
+        "signature": "DrawText : func(text : cstring, posX : i32, posY : i32, fontSize : i32, color : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 417
+      },
+      {
+        "name": "DrawFPS",
+        "kind": "func",
+        "signature": "DrawFPS : func(posX : i32, posY : i32 )",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 418
+      },
+      {
+        "name": "DrawRectangle",
+        "kind": "func",
+        "signature": "DrawRectangle : func(posX : i32, posY : i32, width : i32, height : i32, color : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 419
+      },
+      {
+        "name": "BeginTextureMode",
+        "kind": "func",
+        "signature": "BeginTextureMode : func(target : RenderTexture2D)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 420
+      },
+      {
+        "name": "EndTextureMode",
+        "kind": "func",
+        "signature": "EndTextureMode : func()",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 421
+      },
+      {
+        "name": "IsKeyPressed",
+        "kind": "func",
+        "signature": "IsKeyPressed : func(key : Keys ) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 429
+      },
+      {
+        "name": "IsKeyPressedRepeat",
+        "kind": "func",
+        "signature": "IsKeyPressedRepeat : func(key : Keys) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 430
+      },
+      {
+        "name": "IsKeyDown",
+        "kind": "func",
+        "signature": "IsKeyDown : func(key : Keys ) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 431
+      },
+      {
+        "name": "IsKeyReleased",
+        "kind": "func",
+        "signature": "IsKeyReleased : func(key : Keys) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 432
+      },
+      {
+        "name": "IsKeyUp",
+        "kind": "func",
+        "signature": "IsKeyUp : func (key : Keys) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 433
+      },
+      {
+        "name": "GetKeyPressed",
+        "kind": "func",
+        "signature": "GetKeyPressed : func() -> i32",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 434
+      },
+      {
+        "name": "SetExitKey",
+        "kind": "func",
+        "signature": "SetExitKey : func(key : Keys)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 438
+      },
+      {
+        "name": "SetTraceLogLevel",
+        "kind": "func",
+        "signature": "SetTraceLogLevel : func(loglevel : TraceLevel)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 440
+      },
+      {
+        "name": "TraceLog",
+        "kind": "func",
+        "signature": "TraceLog : func(logLevel : TraceLevel, text : cstring)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 441
+      },
+      {
+        "name": "SetLoadFileDataCallback",
+        "kind": "func",
+        "signature": "SetLoadFileDataCallback : func( cb : LoadFileDataCallback) -> void",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 447
+      },
+      {
+        "name": "SetLoadFileTextCallback",
+        "kind": "func",
+        "signature": "SetLoadFileTextCallback : func (cb : LoadFileTextCallback) -> void",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 450
+      },
+      {
+        "name": "SetTargetFPS",
+        "kind": "func",
+        "signature": "SetTargetFPS : func(fps : i32)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 455
+      },
+      {
+        "name": "GetFrameTime",
+        "kind": "func",
+        "signature": "GetFrameTime : func() -> f32",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 456
+      },
+      {
+        "name": "GetTime",
+        "kind": "func",
+        "signature": "GetTime : func() -> f64",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 457
+      },
+      {
+        "name": "GetFPS",
+        "kind": "func",
+        "signature": "GetFPS : func() -> i32",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 458
+      },
+      {
+        "name": "ShowCursor",
+        "kind": "func",
+        "signature": "ShowCursor : func()",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 463
+      },
+      {
+        "name": "HideCursor",
+        "kind": "func",
+        "signature": "HideCursor : func()",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 464
+      },
+      {
+        "name": "IsMouseButtonPressed",
+        "kind": "func",
+        "signature": "IsMouseButtonPressed : func (button : i32) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 469
+      },
+      {
+        "name": "IsMouseButtonDown",
+        "kind": "func",
+        "signature": "IsMouseButtonDown : func(button : i32) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 470
+      },
+      {
+        "name": "IsMouseButtonReleased",
+        "kind": "func",
+        "signature": "IsMouseButtonReleased : func(button : i32) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 471
+      },
+      {
+        "name": "IsMouseButtonUp",
+        "kind": "func",
+        "signature": "IsMouseButtonUp : func(button : i32) -> bool",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 472
+      },
+      {
+        "name": "GetMouseX",
+        "kind": "func",
+        "signature": "GetMouseX : func() -> i32",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 473
+      },
+      {
+        "name": "GetMouseY",
+        "kind": "func",
+        "signature": "GetMouseY : func() -> i32",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 474
+      },
+      {
+        "name": "GetMousePosition",
+        "kind": "func",
+        "signature": "GetMousePosition : func() -> Vector2",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 475
+      },
+      {
+        "name": "GetMouseDelta",
+        "kind": "func",
+        "signature": "GetMouseDelta : func() -> Vector2",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 476
+      },
+      {
+        "name": "SetMousePosition",
+        "kind": "func",
+        "signature": "SetMousePosition : func(x : i32, y: i32)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 477
+      },
+      {
+        "name": "SetMouseOffset",
+        "kind": "func",
+        "signature": "SetMouseOffset : func(offsetX : i32, offsetY : i32)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 478
+      },
+      {
+        "name": "SetMouseScale",
+        "kind": "func",
+        "signature": "SetMouseScale : func(scaleX : float, scaleY : float)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 479
+      },
+      {
+        "name": "GetMouseWheelMove",
+        "kind": "func",
+        "signature": "GetMouseWheelMove : func() -> float",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 480
+      },
+      {
+        "name": "GetMouseWheelMoveV",
+        "kind": "func",
+        "signature": "GetMouseWheelMoveV : func() -> Vector2",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 481
+      },
+      {
+        "name": "SetMouseCursor",
+        "kind": "func",
+        "signature": "SetMouseCursor : func(cursor : i32)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 482
+      },
+      {
+        "name": "LoadImage",
+        "kind": "func",
+        "signature": "LoadImage : func(filename : cstring) -> Image",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 489
+      },
+      {
+        "name": "UnloadImage",
+        "kind": "func",
+        "signature": "UnloadImage : func(image : Image ) -> void",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 490
+      },
+      {
+        "name": "LoadTexture",
+        "kind": "func",
+        "signature": "LoadTexture : func(filename : cstring) -> Texture2D",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 491
+      },
+      {
+        "name": "LoadTextureFromImage",
+        "kind": "func",
+        "signature": "LoadTextureFromImage : func(image : Image) -> Texture2D",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 492
+      },
+      {
+        "name": "LoadImageFromMemory",
+        "kind": "func",
+        "signature": "LoadImageFromMemory : func(file_type : cstring, file_data : ^u8, data_size : i32 ) -> Image",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 493
+      },
+      {
+        "name": "UnloadTexture",
+        "kind": "func",
+        "signature": "UnloadTexture : func(texture : Texture2D)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 494
+      },
+      {
+        "name": "DrawTexture",
+        "kind": "func",
+        "signature": "DrawTexture : func(texture : Texture2D, posX : i32, posY : i32, tint : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 495
+      },
+      {
+        "name": "DrawTextureV",
+        "kind": "func",
+        "signature": "DrawTextureV : func(texture : Texture2D, pos : Vector2, tint : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 496
+      },
+      {
+        "name": "DrawTextureRec",
+        "kind": "func",
+        "signature": "DrawTextureRec : func(texture : Texture2D, rect : Rectangle, position : Vector2, tint : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 497
+      },
+      {
+        "name": "DrawTextureEx",
+        "kind": "func",
+        "signature": "DrawTextureEx : func(texture : Texture2D, position : Vector2, rotation : float, scale : float, tint : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 498
+      },
+      {
+        "name": "DrawTexturePro",
+        "kind": "func",
+        "signature": "DrawTexturePro : func(texture : Texture2D, source : Rectangle, dest : Rectangle, origin : Vector2, rotation : float, tint : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 499
+      },
+      {
+        "name": "DrawTextureNPatch",
+        "kind": "func",
+        "signature": "DrawTextureNPatch : func(texture : Texture2D, patch_info : NPatchInfo, dest : Rectangle, origin : Vector2, rotation : float, tint : Color)",
+        "attributes": [
+          "@import_func"
+        ],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/raylib/raylib.chic",
+        "line": 500
+      }
+    ]
+  },
+  {
+    "name": "vendors.stb_truetype",
+    "items": [
+      {
+        "name": "STBTT_POINT_SIZE",
+        "kind": "func",
+        "signature": "STBTT_POINT_SIZE : func(size : f32) -> f32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/constants.chic",
+        "line": 62
+      },
+      {
+        "name": "stbtt_GetCodepointShape",
+        "kind": "func",
+        "signature": "stbtt_GetCodepointShape : func(info : ^stbtt_fontinfo, unicode_codepoint : i32, vertices : ^^stbtt_vertex) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 7
+      },
+      {
+        "name": "stbtt_GetCodepointBox",
+        "kind": "func",
+        "signature": "stbtt_GetCodepointBox : func(info : ^stbtt_fontinfo, codepoint : i32, x0 : ^i32, y0 : ^i32, x1 : ^i32, y1 : ^i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 11
+      },
+      {
+        "name": "stbtt_IsGlyphEmpty",
+        "kind": "func",
+        "signature": "stbtt_IsGlyphEmpty : func(info : ^stbtt_fontinfo, glyph_index : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 15
+      },
+      {
+        "name": "stbtt_GetKerningTableLength",
+        "kind": "func",
+        "signature": "stbtt_GetKerningTableLength : func(info : ^stbtt_fontinfo) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 29
+      },
+      {
+        "name": "stbtt_GetKerningTable",
+        "kind": "func",
+        "signature": "stbtt_GetKerningTable : func(info : ^stbtt_fontinfo, table : ^stbtt_kerningentry, table_length : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 43
+      },
+      {
+        "name": "stbtt_GetCodepointKernAdvance",
+        "kind": "func",
+        "signature": "stbtt_GetCodepointKernAdvance : func(info : ^stbtt_fontinfo, ch1 : i32, ch2 : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 72
+      },
+      {
+        "name": "stbtt_GetCodepointHMetrics",
+        "kind": "func",
+        "signature": "stbtt_GetCodepointHMetrics : func(info : ^stbtt_fontinfo, codepoint : i32, advanceWidth : ^i32, leftSideBearing : ^i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 79
+      },
+      {
+        "name": "stbtt_GetFontVMetricsOS2",
+        "kind": "func",
+        "signature": "stbtt_GetFontVMetricsOS2 : func(info : ^stbtt_fontinfo, typoAscent : ^i32, typoDescent : ^i32, typoLineGap : ^i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 83
+      },
+      {
+        "name": "stbtt_GetFontBoundingBox",
+        "kind": "func",
+        "signature": "stbtt_GetFontBoundingBox : func(info : ^stbtt_fontinfo, x0 : ^i32, y0 : ^i32, x1 : ^i32, y1 : ^i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 100
+      },
+      {
+        "name": "stbtt_ScaleForPixelHeight",
+        "kind": "func",
+        "signature": "stbtt_ScaleForPixelHeight : func(info : ^stbtt_fontinfo, height : f32) -> f32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 107
+      },
+      {
+        "name": "stbtt_ScaleForMappingEmToPixels",
+        "kind": "func",
+        "signature": "stbtt_ScaleForMappingEmToPixels : func(info : ^stbtt_fontinfo, pixels : f32) -> f32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 112
+      },
+      {
+        "name": "stbtt_FreeShape",
+        "kind": "func",
+        "signature": "stbtt_FreeShape : func(info : ^stbtt_fontinfo, v : ^stbtt_vertex)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 117
+      },
+      {
+        "name": "stbtt_GetCodepointBitmapBoxSubpixel",
+        "kind": "func",
+        "signature": "stbtt_GetCodepointBitmapBoxSubpixel : func(font : ^stbtt_fontinfo, codepoint : i32, scale_x : f32, scale_y : f32, shift_x : f32, shift_y : f32, ix0 : ^i32, iy0 : ^i32, ix1 : ^i32, iy1 : ^i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 121
+      },
+      {
+        "name": "stbtt_GetCodepointBitmapBox",
+        "kind": "func",
+        "signature": "stbtt_GetCodepointBitmapBox : func(font : ^stbtt_fontinfo, codepoint : i32, scale_x : f32, scale_y : f32, ix0 : ^i32, iy0 : ^i32, ix1 : ^i32, iy1 : ^i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 125
+      },
+      {
+        "name": "stbtt_FreeBitmap",
+        "kind": "func",
+        "signature": "stbtt_FreeBitmap : func(bitmap : ^u8, userdata : ^void)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 129
+      },
+      {
+        "name": "stbtt_GetGlyphBitmapSubpixel",
+        "kind": "func",
+        "signature": "stbtt_GetGlyphBitmapSubpixel : func(info : ^stbtt_fontinfo, scale_x_arg : f32, scale_y_arg : f32, shift_x : f32, shift_y : f32, glyph : i32, width : ^i32, height : ^i32, xoff : ^i32, yoff : ^i32) -> ^u8",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 133
+      },
+      {
+        "name": "stbtt_GetGlyphBitmap",
+        "kind": "func",
+        "signature": "stbtt_GetGlyphBitmap : func(info : ^stbtt_fontinfo, scale_x : f32, scale_y : f32, glyph : i32, width : ^i32, height : ^i32, xoff : ^i32, yoff : ^i32) -> ^u8",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 183
+      },
+      {
+        "name": "stbtt_GetCodepointBitmapSubpixel",
+        "kind": "func",
+        "signature": "stbtt_GetCodepointBitmapSubpixel : func(info : ^stbtt_fontinfo, scale_x : f32, scale_y : f32, shift_x : f32, shift_y : f32, codepoint : i32, width : ^i32, height : ^i32, xoff : ^i32, yoff : ^i32) -> ^u8",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 187
+      },
+      {
+        "name": "stbtt_MakeCodepointBitmapSubpixel",
+        "kind": "func",
+        "signature": "stbtt_MakeCodepointBitmapSubpixel : func(info : ^stbtt_fontinfo, output : ^u8, out_w : i32, out_h : i32, out_stride : i32, scale_x : f32, scale_y : f32, shift_x : f32, shift_y : f32, codepoint : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 191
+      },
+      {
+        "name": "stbtt_GetCodepointBitmap",
+        "kind": "func",
+        "signature": "stbtt_GetCodepointBitmap : func(info : ^stbtt_fontinfo, scale_x : f32, scale_y : f32, codepoint : i32, width : ^i32, height : ^i32, xoff : ^i32, yoff : ^i32) -> ^u8",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 195
+      },
+      {
+        "name": "stbtt_MakeCodepointBitmap",
+        "kind": "func",
+        "signature": "stbtt_MakeCodepointBitmap : func(info : ^stbtt_fontinfo, output : ^u8, out_w : i32, out_h : i32, out_stride : i32, scale_x : f32, scale_y : f32, codepoint : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 199
+      },
+      {
+        "name": "stbtt_GetScaledFontVMetrics",
+        "kind": "func",
+        "signature": "stbtt_GetScaledFontVMetrics : func(fontdata : ^u8, index : i32, size : f32, ascent : ^f32, descent : ^f32, lineGap : ^f32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/convenience.chic",
+        "line": 203
+      },
+      {
+        "name": "stbtt_FindGlyphIndex",
+        "kind": "func",
+        "signature": "stbtt_FindGlyphIndex : func(info : ^stbtt_fontinfo, unicode_codepoint : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 200
+      },
+      {
+        "name": "stbtt_GetGlyphBox",
+        "kind": "func",
+        "signature": "stbtt_GetGlyphBox : func(info : ^stbtt_fontinfo, glyph_index : i32, x0 : ^i32, y0 : ^i32, x1 : ^i32, y1 : ^i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 298
+      },
+      {
+        "name": "stbtt_GetGlyphHMetrics",
+        "kind": "func",
+        "signature": "stbtt_GetGlyphHMetrics : func(info : ^stbtt_fontinfo, glyph_index : i32, advanceWidth : ^i32, leftSideBearing : ^i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 322
+      },
+      {
+        "name": "stbtt_GetGlyphKernAdvance",
+        "kind": "func",
+        "signature": "stbtt_GetGlyphKernAdvance : func(info : ^stbtt_fontinfo, g1 : i32, g2 : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 640
+      },
+      {
+        "name": "stbtt_GetFontVMetrics",
+        "kind": "func",
+        "signature": "stbtt_GetFontVMetrics : func(info : ^stbtt_fontinfo, ascent : ^i32, descent : ^i32, lineGap : ^i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 652
+      },
+      {
+        "name": "stbtt_GetGlyphBitmapBoxSubpixel",
+        "kind": "func",
+        "signature": "stbtt_GetGlyphBitmapBoxSubpixel : func(font : ^stbtt_fontinfo, glyph : i32, scale_x : f32, scale_y : f32, shift_x : f32, shift_y : f32, ix0 : ^i32, iy0 : ^i32, ix1 : ^i32, iy1 : ^i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 664
+      },
+      {
+        "name": "stbtt_GetGlyphBitmapBox",
+        "kind": "func",
+        "signature": "stbtt_GetGlyphBitmapBox : func(font : ^stbtt_fontinfo, glyph : i32, scale_x : f32, scale_y : f32, ix0 : ^i32, iy0 : ^i32, ix1 : ^i32, iy1 : ^i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 698
+      },
+      {
+        "name": "stbtt_GetFontOffsetForIndex",
+        "kind": "func",
+        "signature": "stbtt_GetFontOffsetForIndex : func(data : ^u8, index : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 702
+      },
+      {
+        "name": "stbtt_InitFont",
+        "kind": "func",
+        "signature": "stbtt_InitFont : func(info : ^stbtt_fontinfo, data : ^u8, offset : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/font.chic",
+        "line": 707
+      },
+      {
+        "name": "stbtt_GetFontNameString",
+        "kind": "func",
+        "signature": "stbtt_GetFontNameString : func(font : ^stbtt_fontinfo, length : ^i32, platformID : i32, encodingID : i32, languageID : i32, nameID : i32) -> ^u8",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/names.chic",
+        "line": 122
+      },
+      {
+        "name": "stbtt_GetNumberOfFonts",
+        "kind": "func",
+        "signature": "stbtt_GetNumberOfFonts : func(data : ^u8) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/names.chic",
+        "line": 253
+      },
+      {
+        "name": "stbtt_FindMatchingFont",
+        "kind": "func",
+        "signature": "stbtt_FindMatchingFont : func(fontdata : ^u8, name : ^u8, flags : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/names.chic",
+        "line": 258
+      },
+      {
+        "name": "stbtt_CompareUTF8toUTF16_bigendian",
+        "kind": "func",
+        "signature": "stbtt_CompareUTF8toUTF16_bigendian : func(s1 : ^u8, len1 : i32, s2 : ^u8, len2 : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/names.chic",
+        "line": 263
+      },
+      {
+        "name": "stbtt_GetGlyphShape",
+        "kind": "func",
+        "signature": "stbtt_GetGlyphShape : func(info : ^stbtt_fontinfo, glyph_index : i32, pvertices : ^^stbtt_vertex) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/outlines.chic",
+        "line": 426
+      },
+      {
+        "name": "stbtt_bakedchar",
+        "kind": "struct",
+        "signature": "stbtt_bakedchar : struct {\n    x0 : u16\n    y0 : u16\n    x1 : u16\n    y1 : u16\n    xoff : f32\n    yoff : f32\n    xadvance : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Ported from stb_truetype 1.26 by Sean Barrett and contributors.\nSee LICENSE. This is native Chic source; no stb C archive is used.",
+        "summary": "Ported from stb_truetype 1.26 by Sean Barrett and contributors. See LICENSE. This is native Chic source; no stb C archive is used.",
+        "source": "vendors/stb_truetype/packing_types.chic",
+        "line": 4
+      },
+      {
+        "name": "stbtt_aligned_quad",
+        "kind": "struct",
+        "signature": "stbtt_aligned_quad : struct {\n    x0 : f32\n    y0 : f32\n    s0 : f32\n    t0 : f32\n    x1 : f32\n    y1 : f32\n    s1 : f32\n    t1 : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing_types.chic",
+        "line": 14
+      },
+      {
+        "name": "stbtt_packedchar",
+        "kind": "struct",
+        "signature": "stbtt_packedchar : struct {\n    x0 : u16\n    y0 : u16\n    x1 : u16\n    y1 : u16\n    xoff : f32\n    yoff : f32\n    xadvance : f32\n    xoff2 : f32\n    yoff2 : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing_types.chic",
+        "line": 25
+      },
+      {
+        "name": "stbtt_pack_range",
+        "kind": "struct",
+        "signature": "stbtt_pack_range : struct {\n    font_size : f32\n    first_unicode_codepoint_in_range : i32\n    array_of_unicode_codepoints : ^i32\n    num_chars : i32\n    chardata_for_range : ^stbtt_packedchar\n    h_oversample : u8\n    v_oversample : u8\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing_types.chic",
+        "line": 37
+      },
+      {
+        "name": "stbtt_pack_context",
+        "kind": "struct",
+        "signature": "stbtt_pack_context : struct {\n    user_allocator_context : ^void\n    pack_info : ^void\n    width : i32\n    height : i32\n    stride_in_bytes : i32\n    padding : i32\n    skip_missing : i32\n    h_oversample : u32\n    v_oversample : u32\n    pixels : ^u8\n    nodes : ^void\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing_types.chic",
+        "line": 47
+      },
+      {
+        "name": "stbrp_context",
+        "kind": "struct",
+        "signature": "stbrp_context : struct {\n    width : i32\n    height : i32\n    x : i32\n    y : i32\n    bottom_y : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing_types.chic",
+        "line": 61
+      },
+      {
+        "name": "stbrp_node",
+        "kind": "struct",
+        "signature": "stbrp_node : struct {\n    x : u8\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing_types.chic",
+        "line": 69
+      },
+      {
+        "name": "stbrp_rect",
+        "kind": "struct",
+        "signature": "stbrp_rect : struct {\n    x : i32\n    y : i32\n    id : i32\n    w : i32\n    h : i32\n    was_packed : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing_types.chic",
+        "line": 73
+      },
+      {
+        "name": "stbtt_GetBakedQuad",
+        "kind": "func",
+        "signature": "stbtt_GetBakedQuad : func(chardata : ^stbtt_bakedchar, pw : i32, ph : i32, char_index : i32, xpos : ^f32, ypos : ^f32, q : ^stbtt_aligned_quad, opengl_fillrule : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 68
+      },
+      {
+        "name": "stbtt_PackBegin",
+        "kind": "func",
+        "signature": "stbtt_PackBegin : func(spc : ^stbtt_pack_context, pixels : ^u8, pw : i32, ph : i32, stride_in_bytes : i32, padding : i32, alloc_context : ^void) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 131
+      },
+      {
+        "name": "stbtt_PackEnd",
+        "kind": "func",
+        "signature": "stbtt_PackEnd : func(spc : ^stbtt_pack_context)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 174
+      },
+      {
+        "name": "stbtt_PackSetOversampling",
+        "kind": "func",
+        "signature": "stbtt_PackSetOversampling : func(spc : ^stbtt_pack_context, h_oversample : u32, v_oversample : u32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 182
+      },
+      {
+        "name": "stbtt_PackSetSkipMissingCodepoints",
+        "kind": "func",
+        "signature": "stbtt_PackSetSkipMissingCodepoints : func(spc : ^stbtt_pack_context, skip : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 188
+      },
+      {
+        "name": "stbtt_PackFontRangesGatherRects",
+        "kind": "func",
+        "signature": "stbtt_PackFontRangesGatherRects : func(spc : ^stbtt_pack_context, info : ^stbtt_fontinfo, ranges : ^stbtt_pack_range, num_ranges : i32, rects : ^stbrp_rect) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 192
+      },
+      {
+        "name": "stbtt_PackFontRangesRenderIntoRects",
+        "kind": "func",
+        "signature": "stbtt_PackFontRangesRenderIntoRects : func(spc : ^stbtt_pack_context, info : ^stbtt_fontinfo, ranges : ^stbtt_pack_range, num_ranges : i32, rects : ^stbrp_rect) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 245
+      },
+      {
+        "name": "stbtt_PackFontRangesPackRects",
+        "kind": "func",
+        "signature": "stbtt_PackFontRangesPackRects : func(spc : ^stbtt_pack_context, rects : ^stbrp_rect, num_rects : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 344
+      },
+      {
+        "name": "stbtt_PackFontRanges",
+        "kind": "func",
+        "signature": "stbtt_PackFontRanges : func(spc : ^stbtt_pack_context, fontdata : ^u8, font_index : i32, ranges : ^stbtt_pack_range, num_ranges : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 348
+      },
+      {
+        "name": "stbtt_PackFontRange",
+        "kind": "func",
+        "signature": "stbtt_PackFontRange : func(spc : ^stbtt_pack_context, fontdata : ^u8, font_index : i32, font_size : f32, first_unicode_codepoint_in_range : i32, num_chars_in_range : i32, chardata_for_range : ^stbtt_packedchar) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 405
+      },
+      {
+        "name": "stbtt_GetPackedQuad",
+        "kind": "func",
+        "signature": "stbtt_GetPackedQuad : func(chardata : ^stbtt_packedchar, pw : i32, ph : i32, char_index : i32, xpos : ^f32, ypos : ^f32, q : ^stbtt_aligned_quad, align_to_integer : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 415
+      },
+      {
+        "name": "stbtt_BakeFontBitmap",
+        "kind": "func",
+        "signature": "stbtt_BakeFontBitmap : func(data : ^u8, offset : i32, pixel_height : f32, pixels : ^u8, pw : i32, ph : i32, first_char : i32, num_chars : i32, chardata : ^stbtt_bakedchar) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/packing.chic",
+        "line": 439
+      },
+      {
+        "name": "stbtt_MakeCodepointBitmapSubpixelPrefilter",
+        "kind": "func",
+        "signature": "stbtt_MakeCodepointBitmapSubpixelPrefilter : func(info : ^stbtt_fontinfo, output : ^u8, out_w : i32, out_h : i32, out_stride : i32, scale_x : f32, scale_y : f32, shift_x : f32, shift_y : f32, oversample_x : i32, oversample_y : i32, sub_x : ^f32, sub_y : ^f32, codepoint : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/prefilter.chic",
+        "line": 7
+      },
+      {
+        "name": "stbtt_MakeGlyphBitmapSubpixelPrefilter",
+        "kind": "func",
+        "signature": "stbtt_MakeGlyphBitmapSubpixelPrefilter : func(info : ^stbtt_fontinfo, output : ^u8, out_w : i32, out_h : i32, out_stride : i32, scale_x : f32, scale_y : f32, shift_x : f32, shift_y : f32, prefilter_x : i32, prefilter_y : i32, sub_x : ^f32, sub_y : ^f32, glyph : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/prefilter.chic",
+        "line": 205
+      },
+      {
+        "name": "stbtt_Rasterize",
+        "kind": "func",
+        "signature": "stbtt_Rasterize : func(result : ^stbtt__bitmap, flatness_in_pixels : f32, vertices : ^stbtt_vertex, num_verts : i32, scale_x : f32, scale_y : f32, shift_x : f32, shift_y : f32, x_off : i32, y_off : i32, invert : i32, userdata : ^void)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/rasterizer.chic",
+        "line": 738
+      },
+      {
+        "name": "stbtt_MakeGlyphBitmapSubpixel",
+        "kind": "func",
+        "signature": "stbtt_MakeGlyphBitmapSubpixel : func(info : ^stbtt_fontinfo, output : ^u8, out_w : i32, out_h : i32, out_stride : i32, scale_x : f32, scale_y : f32, shift_x : f32, shift_y : f32, glyph : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/rasterizer.chic",
+        "line": 756
+      },
+      {
+        "name": "stbtt_MakeGlyphBitmap",
+        "kind": "func",
+        "signature": "stbtt_MakeGlyphBitmap : func(info : ^stbtt_fontinfo, output : ^u8, out_w : i32, out_h : i32, out_stride : i32, scale_x : f32, scale_y : f32, glyph : i32)",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/rasterizer.chic",
+        "line": 773
+      },
+      {
+        "name": "StbTrueTypeFaceMetrics",
+        "kind": "struct",
+        "signature": "StbTrueTypeFaceMetrics : struct {\n    units_per_em : i32\n    ascent : i32\n    descent : i32\n    line_gap : i32\n    max_advance : i32\n    glyph_count : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Public entry points used by core.imgui. Input bytes remain caller-owned.\nFont data must be trusted, as with the original stb parser.",
+        "summary": "Public entry points used by core.imgui. Input bytes remain caller-owned. Font data must be trusted, as with the original stb parser.",
+        "source": "vendors/stb_truetype/stb_truetype.chic",
+        "line": 10
+      },
+      {
+        "name": "StbTrueTypeGlyphMetrics",
+        "kind": "struct",
+        "signature": "StbTrueTypeGlyphMetrics : struct {\n    glyph_index : i32\n    has_glyph : i32\n    advance_width : i32\n    left_side_bearing : i32\n    bitmap_width : i32\n    bitmap_height : i32\n    bitmap_x_offset : i32\n    bitmap_y_offset : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/stb_truetype.chic",
+        "line": 19
+      },
+      {
+        "name": "chic_stbtt_get_face_metrics",
+        "kind": "func",
+        "signature": "chic_stbtt_get_face_metrics : func(data : ^u8, data_size : i64, metrics : ^StbTrueTypeFaceMetrics) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Read unscaled face metrics. Returns 1 on success, 0 on failure.",
+        "summary": "Read unscaled face metrics. Returns 1 on success, 0 on failure.",
+        "source": "vendors/stb_truetype/stb_truetype.chic",
+        "line": 44
+      },
+      {
+        "name": "chic_stbtt_get_glyph_metrics",
+        "kind": "func",
+        "signature": "chic_stbtt_get_glyph_metrics : func(data : ^u8, data_size : i64, codepoint : u32, scale : f32, metrics : ^StbTrueTypeGlyphMetrics) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Resolve a Unicode scalar and its scaled bitmap bounds.\nA positive bounded range also rejects NaN with Chic's ordered comparisons.",
+        "summary": "Resolve a Unicode scalar and its scaled bitmap bounds. A positive bounded range also rejects NaN with Chic's ordered comparisons.",
+        "source": "vendors/stb_truetype/stb_truetype.chic",
+        "line": 74
+      },
+      {
+        "name": "chic_stbtt_get_glyph_kerning",
+        "kind": "func",
+        "signature": "chic_stbtt_get_glyph_kerning : func(data : ^u8, data_size : i64, left_glyph_index : i32, right_glyph_index : i32, advance_adjustment : ^i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Return unscaled horizontal pair adjustment from GPOS or the kern table.",
+        "summary": "Return unscaled horizontal pair adjustment from GPOS or the kern table.",
+        "source": "vendors/stb_truetype/stb_truetype.chic",
+        "line": 99
+      },
+      {
+        "name": "chic_stbtt_rasterize_glyph",
+        "kind": "func",
+        "signature": "chic_stbtt_rasterize_glyph : func(data : ^u8, data_size : i64, glyph_index : i32, scale : f32, output : ^u8, output_size : i64, width : i32, height : i32, stride : i32) -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Write grayscale coverage into the caller's buffer; preserve stride padding.",
+        "summary": "Write grayscale coverage into the caller's buffer; preserve stride padding.",
+        "source": "vendors/stb_truetype/stb_truetype.chic",
+        "line": 112
+      },
+      {
+        "name": "stbtt_fontinfo",
+        "kind": "struct",
+        "signature": "stbtt_fontinfo : struct {\n    userdata : ^void\n    data : ^u8\n    fontstart : i32\n    numGlyphs : i32\n    loca : i32\n    head : i32\n    glyf : i32\n    hhea : i32\n    hmtx : i32\n    kern : i32\n    gpos : i32\n    svg : i32\n    index_map : i32\n    indexToLocFormat : i32\n    cff : stbtt__buf\n    charstrings : stbtt__buf\n    gsubrs : stbtt__buf\n    subrs : stbtt__buf\n    fontdicts : stbtt__buf\n    fdselect : stbtt__buf\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Ported from stb_truetype 1.26 by Sean Barrett and contributors.\nSee LICENSE. This is native Chic source; no stb C archive is used.",
+        "summary": "Ported from stb_truetype 1.26 by Sean Barrett and contributors. See LICENSE. This is native Chic source; no stb C archive is used.",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 4
+      },
+      {
+        "name": "stbtt__hheap_chunk",
+        "kind": "struct",
+        "signature": "stbtt__hheap_chunk : struct {\n    next : ^stbtt__hheap_chunk\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 27
+      },
+      {
+        "name": "stbtt__hheap",
+        "kind": "struct",
+        "signature": "stbtt__hheap : struct {\n    head : ^stbtt__hheap_chunk\n    first_free : ^void\n    num_remaining_in_head_chunk : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 31
+      },
+      {
+        "name": "stbtt__edge",
+        "kind": "struct",
+        "signature": "stbtt__edge : struct {\n    x0 : f32\n    y0 : f32\n    x1 : f32\n    y1 : f32\n    invert : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 37
+      },
+      {
+        "name": "stbtt__active_edge",
+        "kind": "struct",
+        "signature": "stbtt__active_edge : struct {\n    next : ^stbtt__active_edge\n    fx : f32\n    fdx : f32\n    fdy : f32\n    direction : f32\n    sy : f32\n    ey : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 45
+      },
+      {
+        "name": "stbtt__buf",
+        "kind": "struct",
+        "signature": "stbtt__buf : struct {\n    data : ^u8\n    cursor : i32\n    size : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 55
+      },
+      {
+        "name": "stbtt_vertex",
+        "kind": "struct",
+        "signature": "stbtt_vertex : struct {\n    x : i16\n    y : i16\n    cx : i16\n    cy : i16\n    cx1 : i16\n    cy1 : i16\n    c_type : u8\n    padding : u8\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 61
+      },
+      {
+        "name": "stbtt__bitmap",
+        "kind": "struct",
+        "signature": "stbtt__bitmap : struct {\n    w : i32\n    h : i32\n    stride : i32\n    pixels : ^u8\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 72
+      },
+      {
+        "name": "stbtt__csctx",
+        "kind": "struct",
+        "signature": "stbtt__csctx : struct {\n    bounds : i32\n    started : i32\n    first_x : f32\n    first_y : f32\n    x : f32\n    y : f32\n    min_x : i32\n    max_x : i32\n    min_y : i32\n    max_y : i32\n    pvertices : ^stbtt_vertex\n    num_vertices : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 79
+      },
+      {
+        "name": "stbtt__point",
+        "kind": "struct",
+        "signature": "stbtt__point : struct {\n    x : f32\n    y : f32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 94
+      },
+      {
+        "name": "stbtt_kerningentry",
+        "kind": "struct",
+        "signature": "stbtt_kerningentry : struct {\n    glyph1 : i32\n    glyph2 : i32\n    advance : i32\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "",
+        "summary": "",
+        "source": "vendors/stb_truetype/types.chic",
+        "line": 99
+      }
+    ]
+  }
+]

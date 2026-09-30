@@ -1,0 +1,11 @@
+---
+import PackageReference from '../../components/PackageReference.astro';
+import { getVendorPackages } from '../../lib/vendors';
+
+export function getStaticPaths() {
+  return getVendorPackages().map(pkg => ({ params: { slug: pkg.slug }, props: { pkg } }));
+}
+const { pkg } = Astro.props;
+---
+
+<PackageReference pkg={pkg} collection="Vendors" indexPath="/vendors/" backLabel="Back to Vendors" />

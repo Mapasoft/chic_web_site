@@ -1,0 +1,132 @@
+{
+  "files": [
+    {
+      "path": "vendors/fmod/fmod_common.chic",
+      "package": "vendors.fmod",
+      "sha256": "24aa9236a5b42458979285a919c70f6b325de2a73fd6631d6df02af68c576c61",
+      "publicStructs": 3,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "vendors/fmod/fmod_studio.chic",
+      "package": "vendors.fmod",
+      "sha256": "f69466aa95b6ac80db43de92762ae9377027f2bbaf11f5788f4265069e3ab478",
+      "publicStructs": 27,
+      "publicFunctions": 95,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "vendors/fmod/fmod.chic",
+      "package": "vendors.fmod",
+      "sha256": "653ef7a3be0a9590285d6086db3c7819a9c3f322c9e1c5304930604f1d3d26af",
+      "publicStructs": 13,
+      "publicFunctions": 5,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "vendors/raylib/raylib.chic",
+      "package": "vendors.raylib",
+      "sha256": "7d402b470213e04ba074227f977ac63b7acdc92e450e0f2b3a0a90fed8b2cc7e",
+      "publicStructs": 14,
+      "publicFunctions": 69,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "vendors/stb_truetype/cff.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "d79d25c289520dfcdce40a483911231fb99be4bcaee22000c9be442b883aaec6",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 24
+    },
+    {
+      "path": "vendors/stb_truetype/constants.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "f4059788617c2ee95e4f8dd5fdc288663f1ef190f38c214338bc765f6b9c0477",
+      "publicStructs": 0,
+      "publicFunctions": 1,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "vendors/stb_truetype/convenience.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "f99daca42ed16143a6333975e4aa7d353204f7e310f5fb0f56b2f57220e1f519",
+      "publicStructs": 0,
+      "publicFunctions": 22,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "vendors/stb_truetype/font.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "975ae56cf8a7c6b1074211bd3bc4ad93e7138e526bb48ea6a2340b6c2ee0f798",
+      "publicStructs": 0,
+      "publicFunctions": 9,
+      "internalDeclarations": 12
+    },
+    {
+      "path": "vendors/stb_truetype/names.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "68e040cb70a7824ccf030f1f2a7332bb721b8736548b3e0ece5881f1273567bb",
+      "publicStructs": 0,
+      "publicFunctions": 4,
+      "internalDeclarations": 7
+    },
+    {
+      "path": "vendors/stb_truetype/outlines.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "9507c512d99a5abd100ace4ee209aafa2f3a8f981290b6ed6c74c27060fcf411",
+      "publicStructs": 0,
+      "publicFunctions": 1,
+      "internalDeclarations": 6
+    },
+    {
+      "path": "vendors/stb_truetype/packing_types.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "b5aa2f36dee45989fa83d6b58e61d1e97b0af3c62dc26bccf95bc847c9154179",
+      "publicStructs": 8,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "vendors/stb_truetype/packing.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "8741000dd8a6dd8947fd8a34a5de82e97505efaaa170c0f09d25f3f298570e0e",
+      "publicStructs": 0,
+      "publicFunctions": 12,
+      "internalDeclarations": 3
+    },
+    {
+      "path": "vendors/stb_truetype/prefilter.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "6b90e93d642a9d14319c235843bae887ed0b5558035f1b04a3145809f2568889",
+      "publicStructs": 0,
+      "publicFunctions": 2,
+      "internalDeclarations": 3
+    },
+    {
+      "path": "vendors/stb_truetype/rasterizer.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "e4191e9315627927b84691c637d9dc71fb00c027d993ffd536089ce4c8da24e3",
+      "publicStructs": 0,
+      "publicFunctions": 3,
+      "internalDeclarations": 18
+    },
+    {
+      "path": "vendors/stb_truetype/stb_truetype.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "20c5d72c1427e3fa4d879aa6c759f3b4458f3b0885d698aca57d28dfd32930c6",
+      "publicStructs": 2,
+      "publicFunctions": 4,
+      "internalDeclarations": 2
+    },
+    {
+      "path": "vendors/stb_truetype/types.chic",
+      "package": "vendors.stb_truetype",
+      "sha256": "46d7e56a8eff72b27cb2b36a382bde65c53e749995ca4f66f55483780737fc7c",
+      "publicStructs": 11,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    }
+  ]
+}

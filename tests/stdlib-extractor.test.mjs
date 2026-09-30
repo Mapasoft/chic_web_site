@@ -3,9 +3,51 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { extractDeclarations, extractStdlib } from '../src/lib/stdlib-extractor.ts';
+import { extractDeclarations, extractStdlib, extractVendors } from '../src/lib/stdlib-extractor.ts';
 
 const parse = source => extractDeclarations(source, 'core/example.chic');
+
+test('skips single-line and multiline vendor link directives without losing APIs or source lines', () => {
+  const { items } = parse(`#import_lib(.name = "audio", .local_path = "/api/")
+#if DARWIN
+#import_lib(
+  .name = "graphics",
+  .link_darwin = "-framework,Cocoa" // Link options are not API declarations.
+)
+@import_func draw : func(point : Point) -> bool
+#end
+Point : struct { x : f32 }`);
+  assert.deepEqual(items.map(i => i.name), ['draw', 'Point']);
+  assert.equal(items[0].line, 7);
+  assert.equal(items[0].signature, 'draw : func(point : Point) -> bool');
+  assert.deepEqual(items[0].conditions, ['DARWIN']);
+  assert.equal(items[0].comment, '');
+  assert.throws(() => parse('#import_lib "missing parentheses"'), /invalid #import_lib/);
+  assert.throws(() => parse('#import_lib(\n.name = "unclosed"'), /Unclosed delimiter/);
+});
+
+test('discovers vendor packages and platform subpackages while excluding test and example programs', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'chic-vendors-test-'));
+  try {
+    const write = (file, source) => { const full = path.join(root, file); fs.mkdirSync(path.dirname(full), { recursive: true }); fs.writeFileSync(full, source); };
+    write('vendors/audio/api.chic', '#import_lib(.name = "audio")\n@import_func play : func()');
+    write('vendors/graphics/api.chic', 'Point : struct { x : f32 }');
+    write('vendors/graphics/darwin/api.chic', '@import_func draw : func()');
+    write('vendors/raylib/api.chic', '@import_func InitWindow : func()');
+    write('vendors/raylib/darwin/api.chic', '@import_func InitWindow : func()');
+    write('vendors/fonts/api.chic', '#package fonts\nfont : func() {}\n@internal helper : func() {}');
+    write('vendors/fonts/details/api.chic', 'metrics : func() {}');
+    write('vendors/fonts/tests/probe.chic', 'main : func() {}');
+    write('vendors/graphics/examples/demo.chic', 'main : func() {}');
+    const { packages, files } = extractVendors(root);
+    assert.deepEqual(packages.map(p => p.name), ['vendors.audio', 'vendors.fonts', 'vendors.graphics', 'vendors.graphics.darwin', 'vendors.raylib']);
+    assert.deepEqual(packages.find(p => p.name === 'vendors.fonts').items.map(i => i.name), ['font', 'metrics']);
+    assert.equal(files.length, 6);
+    assert.ok(!files.some(f => f.path.startsWith('vendors/raylib/darwin/')));
+    assert.ok(files.every(f => f.path.startsWith('vendors/') && /^[0-9a-f]{64}$/.test(f.sha256)));
+    assert.ok(!packages.flatMap(p => p.items).some(i => ['main', 'helper'].includes(i.name)));
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
 
 test('includes uncommented structs, their fields/defaults and function signatures', () => {
   const { items } = parse(`Box : struct<T> {

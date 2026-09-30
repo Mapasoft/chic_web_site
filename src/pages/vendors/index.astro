@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import PackageList from '../../components/PackageList.astro';
+import Footer from '../../components/Footer.astro';
+import { getVendorPackages } from '../../lib/vendors';
+---
+
+<Layout title="Vendors — Chic Vendor Packages" description="Explore Chic's vendor packages, including FMOD, raylib, and stb_truetype.">
+  <Navbar />
+  <main class="pt-16">
+    <PackageList
+      modules={getVendorPackages()}
+      basePath="/vendors"
+      title="Vendors"
+      description="Vendor libraries and bindings for audio, graphics, and fonts."
+      id="vendors"
+    />
+  </main>
+  <Footer />
+</Layout>

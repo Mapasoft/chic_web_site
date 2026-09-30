@@ -59,14 +59,14 @@ export function getDocItemId(item: StdlibDocItem): string {
   return `${item.kind}-${item.name}-${item.source.replace(/[^a-zA-Z0-9_-]/g, '-')}-${item.line}`;
 }
 
-function buildPackage(name: string, items: StdlibDocItem[]): StdlibPackage {
+export function buildPackage(name: string, items: StdlibDocItem[], description = packageDescriptions[name] ?? `${name} package reference.`): StdlibPackage {
   const funcCount = items.filter((item) => item.kind === 'func').length;
   const structCount = items.filter((item) => item.kind === 'struct').length;
 
   return {
     name,
     slug: name.replace(/\./g, '/'),
-    description: packageDescriptions[name] ?? `${name} package reference.`,
+    description,
     itemCount: items.length,
     funcCount,
     structCount,

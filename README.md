@@ -7,6 +7,15 @@ attributes, source conditions, structure fields, comments, and relative source r
 No compiler source checkout or private repository credentials are needed in CI.
 Package descriptions are maintained separately in `src/lib/stdlib.ts`.
 
+The **Doc → Vendors** section uses the same package cards and API reference
+template as the standard library, with separate pages under `/vendors/`.
+`src/data/vendors.json` and `src/data/vendors-sources.json` hold its API snapshot
+and source fingerprints; descriptions live in `src/lib/vendors.ts`.
+Both `docs:refresh` and `docs:check` process `core/` and `vendors/` in the supplied
+Chic checkout. Vendor `tests/`, `examples/`, and `raylib/darwin/` directories are
+excluded. Other subpackages use the same package discovery rules as core.
+Library-link directives (`#import_lib`) are skipped without executing them.
+
 To refresh the snapshot locally, use Node.js 22.18 or newer:
 
 ```sh

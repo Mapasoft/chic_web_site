@@ -31,7 +31,10 @@ function tokenize(source: string): Token[] {
     const start = pos;
     const startLine = line;
     let kind: Token['kind'] = 'code';
-    if (source.startsWith('//', pos) || source[pos] === '#') {
+    if (/^#import_lib\b/.test(source.slice(pos))) {
+      kind = 'directive';
+      pos += '#import_lib'.length;
+    } else if (source.startsWith('//', pos) || source[pos] === '#') {
       kind = source[pos] === '#' ? 'directive' : 'comment';
       while (pos < source.length && source[pos] !== '\n') pos++;
     } else if (source.startsWith('/*', pos)) {
@@ -108,6 +111,12 @@ export function extractDeclarations(source: string, sourcePath: string) {
     }
     if (token.kind === 'directive') {
       const text = token.text.replace(/\/\/.*$/, '').trim();
+      if (text === '#import_lib') {
+        if (tokens[i + 1]?.text !== '(') throw new Error(`${sourcePath}:${token.line}: invalid #import_lib`);
+        i = closing(tokens, i + 1) + 1;
+        comments = []; attributes = [];
+        continue;
+      }
       if (text.startsWith('#if ')) conditions.push({ expression: text.slice(4).trim(), alternative: false });
       else if (text === '#else') {
         const active = conditions.at(-1);
@@ -178,7 +187,15 @@ export function extractDeclarations(source: string, sourcePath: string) {
 }
 
 export function extractStdlib(sourceDir: string) {
-  const root = path.join(sourceDir, 'core');
+  return extractPackages(sourceDir, 'core');
+}
+
+export function extractVendors(sourceDir: string) {
+  return extractPackages(sourceDir, 'vendors', new Set(['tests', 'examples', 'raylib/darwin']));
+}
+
+function extractPackages(sourceDir: string, rootName: string, excludedDirs = new Set<string>()) {
+  const root = path.join(sourceDir, rootName);
   const packages = new Map<string, StdlibDocItem[]>();
   const roots = new Map<string, string>();
   const files: Array<{ path: string; package: string; sha256: string; publicStructs: number; publicFunctions: number; internalDeclarations: number }> = [];
@@ -186,15 +203,15 @@ export function extractStdlib(sourceDir: string) {
     const entries = fs.readdirSync(dir, { withFileTypes: true }).filter(e => !e.name.startsWith('.')).sort((a, b) => a.name.localeCompare(b.name));
     const sources = entries.filter(e => e.isFile() && e.name.endsWith('.chic')).map(e => {
       const fullPath = path.join(dir, e.name);
-      const sourcePath = `core/${path.relative(root, fullPath).split(path.sep).join('/')}`;
+      const sourcePath = `${rootName}/${path.relative(root, fullPath).split(path.sep).join('/')}`;
       const source = fs.readFileSync(fullPath, 'utf8');
       return { sourcePath, source, parsed: extractDeclarations(source, sourcePath) };
     });
     const declarations = sources.map(s => s.parsed.packageName).filter(Boolean);
     if (declarations.length > 1) throw new Error(`${dir}: multiple package declarations`);
     const local = declarations[0];
-    const name = dir === root ? (local ?? 'core') : local ? `${parentName}.${local}` : declaredParent ? parentName : `${parentName}.${path.basename(dir)}`;
-    if (dir === root && name !== 'core') throw new Error('Expected the core package root');
+    const name = dir === root ? (local ?? rootName) : local ? `${parentName}.${local}` : declaredParent ? parentName : `${parentName}.${path.basename(dir)}`;
+    if (dir === root && name !== rootName) throw new Error(`Expected the ${rootName} package root`);
     if (local || !declaredParent) {
       if (roots.has(name)) throw new Error(`Duplicate package ${name}`);
       roots.set(name, dir);
@@ -209,9 +226,14 @@ export function extractStdlib(sourceDir: string) {
           internalDeclarations: parsed.excluded.length });
       }
     }
-    for (const entry of entries.filter(e => e.isDirectory())) visit(path.join(dir, entry.name), name, declaredParent || !!local);
+    for (const entry of entries.filter(e => e.isDirectory())) {
+      const child = path.join(dir, entry.name);
+      if (!excludedDirs.has(entry.name) && !excludedDirs.has(path.relative(root, child).split(path.sep).join('/'))) {
+        visit(child, name, declaredParent || !!local);
+      }
+    }
   }
   visit(root, '', false);
-  if (!files.length) throw new Error('CHIC_SOURCE_DIR must contain core packages with Chic source files');
+  if (!files.length) throw new Error(`CHIC_SOURCE_DIR must contain ${rootName} packages with Chic source files`);
   return { packages: [...packages].map(([name, items]) => ({ name, items })).sort((a, b) => a.name.localeCompare(b.name)), files };
 }
