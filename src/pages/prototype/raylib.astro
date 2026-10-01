@@ -1,0 +1,9 @@
+---
+// Keep the preview URL working while using the approved shared layout.
+import PackageReference from '../../components/PackageReference.astro';
+import { getVendorPackages } from '../../lib/vendors';
+
+const pkg = getVendorPackages().find(pkg => pkg.name === 'vendors.raylib')!;
+---
+
+<PackageReference pkg={pkg} collection="Vendors" indexPath="/vendors/" backLabel="Back to Vendors" />

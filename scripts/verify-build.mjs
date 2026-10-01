@@ -31,11 +31,22 @@ for (const collection of collections) {
     assert.ok(!home.includes(`/${directory}/${slug}/`), `Package listing still on homepage: ${pkg.name}`);
     const html = fs.readFileSync(new URL(`../dist/${directory}/${slug}/index.html`, import.meta.url), 'utf8');
     assert.equal((html.match(/<article\b/g) ?? []).length, pkg.items.length, `Missing API entries: ${pkg.name}`);
-    const renderedSignatures = [...html.matchAll(/<pre\b[^>]*><code>([\s\S]*?)<\/code><\/pre>/g)].map(m => decode(m[1])).sort();
-    assert.deepEqual(renderedSignatures, pkg.items.map(i => [...i.attributes, i.signature].join('\n')).sort(), `Incorrect signatures or structure fields: ${pkg.name}`);
+    const renderedSignatures = [...html.matchAll(/<pre\b[^>]*><code\b[^>]*>([\s\S]*?)<\/code><\/pre>/g)].map(m => decode(m[1])).sort();
+    assert.deepEqual(renderedSignatures, pkg.items.map(i => i.kind === 'func' ? i.signature : [...i.attributes, i.signature].join('\n')).sort(), `Incorrect signatures or structure fields: ${pkg.name}`);
+    const sidebar = html.match(/<nav\b[^>]*class="api-index"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
+    assert.ok(sidebar, `Missing API sidebar: ${pkg.name}`);
+    const sidebarTargets = [...sidebar.matchAll(/<a\b[^>]*data-api-link[^>]*href="#([^"]+)"/g)].map(m => m[1]).sort();
+    const articleIds = [...html.matchAll(/<article\b[^>]*id="([^"]+)"/g)].map(m => m[1]).sort();
+    assert.deepEqual(sidebarTargets, articleIds, `Every API entry must have its own sidebar link: ${pkg.name}`);
+    const groupCount = new Set(pkg.items.map(i => i.kind)).size;
+    assert.equal((sidebar.match(/<details\b[^>]*\bopen\b/g) ?? []).length, groupCount, `API groups must be expanded and foldable: ${pkg.name}`);
+    const panel = html.split('id="reference-panel"')[1]?.split('</main>')[0];
+    assert.ok(panel, `Missing documentation panel: ${pkg.name}`);
+    assert.doesNotMatch(panel, /<details\b/, `The documentation panel must remain a flat list: ${pkg.name}`);
     for (const item of pkg.items) {
       assert.ok(sources.some(f => f.path === item.source && f.package === pkg.name), `Unknown source: ${item.source}`);
       assert.ok(!item.attributes.some(a => /^@(internal|private)\b/.test(a)), `Internal declaration: ${item.name}`);
+      assert.ok(!panel.includes(`${item.source}:${item.line}`), `Source filename and line are still displayed: ${pkg.name}.${item.name}`);
       for (const condition of item.conditions) assert.ok(html.includes(condition.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')), `Missing source condition: ${item.name}`);
     }
     for (const file of sources.filter(f => f.package === pkg.name)) {

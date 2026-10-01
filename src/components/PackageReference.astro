@@ -1,8 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Navbar from './Navbar.astro';
-import Footer from './Footer.astro';
-import { getDocItemId, type StdlibPackage, type StdlibDocItem } from '../lib/stdlib';
+import { getDocItemId, type StdlibPackage } from '../lib/stdlib';
 
 interface Props {
   pkg: StdlibPackage;
@@ -11,111 +10,172 @@ interface Props {
   backLabel: string;
 }
 const { pkg, collection, indexPath, backLabel } = Astro.props;
-const structs = pkg.items.filter((item) => item.kind === 'struct');
-const funcs = pkg.items.filter((item) => item.kind === 'func');
-const pageDescription = pkg.description;
-
-const groups: Array<{ title: string; items: StdlibDocItem[] }> = [
-  { title: 'Structs', items: structs },
-  { title: 'Functions', items: funcs },
-];
+const groups = [
+  { title: 'Structs', kind: 'struct', items: pkg.items.filter(item => item.kind === 'struct') },
+  { title: 'Functions', kind: 'func', items: pkg.items.filter(item => item.kind === 'func') },
+].filter(group => group.items.length > 0);
 ---
 
-<Layout title={`${pkg.name} - Chic ${collection}`} description={pageDescription}>
+<Layout title={`${pkg.name} - Chic ${collection}`} description={pkg.description}>
   <Navbar />
-  <main class="pt-24 px-6 pb-20">
-    <div class="max-w-6xl mx-auto">
-      <a href={indexPath} class="text-sm text-chic-muted hover:text-chic-text transition-colors">
-        {backLabel}
-      </a>
-
-      <header class="mt-8 border-b border-chic-border pb-8">
-        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-          <div>
-            <p class="text-sm text-chic-mint font-mono mb-3">{collection}</p>
-            <h1 class="section-title break-words text-4xl md:text-5xl">
-              <code class="font-mono">{pkg.name}</code>
-            </h1>
-            <p class="text-chic-muted max-w-2xl mt-4">{pkg.description}</p>
-          </div>
-
-          <div class="grid grid-cols-3 gap-3 text-center">
-            <div class="rounded-lg border border-chic-border bg-chic-surface/60 px-4 py-3">
-              <p class="text-2xl font-semibold text-chic-cream">{pkg.itemCount}</p>
-              <p class="text-xs text-chic-muted">documented</p>
-            </div>
-            <div class="rounded-lg border border-chic-border bg-chic-surface/60 px-4 py-3">
-              <p class="text-2xl font-semibold text-chic-mint">{pkg.structCount}</p>
-              <p class="text-xs text-chic-muted">structs</p>
-            </div>
-            <div class="rounded-lg border border-chic-border bg-chic-surface/60 px-4 py-3">
-              <p class="text-2xl font-semibold text-chic-lavender">{pkg.funcCount}</p>
-              <p class="text-xs text-chic-muted">funcs</p>
-            </div>
-          </div>
+  <main class="package-reference">
+    <header class="package-header">
+      <div>
+        <div class="package-context">
+          <a href={indexPath} aria-label={backLabel}>{collection}</a>
         </div>
-      </header>
+        <h1 class="section-title">{pkg.name}</h1>
+      </div>
+    </header>
 
-      <p class="mt-6 text-sm text-chic-muted max-w-3xl leading-relaxed">
-        Public structures and functions, including overloads and imported functions.
-        Structure declarations include their fields and defaults. Internal declarations are excluded.
-        Platform-specific variants are listed with their source conditions; conditions inside structures apply to their fields.
-        Constants, enums, unions and type aliases are outside this reference's scope.
-      </p>
+    <div class="reference-columns">
+      <nav class="api-index" aria-label="Package API index">
+        {groups.map(group => (
+          <details class="index-group" open>
+            <summary class={group.kind}>
+              <svg class="section-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <path d="m4 2 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              {group.title} <span>{group.items.length}</span>
+            </summary>
+            <ul>
+              {[...group.items].sort((a, b) => a.name.localeCompare(b.name)).map(item => (
+                <li><a data-api-link href={`#${getDocItemId(item)}`} title={item.signature}>{item.name}</a></li>
+              ))}
+            </ul>
+          </details>
+        ))}
+      </nav>
 
-      {pkg.itemCount === 0 ? (
-        <section class="mt-12 rounded-lg border border-chic-border bg-chic-surface/60 p-6">
-          <h2 class="text-xl font-semibold text-chic-cream">No public structures or functions</h2>
-          <p class="text-chic-muted mt-2">
-            This package has no public structure or function declarations in the current source snapshot.
-          </p>
-        </section>
-      ) : (
-        <div class="mt-12 space-y-14">
-          {groups.filter((group) => group.items.length > 0).map((group) => (
-            <section>
-              <h2 class={`text-2xl font-bold tracking-tight mb-5 ${group.title === 'Structs' ? 'text-chic-mint' : 'text-chic-lavender'}`}>
-                {group.title}
-              </h2>
-              <details class="mb-5 rounded-lg border border-chic-border p-4">
-                <summary class="cursor-pointer text-chic-muted">Browse {group.items.length} {group.title.toLowerCase()}</summary>
-                <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {group.items.map((item) => (
-                    <li class="min-w-0">
-                      <a href={`#${getDocItemId(item)}`} class="text-sm text-chic-lavender underline underline-offset-4 break-words">
-                        {item.name}
-                        <span class="block text-xs text-chic-muted">{item.source}:{item.line}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </details>
-              <div class="space-y-4">
-                {group.items.map((item) => (
-                  <article id={getDocItemId(item)} class="scroll-mt-24 min-w-0 rounded-lg border border-chic-border bg-chic-surface/60 p-5">
-                    <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3">
-                      <div>
-                        <div class="flex items-center gap-3">
-                          <h3 class="text-xl font-semibold text-chic-text break-all"><a href={`#${getDocItemId(item)}`}>{item.name}</a></h3>
-                          <span class="rounded-md border border-chic-border px-2 py-1 text-xs text-chic-muted font-mono">
-                            {item.kind}
-                          </span>
-                        </div>
-                        <p class="text-xs text-chic-muted mt-1 font-mono break-all">{item.source}:{item.line}</p>
-                      </div>
-                    </div>
+      <div id="reference-panel" class="reference-panel" role="region" aria-label={`${pkg.name} API documentation`} tabindex="0">
+        <div class="reference-content">
+          <p class="package-description">{pkg.description}</p>
+          <p class="reference-scope">{pkg.structCount} structs · {pkg.funcCount} functions · Public API</p>
 
-                    {item.conditions.length > 0 && <p class="mt-3 text-sm text-chic-mint break-words">Available when: <code>{item.conditions.join(' && ')}</code></p>}
-                    <pre class="mt-4 overflow-x-auto rounded-lg border border-chic-border bg-chic-bg/70 p-4 text-sm text-chic-periwinkle font-mono leading-relaxed"><code>{[...item.attributes, item.signature].join('\n')}</code></pre>
-                    {item.comment && <pre class="mt-4 whitespace-pre-wrap break-words text-sm text-chic-muted leading-relaxed font-sans">{item.comment}</pre>}
-                  </article>
-                ))}
-              </div>
+          {pkg.itemCount === 0 && <p class="empty-state">No public structures or functions in this package.</p>}
+          {groups.map(group => (
+            <section class="declaration-group" aria-labelledby={`reference-${group.kind}`}>
+              <h2 id={`reference-${group.kind}`} class={group.kind}>{group.title}</h2>
+              {group.items.map(item => (
+                <article id={getDocItemId(item)} class="declaration">
+                  <header class="declaration-header">
+                    <h3><a href={`#${getDocItemId(item)}`}>{item.name}</a></h3>
+                    <span class={`kind ${item.kind}`}>{item.kind}</span>
+                  </header>
+                  {item.conditions.length > 0 && <p class="conditions">Available when: <code>{item.conditions.join(' && ')}</code></p>}
+                  <pre class="signature"><code>{item.kind === 'func' ? item.signature : [...item.attributes, item.signature].join('\n')}</code></pre>
+                  {item.comment && <pre class="description">{item.comment}</pre>}
+                </article>
+              ))}
             </section>
           ))}
         </div>
-      )}
+      </div>
     </div>
   </main>
-  <Footer />
 </Layout>
+
+<style>
+  .package-reference {
+    height: 100dvh;
+    padding-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .package-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid #252538;
+  }
+  .empty-state { margin-top: 2rem; color: #aaaabd; }
+  .package-context { display: flex; align-items: center; gap: .65rem; font-size: .75rem; color: #9494ad; }
+  .package-context a:hover { color: #eceafa; }
+  .package-header > div { min-width: 0; max-width: 100%; }
+  h1 { overflow-wrap: anywhere; font-size: 1.5rem; margin-top: .6rem; font-family: 'JetBrains Mono', monospace; }
+  .reference-columns { flex: 1; min-height: 0; display: grid; grid-template-columns: 17rem minmax(0, 1fr); }
+  .api-index, .reference-panel { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #39394c transparent; }
+  .api-index { border-right: 1px solid #252538; padding: 1.5rem .75rem 3rem; background: rgb(255 255 255 / 1.5%); }
+  .index-group { margin-top: 1.6rem; }
+  .index-group:first-child { margin-top: 0; }
+  .index-group summary { display: flex; align-items: center; gap: .5rem; padding: .4rem .65rem; font-size: .8rem; font-weight: 600; cursor: pointer; list-style: none; border-radius: .25rem; }
+  .index-group summary::-webkit-details-marker { display: none; }
+  .index-group summary:hover { background: rgb(196 181 253 / 6%); }
+  .index-group summary:focus-visible { outline: 2px solid #c4b5fd; outline-offset: -2px; }
+  .index-group summary span { margin-left: auto; color: #9494ad; font-size: .7rem; font-weight: 400; }
+  .section-chevron { flex-shrink: 0; }
+  .index-group[open] .section-chevron { transform: rotate(90deg); }
+  .index-group ul { margin-top: .4rem; }
+  .struct { color: #a7f3d0; }
+  .func { color: #c4b5fd; }
+  .api-index li + li { margin-top: .1rem; }
+  .api-index a { display: block; padding: .45rem .65rem; border-left: 2px solid transparent; border-radius: .25rem; font: .75rem/1.5 'JetBrains Mono', monospace; overflow-wrap: anywhere; color: #aaaabd; }
+  .api-index a:hover { color: #eceafa; background: rgb(196 181 253 / 6%); }
+  .api-index a[aria-current="location"] { border-left-color: #c4b5fd; background: rgb(196 181 253 / 11%); color: #e1d9ff; }
+  a:focus-visible, .reference-panel:focus-visible { outline: 2px solid #c4b5fd; outline-offset: -2px; }
+  .reference-panel { scroll-padding-top: 1.5rem; }
+  .reference-content { max-width: 64rem; margin: 0 auto; padding: 1.75rem 2rem 65vh; }
+  .package-description { color: #aaaabd; font-size: .9rem; line-height: 1.7; max-width: 48rem; }
+  .reference-scope { margin-top: .65rem; color: #9494ad; font-size: .75rem; }
+  .declaration-group { margin-top: 2rem; }
+  .declaration-group > h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
+  .declaration { border: 1px solid #252538; border-radius: .6rem; padding: 1.25rem; background: rgb(255 255 255 / 2.5%); }
+  .declaration + .declaration { margin-top: 1rem; }
+  .declaration:target { border-color: #7c6baf; }
+  .declaration-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+  h3 { font: 500 1.1rem/1.5 'JetBrains Mono', monospace; overflow-wrap: anywhere; min-width: 0; }
+  .kind { border: 1px solid #39394c; padding: .2rem .4rem; border-radius: .3rem; font: .65rem/1.5 'JetBrains Mono', monospace; }
+  .signature { margin-top: 1rem; padding: 1rem; border-radius: .4rem; background: rgb(0 0 0 / 20%); border: 1px solid #252538; color: #c4c9ff; overflow-x: auto; font: .8rem/1.7 'JetBrains Mono', monospace; }
+  .conditions { margin-top: 1rem; font-size: .8rem; color: #a7f3d0; overflow-wrap: anywhere; }
+  .description { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 1rem; color: #aaaabd; font: .85rem/1.7 Inter, sans-serif; }
+  @media (max-width: 767px) {
+    .package-header { padding: 1rem; gap: .75rem; }
+    h1 { font-size: 1.15rem; }
+    .reference-columns { grid-template-columns: 10rem minmax(0, 1fr); }
+    .api-index { padding: 1rem .35rem 2rem; }
+    .api-index a { font-size: .68rem; padding: .45rem .4rem; }
+    .reference-content { padding: 1.25rem .8rem 65vh; }
+    .declaration { padding: .8rem; }
+    .declaration-header { flex-wrap: wrap; gap: .4rem; }
+    h3 { font-size: .9rem; }
+  }
+</style>
+
+<script>
+  const panel = document.getElementById('reference-panel');
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-api-link]')];
+  const articles = [...document.querySelectorAll<HTMLElement>('.declaration')];
+  let activeId = '';
+  let scheduled = false;
+
+  // Track the entry at the top of the right panel without moving the left list.
+  function updateActiveEntry() {
+    scheduled = false;
+    if (!panel) return;
+    const top = panel.getBoundingClientRect().top + 40;
+    let active = articles[0];
+    for (const article of articles) {
+      if (article.getBoundingClientRect().top > top) break;
+      active = article;
+    }
+    if (!active || active.id === activeId) return;
+    activeId = active.id;
+    links.forEach(link => {
+      if (link.hash === `#${activeId}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  panel?.addEventListener('scroll', () => {
+    if (!scheduled) {
+      scheduled = true;
+      requestAnimationFrame(updateActiveEntry);
+    }
+  }, { passive: true });
+  updateActiveEntry();
+</script>
