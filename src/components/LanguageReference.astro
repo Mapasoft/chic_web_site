@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from './Navbar.astro';
+import { languagePages, type LanguagePage } from '../lib/language';
+import '../styles/language.css';
+
+interface Props {
+  page: LanguagePage;
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={`${page.title} — Chic Language Fundamental`} description={page.description}>
+  <Navbar />
+  <div class="language-reference">
+    <div class="chic-doc-shell">
+      <nav class="chic-sidebar" aria-label="Language Fundamental pages">
+        <div class="chic-nav-caption">Language Fundamental</div>
+        {languagePages.map(item => (
+          <a href={`/language/${item.slug}/`} aria-current={item.slug === page.slug ? 'page' : undefined}>
+            {item.title}
+          </a>
+        ))}
+        <div class="chic-side-divider"></div>
+        <div class="chic-related">Standard Library</div>
+        <a class="chic-other-section" href="/stdlib/">Packages</a>
+        <a class="chic-other-section" href="/vendors/">Vendors</a>
+        <div class="chic-side-note">Chic 0.7.0</div>
+      </nav>
+      <main class="chic-main">
+        <nav class="chic-breadcrumb" aria-label="Breadcrumb">
+          <span>Documentation</span><span aria-hidden="true">/</span>
+          <a href="/language/types/">Language Fundamental</a><span aria-hidden="true">/</span>
+          <span aria-current="page">{page.title}</span>
+        </nav>
+        <article>
+          <h1>{page.title}</h1>
+          <p class="chic-lead">{page.description}</p>
+          {page.sections.map(section => (
+            <section id={section.id} aria-labelledby={`${section.id}-heading`}>
+              <h2 id={`${section.id}-heading`}>{section.title}</h2>
+              <Fragment set:html={section.html} />
+            </section>
+          ))}
+        </article>
+      </main>
+      <aside class="chic-toc" aria-label="On this page">
+        <div>On this page</div>
+        <nav aria-label={`${page.title} sections`}>
+          {page.sections.map(section => <a href={`#${section.id}`}>{section.title}</a>)}
+        </nav>
+      </aside>
+    </div>
+  </div>
+</Layout>

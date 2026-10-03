@@ -1,0 +1,115 @@
+[
+  {
+    "slug": "types",
+    "title": "Types",
+    "description": "The built-in types and type forms you use to describe values in Chic.",
+    "sections": [
+      {
+        "id": "chic-types-builtins",
+        "title": "Built-in types",
+        "html": "<p>Chic is statically typed. Write a type after <code>:</code>, or use <code>:=</code> to let the compiler infer it from the initializer.</p>\n          <table><thead><tr><th>Type</th><th>Meaning</th></tr></thead><tbody>\n            <tr><td><code>i8</code>, <code>i16</code>, <code>i32</code>, <code>i64</code></td><td>Signed integers, with 8, 16, 32, or 64 bits.</td></tr>\n            <tr><td><code>u8</code>, <code>u16</code>, <code>u32</code>, <code>u64</code></td><td>Unsigned integers of the same widths.</td></tr>\n            <tr><td><code>byte</code></td><td>An unsigned 8-bit type, like <code>u8</code>.</td></tr>\n            <tr><td><code>f32</code>, <code>float</code></td><td>32-bit floating-point numbers.</td></tr>\n            <tr><td><code>f64</code>, <code>double</code></td><td>64-bit floating-point numbers.</td></tr>\n            <tr><td><code>bool</code></td><td>A boolean value: <code>true</code> or <code>false</code>.</td></tr>\n            <tr><td><code>char</code></td><td>An 8-bit character value.</td></tr>\n            <tr><td><code>rune</code></td><td>A 32-bit Unicode code point; string iteration yields runes.</td></tr>\n            <tr><td><code>string</code></td><td>A native UTF-8 pointer-and-length value.</td></tr>\n            <tr><td><code>cstring</code></td><td>An alias for <code>^char</code>, used with C strings.</td></tr>\n            <tr><td><code>void</code></td><td>No return value; also used in untyped pointers such as <code>^void</code>.</td></tr>\n            <tr><td><code>TypeInfo</code>, <code>any</code>, <code>SourceLocation</code></td><td>Compiler-provided structures for type metadata, type-erased values, and source locations.</td></tr>\n          </tbody></table>\n          <div class=\"chic-note\">Type names such as <code>i32</code> and <code>string</code> are built-in identifiers. The <a class=\"chic-inline-link\" href=\"/language/keywords/\">Keywords</a> page lists reserved words separately.</div>"
+      },
+      {
+        "id": "chic-types-declarations",
+        "title": "Declaring values",
+        "html": "<pre><code>count : <span class=\"chic-type\">i32</span> = <span class=\"chic-number\">42</span>       <span class=\"chic-comment\">// explicit type</span>\nname := <span class=\"chic-string\">\"Chic\"</span>         <span class=\"chic-comment\">// inferred string</span>\n<span class=\"chic-keyword\">var</span> index := <span class=\"chic-number\">0</span>         <span class=\"chic-comment\">// mutable binding</span>\nBufferSize :: <span class=\"chic-number\">4096</span>      <span class=\"chic-comment\">// compile-time constant</span></code></pre>\n          <p>Bindings are constant by default. Add <code>var</code> when you need to assign a new value.</p>"
+      },
+      {
+        "id": "chic-types-composed",
+        "title": "Composed types",
+        "html": "<table><thead><tr><th>Form</th><th>Meaning</th></tr></thead><tbody>\n            <tr><td><code>^T</code></td><td>A pointer to a value of type <code>T</code>.</td></tr>\n            <tr><td><code>[N]T</code></td><td>An array with fixed-size storage for <code>N</code> elements.</td></tr>\n            <tr><td><code>[?]T</code></td><td>An array whose length is inferred from its initializer.</td></tr>\n            <tr><td><code>[]T</code></td><td>A non-owning view over contiguous elements.</td></tr>\n            <tr><td><code>[T, U]</code></td><td>A tuple containing multiple values.</td></tr>\n            <tr><td><code>func(T) -> U</code></td><td>A callable function type.</td></tr>\n            <tr><td><code>funcptr(T) -> U</code></td><td>A raw, context-free function pointer for native ABI boundaries.</td></tr>\n          </tbody></table>\n          <pre><code>values : <span class=\"chic-type\">[3]i32</span> = {<span class=\"chic-number\">10</span>, <span class=\"chic-number\">20</span>, <span class=\"chic-number\">30</span>}\nview : <span class=\"chic-type\">[]i32</span> = values[:]\npointer : <span class=\"chic-type\">^i32</span> = &amp;values[<span class=\"chic-number\">0</span>]\ntext : <span class=\"chic-type\">string</span> = <span class=\"chic-string\">\"hello\"</span>\nc_text : <span class=\"chic-type\">cstring</span> = <span class=\"chic-string\">c\"hello\"</span></code></pre>"
+      },
+      {
+        "id": "chic-types-custom",
+        "title": "User-defined types",
+        "html": "<p>Declare your own types with <code>struct</code>, <code>enum</code>, <code>union</code>, or <code>raw_union</code>. An <code>alias</code> gives an existing type another name.</p>\n          <pre><code><span class=\"chic-keyword\">alias</span> UserId : <span class=\"chic-type\">i64</span>\n\n<span class=\"chic-type\">Point</span> : <span class=\"chic-keyword\">struct</span> {\n    x : <span class=\"chic-type\">f32</span> = <span class=\"chic-number\">0</span>\n    y : <span class=\"chic-type\">f32</span> = <span class=\"chic-number\">0</span>\n}</code></pre>"
+      }
+    ]
+  },
+  {
+    "slug": "keywords",
+    "title": "Keywords",
+    "description": "Reserved words in Chic, with a short explanation of what each one does.",
+    "sections": [
+      {
+        "id": "chic-keywords-list",
+        "title": "Reserved words",
+        "html": "<p>These spellings are recognized by Chic's lexer and cannot be used as ordinary identifiers. Keywords are case-sensitive.</p>\n          <div class=\"chic-note\">Built-in type names such as <code>i32</code>, <code>f64</code>, and <code>bool</code> belong on the <a class=\"chic-inline-link\" href=\"/language/types/\">Types</a> page.</div>\n          <table><thead><tr><th>Keyword</th><th>Role</th></tr></thead><tbody>\n            <tr><td><code>alias</code></td><td>Gives an existing type another name.</td></tr>\n            <tr><td><code>break</code></td><td>Exits an enclosing loop or switch.</td></tr>\n            <tr><td><code>case</code></td><td>Introduces a branch in a switch.</td></tr>\n            <tr><td><code>cast</code></td><td>Explicitly converts a value to a specified type.</td></tr>\n            <tr><td><code>continue</code></td><td>Skips to the next loop iteration.</td></tr>\n            <tr><td><code>default</code></td><td>Introduces the fallback branch of a switch.</td></tr>\n            <tr><td><code>defer</code></td><td>Schedules an action for the end of the current scope.</td></tr>\n            <tr><td><code>else</code></td><td>Introduces an alternative branch.</td></tr>\n            <tr><td><code>enum</code></td><td>Declares an enumeration type.</td></tr>\n            <tr><td><code>false</code></td><td>The false boolean value.</td></tr>\n            <tr><td><code>for</code></td><td>Begins a loop.</td></tr>\n            <tr><td><code>func</code></td><td><a class=\"chic-inline-link\" href=\"/language/functions/\">Declares a function</a> or a callable type.</td></tr>\n            <tr><td><code>funcptr</code></td><td>Describes a raw function pointer type.</td></tr>\n            <tr><td><code>if</code></td><td>Begins a conditional branch.</td></tr>\n            <tr><td><code>import</code></td><td>Imports a package.</td></tr>\n            <tr><td><code>in</code></td><td>Separates a loop binding from its sequence or range.</td></tr>\n            <tr><td><code>inline</code></td><td>Embeds a structure's members in another structure.</td></tr>\n            <tr><td><code>let</code></td><td>Explicitly declares a constant binding.</td></tr>\n            <tr><td><code>match</code></td><td>Selects a result through pattern matching.</td></tr>\n            <tr><td><code>new</code></td><td>Allocates and initializes a value.</td></tr>\n            <tr><td><code>null</code></td><td>The null pointer value.</td></tr>\n            <tr><td><code>or_default</code></td><td>Supplies a fallback value for an error result.</td></tr>\n            <tr><td><code>or_else</code></td><td>A legacy synonym for <code>or_default</code>.</td></tr>\n            <tr><td><code>or_error</code></td><td>Substitutes an error during error propagation.</td></tr>\n            <tr><td><code>raw_union</code></td><td>Declares a union without a runtime tag.</td></tr>\n            <tr><td><code>release</code></td><td>Releases an allocated value.</td></tr>\n            <tr><td><code>return</code></td><td>Exits a function, optionally returning a value.</td></tr>\n            <tr><td><code>sizeof</code></td><td>Queries a type's size.</td></tr>\n            <tr><td><code>step</code></td><td>Sets the increment of a range loop.</td></tr>\n            <tr><td><code>struct</code></td><td><a class=\"chic-inline-link\" href=\"/language/structs/\">Declares a structure</a> containing named fields.</td></tr>\n            <tr><td><code>switch</code></td><td>Branches on a value using cases.</td></tr>\n            <tr><td><code>true</code></td><td>The true boolean value.</td></tr>\n            <tr><td><code>try</code></td><td>Propagates an error result to the caller.</td></tr>\n            <tr><td><code>typeof</code></td><td>Obtains runtime type metadata.</td></tr>\n            <tr><td><code>union</code></td><td>Declares a tagged union.</td></tr>\n            <tr><td><code>var</code></td><td>Declares a mutable binding.</td></tr>\n          </tbody></table>"
+      },
+      {
+        "id": "chic-keywords-directives",
+        "title": "Directives and attributes",
+        "html": "<p>Directives begin with <code>#</code>. Attributes begin with <code>@</code> and annotate declarations.</p>\n          <table><thead><tr><th>Spelling</th><th>Role</th></tr></thead><tbody>\n            <tr><td><code>#if</code>, <code>#elif</code>, <code>#else</code>, <code>#end</code></td><td>Conditional compilation.</td></tr>\n            <tr><td><code>#package</code></td><td>Declares a logical package.</td></tr>\n            <tr><td><code>#import_lib</code></td><td>Declares a native library dependency.</td></tr>\n            <tr><td><code>@extension</code></td><td>Makes a function available through method-call syntax.</td></tr>\n            <tr><td><code>@internal</code></td><td>Restricts a declaration to its package.</td></tr>\n          </tbody></table>\n          <p>Attribute names such as <code>extension</code> are not reserved word keywords.</p>"
+      },
+      {
+        "id": "chic-keywords-constants",
+        "title": "Constants",
+        "html": "<p>Chic declares compile-time constants with <code>::</code>.</p>\n          <pre><code>MaxItems :: <span class=\"chic-number\">128</span>\nPacketLimit : <span class=\"chic-type\">u16</span> :: <span class=\"chic-number\">65_535</span></code></pre>"
+      }
+    ]
+  },
+  {
+    "slug": "structs",
+    "title": "Structs",
+    "description": "Group related values into a named type with fields and defaults.",
+    "sections": [
+      {
+        "id": "chic-structs-declaration",
+        "title": "Declaration",
+        "html": "<p>Write the type name, a colon, and <code>struct</code>. Inside the body, each field has a name and a type, with an optional default value.</p>\n          <pre><code><span class=\"chic-type\">Point</span> : <span class=\"chic-keyword\">struct</span> {\n    x : <span class=\"chic-type\">f32</span> = <span class=\"chic-number\">0</span>\n    y : <span class=\"chic-type\">f32</span> = <span class=\"chic-number\">0</span>\n}</code></pre>\n          <table><thead><tr><th>Part</th><th>Meaning</th></tr></thead><tbody>\n            <tr><td><code>Point</code></td><td>The new structure's name.</td></tr>\n            <tr><td><code>: struct</code></td><td>Declares a structure type.</td></tr>\n            <tr><td><code>x : f32</code></td><td>A named field with an explicit type.</td></tr>\n            <tr><td><code>= 0</code></td><td>The field's default initializer.</td></tr>\n          </tbody></table>"
+      },
+      {
+        "id": "chic-structs-initialization",
+        "title": "Initialization and fields",
+        "html": "<p>Use <code>Type { ... }</code> to construct a value. Named field initializers begin with a dot. Use <code>var</code> if the value needs to change.</p>\n          <pre><code>origin := <span class=\"chic-type\">Point</span> {}\n<span class=\"chic-keyword\">var</span> point := <span class=\"chic-type\">Point</span> { .x = <span class=\"chic-number\">10</span>, .y = <span class=\"chic-number\">20</span> }\n\npoint.x = <span class=\"chic-number\">30</span>\nhorizontal := point.x</code></pre>"
+      },
+      {
+        "id": "chic-structs-methods",
+        "title": "Extension methods",
+        "html": "<p>Define an ordinary function with <code>@extension</code>. Its first parameter is the receiver. A pointer receiver lets the function update the original structure.</p>\n          <pre><code><span class=\"chic-keyword\">@extension</span>\n<span class=\"chic-function\">translate</span> : <span class=\"chic-keyword\">func</span>(self : <span class=\"chic-type\">^Point</span>, dx : <span class=\"chic-type\">f32</span>, dy : <span class=\"chic-type\">f32</span>) {\n    self.x += dx\n    self.y += dy\n}\n\npoint.<span class=\"chic-function\">translate</span>(<span class=\"chic-number\">2</span>, <span class=\"chic-number\">-4</span>)</code></pre>"
+      },
+      {
+        "id": "chic-structs-generics",
+        "title": "Generic structures",
+        "html": "<p>Add type parameters after <code>struct</code>, then supply concrete types when constructing a value.</p>\n          <pre><code><span class=\"chic-type\">Pair</span> : <span class=\"chic-keyword\">struct</span>&lt;T, U&gt; {\n    first : <span class=\"chic-type\">T</span>\n    second : <span class=\"chic-type\">U</span>\n}\n\npair := <span class=\"chic-type\">Pair</span>&lt;<span class=\"chic-type\">i32</span>, <span class=\"chic-type\">bool</span>&gt; { .first = <span class=\"chic-number\">42</span>, .second = <span class=\"chic-keyword\">true</span> }</code></pre>"
+      },
+      {
+        "id": "chic-structs-embedding",
+        "title": "Embedding",
+        "html": "<p>Use <code>inline</code> to embed another structure and expose its fields and extension methods directly.</p>"
+      }
+    ]
+  },
+  {
+    "slug": "functions",
+    "title": "Functions",
+    "description": "Declare reusable behavior with typed parameters and return values.",
+    "sections": [
+      {
+        "id": "chic-functions-declaration",
+        "title": "Declaration",
+        "html": "<p>Write the function name, <code>: func</code>, and a parameter list. An arrow introduces the return type.</p>\n          <pre><code><span class=\"chic-function\">add</span> : <span class=\"chic-keyword\">func</span>(a : <span class=\"chic-type\">i32</span>, b : <span class=\"chic-type\">i32</span>) -> <span class=\"chic-type\">i32</span> {\n    <span class=\"chic-keyword\">return</span> a + b\n}\n\nresult := <span class=\"chic-function\">add</span>(<span class=\"chic-number\">10</span>, <span class=\"chic-number\">20</span>) <span class=\"chic-comment\">// 30</span></code></pre>\n          <table><thead><tr><th>Part</th><th>Meaning</th></tr></thead><tbody>\n            <tr><td><code>add</code></td><td>The function's name.</td></tr>\n            <tr><td><code>a : i32, b : i32</code></td><td>Named, typed parameters.</td></tr>\n            <tr><td><code>-> i32</code></td><td>The type returned to the caller.</td></tr>\n            <tr><td><code>return a + b</code></td><td>Computes and returns the result.</td></tr>\n          </tbody></table>"
+      },
+      {
+        "id": "chic-functions-void",
+        "title": "No return value",
+        "html": "<p>Omit the return type when the function performs an action without returning a value.</p>\n          <pre><code><span class=\"chic-function\">increment</span> : <span class=\"chic-keyword\">func</span>(value : <span class=\"chic-type\">^i32</span>) {\n    ^value += <span class=\"chic-number\">1</span>\n}</code></pre>"
+      },
+      {
+        "id": "chic-functions-defaults",
+        "title": "Default arguments",
+        "html": "<p>Give a parameter a default with <code>=</code>. Parameters with defaults must come last. Arguments are passed by position.</p>\n          <pre><code><span class=\"chic-function\">add_with_default</span> : <span class=\"chic-keyword\">func</span>(a : <span class=\"chic-type\">i32</span>, b : <span class=\"chic-type\">i32</span> = <span class=\"chic-number\">10</span>) -> <span class=\"chic-type\">i32</span> {\n    <span class=\"chic-keyword\">return</span> a + b\n}\n\nfirst := <span class=\"chic-function\">add_with_default</span>(<span class=\"chic-number\">5</span>)     <span class=\"chic-comment\">// 15</span>\nsecond := <span class=\"chic-function\">add_with_default</span>(<span class=\"chic-number\">5</span>, <span class=\"chic-number\">2</span>) <span class=\"chic-comment\">// 7</span></code></pre>"
+      },
+      {
+        "id": "chic-functions-generics",
+        "title": "Generic functions",
+        "html": "<p>Place type parameters after <code>func</code>. Chic can infer the type argument from a call and specializes the function at compile time.</p>\n          <pre><code><span class=\"chic-function\">max_of</span> : <span class=\"chic-keyword\">func</span>&lt;T&gt;(a : <span class=\"chic-type\">T</span>, b : <span class=\"chic-type\">T</span>) -> <span class=\"chic-type\">T</span> {\n    <span class=\"chic-keyword\">if</span> a > b { <span class=\"chic-keyword\">return</span> a }\n    <span class=\"chic-keyword\">return</span> b\n}\n\nlargest := <span class=\"chic-function\">max_of</span>(<span class=\"chic-number\">3</span>, <span class=\"chic-number\">7</span>) <span class=\"chic-comment\">// T is inferred</span></code></pre>\n          <div class=\"chic-note\">Generic parameters are unconstrained. Write <code>&lt;T&gt;</code>; constraint forms such as <code>&lt;T : i32&gt;</code> are not supported.</div>"
+      },
+      {
+        "id": "chic-functions-return",
+        "title": "Multiple return values",
+        "html": "<p>Return a tuple when a function needs to produce more than one value.</p>\n          <pre><code><span class=\"chic-function\">divide</span> : <span class=\"chic-keyword\">func</span>(a : <span class=\"chic-type\">i32</span>, b : <span class=\"chic-type\">i32</span>) -> [<span class=\"chic-type\">i32</span>, <span class=\"chic-type\">i32</span>] {\n    <span class=\"chic-keyword\">return</span> [a / b, a % b]\n}</code></pre>"
+      }
+    ]
+  }
+]

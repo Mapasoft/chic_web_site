@@ -1,0 +1,12 @@
+---
+import LanguageReference from '../../components/LanguageReference.astro';
+import { languagePages } from '../../lib/language';
+
+export function getStaticPaths() {
+  return languagePages.map(page => ({ params: { slug: page.slug }, props: { page } }));
+}
+
+const { page } = Astro.props;
+---
+
+<LanguageReference page={page} />
