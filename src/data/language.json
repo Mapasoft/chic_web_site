@@ -76,7 +76,7 @@
       {
         "id": "chic-structs-embedding",
         "title": "Embedding",
-        "html": "<p>Use <code>inline</code> to embed another structure and expose its fields and extension methods directly.</p>"
+        "html": "<p>Use <code>inline</code> inside a structure to embed another structure and expose its fields directly.</p>\n          <p>This example uses the <code>Point</code> type declared above. <code>NamedPoint</code> embeds its <code>x</code> and <code>y</code> fields and adds a <code>name</code> field of its own.</p>\n          <pre><code><span class=\"chic-type\">NamedPoint</span> : <span class=\"chic-keyword\">struct</span> {\n    <span class=\"chic-keyword\">inline</span> <span class=\"chic-type\">Point</span>\n    name : <span class=\"chic-type\">string</span> = <span class=\"chic-string\">\"\"</span>\n}\n\n<span class=\"chic-keyword\">var</span> point := <span class=\"chic-type\">NamedPoint</span> { .x = <span class=\"chic-number\">10</span>, .y = <span class=\"chic-number\">20</span>, .name = <span class=\"chic-string\">\"spawn\"</span> }\n\n<span class=\"chic-comment\">// Access the embedded fields directly.</span>\npoint.x = <span class=\"chic-number\">30</span>\nhorizontal := point.x <span class=\"chic-comment\">// 30</span>\nvertical := point.y   <span class=\"chic-comment\">// 20</span>\nlabel := point.name   <span class=\"chic-comment\">// \"spawn\"</span></code></pre>\n          <p><code>inline Point</code> lets you initialize the embedded fields with <code>.x</code> and <code>.y</code>, then read or update them with <code>point.x</code> and <code>point.y</code>. The <code>name</code> field belongs to <code>NamedPoint</code>.</p>"
       }
     ]
   },
