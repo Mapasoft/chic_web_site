@@ -142,4 +142,39 @@ export const codeExamples = [
 }`,
   },
   ...highlights.map((example, index) => ({ ...example, ...topics[index] })),
+  {
+    id: 'memory',
+    label: 'Memory',
+    title: 'Arena Allocation',
+    description: 'Allocate data in an arena and reclaim it together with clear(). Individual free() calls leave arena storage in place; destroy() releases the backing memory.',
+    icon: 'M6 7h12v10H6zM9 10v4m3-4v4m3-4v4M9 4v3m6-3v3M9 17v3m6-3v3M3 10h3m-3 4h3m12-4h3m-3 4h3',
+    code: `<span class="keyword">import</span> core = core
+<span class="keyword">import</span> memory = core.memory
+
+<span class="func">main</span> : <span class="keyword">func</span>() <span class="operator">-&gt;</span> <span class="type">i32</span> {
+    <span class="comment">// Create one arena block of 4096 bytes</span>
+    arena := memory.<span class="type">ArenaAllocator</span>(<span class="number">4096</span>, <span class="number">1</span>)
+    <span class="keyword">if</span> <span class="operator">!</span>arena <span class="keyword">return</span> <span class="number">1</span>
+    <span class="keyword">defer</span> <span class="keyword">release</span> arena
+    <span class="keyword">defer</span> arena.<span class="func">destroy</span>(); <span class="comment">// Release backing storage on exit</span>
+
+    <span class="comment">// Allocate space for four integers</span>
+    [data, status] := arena.<span class="func">allocate</span>(<span class="number">4</span> <span class="operator">*</span> <span class="keyword">sizeof</span>(<span class="type">i32</span>))
+    <span class="keyword">if</span> status <span class="operator">!=</span> <span class="type">MemoryStatus</span>.Ok <span class="keyword">return</span> <span class="number">2</span>
+
+    values := <span class="keyword">cast</span><span class="operator">&lt;</span><span class="operator">^</span><span class="type">i32</span><span class="operator">&gt;</span>(data)
+    values[<span class="number">0</span>] = <span class="number">10</span>
+    values[<span class="number">1</span>] = <span class="number">20</span>
+    values[<span class="number">2</span>] = <span class="number">30</span>
+    values[<span class="number">3</span>] = <span class="number">40</span>
+
+    <span class="comment">// Individual free is a no-op for an arena</span>
+    arena.<span class="func">free</span>(data)
+
+    <span class="comment">// Reclaim all allocations together for reuse</span>
+    arena.<span class="func">clear</span>()
+    <span class="comment">// Do not use values after clearing the arena</span>
+    <span class="keyword">return</span> <span class="number">0</span>
+}`,
+  },
 ];
