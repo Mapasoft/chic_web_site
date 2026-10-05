@@ -1,0 +1,11 @@
+---
+import PackageReference from '../../components/PackageReference.astro';
+import { getPlatformPackages } from '../../lib/platform';
+
+export function getStaticPaths() {
+  return getPlatformPackages().map(pkg => ({ params: { slug: pkg.slug }, props: { pkg } }));
+}
+const { pkg } = Astro.props;
+---
+
+<PackageReference pkg={pkg} collection="Platform" indexPath="/platform/" backLabel="Back to Platform" />

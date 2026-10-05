@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
-import { extractStdlib, extractVendors } from '../src/lib/stdlib-extractor.ts';
+import { extractStdlib, extractVendors, extractPlatform } from '../src/lib/stdlib-extractor.ts';
 
 if (!process.env.CHIC_SOURCE_DIR) {
   throw new Error('Set CHIC_SOURCE_DIR to the local Chic checkout to refresh the documentation.');
@@ -8,12 +8,15 @@ if (!process.env.CHIC_SOURCE_DIR) {
 
 const { packages, files } = extractStdlib(process.env.CHIC_SOURCE_DIR);
 const vendors = extractVendors(process.env.CHIC_SOURCE_DIR);
+const platform = extractPlatform(process.env.CHIC_SOURCE_DIR);
 // Track source fingerprints without publishing local paths or implementation bodies.
 const outputs = [
   ['../src/data/stdlib.json', packages],
   ['../src/data/stdlib-sources.json', { files }],
   ['../src/data/vendors.json', vendors.packages],
   ['../src/data/vendors-sources.json', { files: vendors.files }],
+  ['../src/data/platform.json', platform.packages],
+  ['../src/data/platform-sources.json', { files: platform.files }],
 ];
 for (const [relative, value] of outputs) {
   const url = new URL(relative, import.meta.url);
@@ -23,3 +26,4 @@ for (const [relative, value] of outputs) {
 }
 console.log(`${process.argv.includes('--check') ? 'Verified' : 'Updated'} ${packages.length} packages from ${files.length} source files: ${packages.reduce((n, p) => n + p.items.length, 0)} public declarations.`);
 console.log(`${process.argv.includes('--check') ? 'Verified' : 'Updated'} ${vendors.packages.length} vendor packages from ${vendors.files.length} source files: ${vendors.packages.reduce((n, p) => n + p.items.length, 0)} public declarations.`);
+console.log(`${process.argv.includes('--check') ? 'Verified' : 'Updated'} ${platform.packages.filter(p => p.items.length > 0).length} platform packages from ${platform.files.length} source files: ${platform.packages.reduce((n, p) => n + p.items.length, 0)} public declarations.`);

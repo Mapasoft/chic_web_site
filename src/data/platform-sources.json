@@ -1,0 +1,108 @@
+{
+  "files": [
+    {
+      "path": "platform/package.chic",
+      "package": "platform",
+      "sha256": "4e58908c723aafbfad12c6c65f63a0f01653c0abafcbf390e6ca33c7451db6c5",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "platform/macos/package.chic",
+      "package": "platform.macos",
+      "sha256": "86ac57ca12a8c6c1573238350ecadf4b0f88602805853d2d8da7a7fc18a8dc34",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "platform/macos/appkit/appkit.chic",
+      "package": "platform.macos.appkit",
+      "sha256": "6d1d4c575d0ae158ca5e38963eeb7a4feea17d8ad4c15cebd83f391cfec04d49",
+      "publicStructs": 12,
+      "publicFunctions": 120,
+      "internalDeclarations": 47
+    },
+    {
+      "path": "platform/macos/appkit/button.chic",
+      "package": "platform.macos.appkit",
+      "sha256": "554ef79cecaa2659da58ffa92284413a0511459322240b604a0830a08959c01a",
+      "publicStructs": 1,
+      "publicFunctions": 28,
+      "internalDeclarations": 10
+    },
+    {
+      "path": "platform/macos/appkit/menu.chic",
+      "package": "platform.macos.appkit",
+      "sha256": "38eccde7246777721e1413f243b92378acd76da71ac564905ca4e9984fe30aa7",
+      "publicStructs": 2,
+      "publicFunctions": 33,
+      "internalDeclarations": 11
+    },
+    {
+      "path": "platform/macos/appkit/open_panel.chic",
+      "package": "platform.macos.appkit",
+      "sha256": "b8afebc3352faa28fb47649eb5d19ed5b6596a74e6de134df3e8fe83d6cfa6e2",
+      "publicStructs": 1,
+      "publicFunctions": 36,
+      "internalDeclarations": 18
+    },
+    {
+      "path": "platform/macos/core/core.chic",
+      "package": "platform.macos.core",
+      "sha256": "6a46881b7fec4976334cee82fa8f48e7b505bd29bb628e9b96139f2f33908943",
+      "publicStructs": 3,
+      "publicFunctions": 13,
+      "internalDeclarations": 1
+    },
+    {
+      "path": "platform/macos/coreanimation/coreanimation.chic",
+      "package": "platform.macos.coreanimation",
+      "sha256": "67a7eeb9ed1a0cb07a4ae7bba6153e83fc09b92083dc636cda15611246ea9583",
+      "publicStructs": 2,
+      "publicFunctions": 12,
+      "internalDeclarations": 8
+    },
+    {
+      "path": "platform/macos/dispatch/dispatch.chic",
+      "package": "platform.macos.dispatch",
+      "sha256": "7b8c22734a769b56cc099ec9bebc904a1b9cd970d9643efb2982178df3ac5808",
+      "publicStructs": 1,
+      "publicFunctions": 6,
+      "internalDeclarations": 0
+    },
+    {
+      "path": "platform/macos/foundation/foundation.chic",
+      "package": "platform.macos.foundation",
+      "sha256": "0c06d4b347b13dad28acb8fbcc9e894b14072e08dd4ff1cf79d29150aaaf92c6",
+      "publicStructs": 11,
+      "publicFunctions": 102,
+      "internalDeclarations": 13
+    },
+    {
+      "path": "platform/macos/metal/metal.chic",
+      "package": "platform.macos.metal",
+      "sha256": "df671552638de09c8c49f38974aa5f66c14783a334b1037db6ddff09ae032d98",
+      "publicStructs": 36,
+      "publicFunctions": 129,
+      "internalDeclarations": 92
+    },
+    {
+      "path": "platform/macos/metalkit/metalkit.chic",
+      "package": "platform.macos.metalkit",
+      "sha256": "e85f6f4a4310d45ed2f5f913281819162b4149346cefde47146cc8e95cef6ac4",
+      "publicStructs": 4,
+      "publicFunctions": 54,
+      "internalDeclarations": 52
+    },
+    {
+      "path": "platform/macos/renderer/renderer.chic",
+      "package": "platform.macos.renderer",
+      "sha256": "8f6692936eee944f337e94677f90b7c5a5feb73e203f256152759f9466e17540",
+      "publicStructs": 3,
+      "publicFunctions": 10,
+      "internalDeclarations": 4
+    }
+  ]
+}

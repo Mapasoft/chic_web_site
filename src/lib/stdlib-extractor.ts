@@ -142,7 +142,7 @@ export function extractDeclarations(source: string, sourcePath: string) {
     if (/^[A-Za-z_]\w*$/.test(token.text) && tokens[i + 1]?.text === ':' && (kind === 'func' || kind === 'struct')) {
       let end = i + 3;
       let body = -1;
-      const imported = attributes.some(a => /^@import_func\b/.test(a));
+      const imported = attributes.some(a => /^@(import_func|objc_method)\b/.test(a));
       for (; end < tokens.length; end++) {
         const part = tokens[end];
         if (part.kind === 'comment') continue;
@@ -192,6 +192,10 @@ export function extractStdlib(sourceDir: string) {
 
 export function extractVendors(sourceDir: string) {
   return extractPackages(sourceDir, 'vendors', new Set(['tests', 'examples', 'raylib/darwin']));
+}
+
+export function extractPlatform(sourceDir: string) {
+  return extractPackages(sourceDir, 'platform');
 }
 
 function extractPackages(sourceDir: string, rootName: string, excludedDirs = new Set<string>()) {

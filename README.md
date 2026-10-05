@@ -11,8 +11,17 @@ The **Doc → Vendors** section uses the same package cards and API reference
 template as the standard library, with separate pages under `/vendors/`.
 `src/data/vendors.json` and `src/data/vendors-sources.json` hold its API snapshot
 and source fingerprints; descriptions live in `src/lib/vendors.ts`.
-Both `docs:refresh` and `docs:check` process `core/` and `vendors/` in the supplied
-Chic checkout. Vendor `tests/`, `examples/`, and `raylib/darwin/` directories are
+The **Doc → Platform** section uses the same cards and API reference, with eight
+macOS package pages under `/platform/macos/`. Its snapshots and source fingerprints
+are in `src/data/platform.json` and `src/data/platform-sources.json`; descriptions
+live in `src/lib/platform.ts`. Empty namespace roots do not have reference pages.
+The redundant `CHIC_OS == builtin.OS.MacOs` availability label is hidden in macOS
+Platform pages; source conditions remain in the snapshot and other conditions
+are still displayed. Bodyless `@objc_method` declarations are supported alongside
+imported functions.
+
+Both `docs:refresh` and `docs:check` process `core/`, `vendors/`, and `platform/`
+in the supplied Chic checkout. Vendor `tests/`, `examples/`, and `raylib/darwin/` directories are
 excluded. Other subpackages use the same package discovery rules as core.
 Library-link directives (`#import_lib`) are skipped without executing them.
 
@@ -46,7 +55,7 @@ directory rules. Unsupported top-level directives fail the refresh instead of
 silently producing incomplete documentation.
 
 `src/data/stdlib-sources.json` records every source file's package, SHA-256, and
-public/internal declaration counts. `docs:check` compares both committed snapshots
+public/internal declaration counts. `docs:check` compares all committed snapshots
 with the current source tree without writing changes. Neither local absolute paths
 nor function implementation bodies are included in the snapshot.
 

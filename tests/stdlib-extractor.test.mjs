@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { extractDeclarations, extractStdlib, extractVendors } from '../src/lib/stdlib-extractor.ts';
+import { extractDeclarations, extractStdlib, extractVendors, extractPlatform } from '../src/lib/stdlib-extractor.ts';
 
 const parse = source => extractDeclarations(source, 'core/example.chic');
 
@@ -186,5 +186,46 @@ test('discovers legacy packages and declared logical package roots without flatt
     assert.ok(files.every(f => /^[0-9a-f]{64}$/.test(f.sha256)));
     write('core/runtime/details/duplicate.chic', '#package codecs');
     assert.throws(() => extractStdlib(root), /Duplicate package/);
+  } finally { fs.rmSync(root, { recursive: true, force: true }); }
+});
+
+test('preserves bodyless Objective-C methods and excludes internal bridge descriptors', () => {
+  const { items, excluded } = parse(`@internal @objc_method(.selector = "init")
+_hidden : func(self : ^Native) -> Native
+@objc_method(.selector = "setFrame:")
+@extension
+set_frame : func(self : ^Native, frame : Rect)
+@objc_method(.selector = "mouseDown:", .override = true)
+@extension
+mouse_down : func(self : ^Native, event : Event)
+{
+  local : struct { value : i32 }
+}
+Native : struct { handle : ^void }`);
+  assert.deepEqual(items.map(i => i.name), ['set_frame', 'mouse_down', 'Native']);
+  assert.deepEqual(excluded.map(i => i.name), ['_hidden']);
+  assert.equal(items[0].signature, 'set_frame : func(self : ^Native, frame : Rect)');
+  assert.equal(items[1].signature, 'mouse_down : func(self : ^Native, event : Event)');
+  assert.deepEqual(items[0].attributes, ['@objc_method(.selector = "setFrame:")', '@extension']);
+});
+
+test('discovers platform packages below empty logical namespace roots', () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'chic-platform-test-'));
+  try {
+    const write = (file, source) => {
+      const full = path.join(root, file);
+      fs.mkdirSync(path.dirname(full), { recursive: true });
+      fs.writeFileSync(full, source);
+    };
+    write('platform/package.chic', '#package platform');
+    write('platform/macos/package.chic', '#package macos');
+    write('platform/macos/appkit/api.chic', '#package appkit\nView : struct {}');
+    write('platform/macos/appkit/menu.chic', '@objc_method(.selector = "title")\ntitle : func(self : ^View) -> string');
+    write('platform/macos/core/api.chic', '#package core\n@import_func retain : func(object : ^void)');
+    const { packages, files } = extractPlatform(root);
+    assert.deepEqual(packages.map(p => p.name), ['platform', 'platform.macos', 'platform.macos.appkit', 'platform.macos.core']);
+    assert.deepEqual(packages.find(p => p.name === 'platform.macos.appkit').items.map(i => i.name), ['View', 'title']);
+    assert.equal(files.length, 5);
+    assert.ok(files.every(f => f.path.startsWith('platform/') && /^[0-9a-f]{64}$/.test(f.sha256)));
   } finally { fs.rmSync(root, { recursive: true, force: true }); }
 });

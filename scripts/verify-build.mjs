@@ -5,6 +5,7 @@ import path from 'node:path';
 const collections = [
   { directory: 'stdlib', title: 'Packages', slug: name => name.replaceAll('.', '/') },
   { directory: 'vendors', title: 'Vendors', slug: name => name.replace(/^vendors\./, '').replaceAll('.', '/') },
+  { directory: 'platform', title: 'Platform', slug: name => name.replace(/^platform\./, '').replaceAll('.', '/') },
 ].map(collection => ({
   ...collection,
   packages: JSON.parse(fs.readFileSync(new URL(`../src/data/${collection.directory}.json`, import.meta.url), 'utf8')),
@@ -17,9 +18,10 @@ assert.match(home, /Downloads are not yet available/);
 assert.doesNotMatch(home, /get-started|Get Started|>Learn<\/a>/);
 assert.match(home, /href="\/stdlib\/"[^>]*>\s*Packages\s*<\/a>/);
 for (const collection of collections) {
-  const { packages, sources, directory, title } = collection;
+  const { sources, directory, title } = collection;
+  const packages = collection.packages.filter(p => directory !== 'platform' || p.items.length > 0);
   assert.ok(packages.length > 0, `The public documentation must include ${directory} packages.`);
-  assert.deepEqual(packages.map(p => p.name).sort(), [...new Set(sources.map(f => f.package))].sort(), 'Every source package needs a page.');
+  assert.deepEqual(packages.map(p => p.name).sort(), [...new Set(sources.filter(f => directory !== 'platform' || f.publicStructs + f.publicFunctions > 0).map(f => f.package))].sort(), 'Every source package needs a page.');
   const packageIndex = fs.readFileSync(new URL(`../dist/${directory}/index.html`, import.meta.url), 'utf8');
   assert.ok(packageIndex.includes(`>${title}</h1>`));
   const menus = [...home.matchAll(/<details class="doc-menu[^>]*>([\s\S]*?)<\/details>/g)];
@@ -47,7 +49,13 @@ for (const collection of collections) {
       assert.ok(sources.some(f => f.path === item.source && f.package === pkg.name), `Unknown source: ${item.source}`);
       assert.ok(!item.attributes.some(a => /^@(internal|private)\b/.test(a)), `Internal declaration: ${item.name}`);
       assert.ok(!panel.includes(`${item.source}:${item.line}`), `Source filename and line are still displayed: ${pkg.name}.${item.name}`);
-      for (const condition of item.conditions) assert.ok(html.includes(condition.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')), `Missing source condition: ${item.name}`);
+      for (const condition of item.conditions) {
+        if (/^platform\.macos(?:\.|$)/.test(pkg.name) && /^CHIC_OS\s*==\s*builtin\.OS\.MacOs$/.test(condition.trim())) {
+          assert.ok(!html.includes('Available when: <code>CHIC_OS == builtin.OS.MacOs'), `Redundant macOS condition: ${pkg.name}`);
+        } else {
+          assert.ok(html.includes(condition.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')), `Missing source condition: ${item.name}`);
+        }
+      }
     }
     for (const file of sources.filter(f => f.package === pkg.name)) {
       assert.equal(pkg.items.filter(i => i.source === file.path && i.kind === 'struct').length, file.publicStructs);
@@ -83,5 +91,5 @@ for (const file of pages) {
     if (target.hash) assert.ok(pageIds.get(path.posix.normalize(targetFile))?.has(decodeURIComponent(target.hash.slice(1))), `Broken anchor in ${file}: ${href}`);
   }
 }
-const packages = collections.flatMap(collection => collection.packages);
+const packages = collections.flatMap(collection => collection.packages.filter(p => collection.directory !== 'platform' || p.items.length > 0));
 console.log(`Verified homepage, package indexes and ${packages.length} package pages with ${packages.reduce((sum, pkg) => sum + pkg.items.length, 0)} API entries.`);

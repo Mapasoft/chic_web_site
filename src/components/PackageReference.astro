@@ -10,6 +10,9 @@ interface Props {
   backLabel: string;
 }
 const { pkg, collection, indexPath, backLabel } = Astro.props;
+const visibleConditions = (conditions: string[]) => conditions.filter(condition =>
+  !(/^platform\.macos(?:\.|$)/.test(pkg.name) && /^CHIC_OS\s*==\s*builtin\.OS\.MacOs$/.test(condition.trim()))
+);
 const groups = [
   { title: 'Structs', kind: 'struct', items: pkg.items.filter(item => item.kind === 'struct') },
   { title: 'Functions', kind: 'func', items: pkg.items.filter(item => item.kind === 'func') },
@@ -62,7 +65,7 @@ const groups = [
                     <h3><a href={`#${getDocItemId(item)}`}>{item.name}</a></h3>
                     <span class={`kind ${item.kind}`}>{item.kind}</span>
                   </header>
-                  {item.conditions.length > 0 && <p class="conditions">Available when: <code>{item.conditions.join(' && ')}</code></p>}
+                  {visibleConditions(item.conditions).length > 0 && <p class="conditions">Available when: <code>{visibleConditions(item.conditions).join(' && ')}</code></p>}
                   <pre class="signature"><code>{item.kind === 'func' ? item.signature : [...item.attributes, item.signature].join('\n')}</code></pre>
                   {item.comment && <pre class="description">{item.comment}</pre>}
                 </article>
