@@ -176,6 +176,27 @@
   overflow-wrap:anywhere;
 }
 
+.language-reference .chic-keyword-table {
+  table-layout:fixed;
+}
+
+.language-reference .chic-keyword-table th:first-child,
+.language-reference .chic-keyword-table td:first-child {
+  width:110px;
+}
+
+.language-reference .chic-keyword-example {
+  display:block;
+  margin-top:8px;
+  padding:8px 10px;
+  border:1px solid var(--chic-border);
+  border-radius:6px;
+  background:var(--chic-code);
+  white-space:pre;
+  overflow-x:auto;
+  font-size:11px;
+}
+
 .language-reference pre {
   background:var(--chic-code);
   border:1px solid var(--chic-border);

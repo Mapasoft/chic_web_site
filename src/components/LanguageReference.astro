@@ -22,10 +22,12 @@ const { page } = Astro.props;
             {item.title}
           </a>
         ))}
-        <div class="chic-side-divider"></div>
-        <div class="chic-related">Standard Library</div>
-        <a class="chic-other-section" href="/stdlib/">Packages</a>
-        <a class="chic-other-section" href="/vendors/">Vendors</a>
+        {page.slug !== 'keywords' && <>
+          <div class="chic-side-divider"></div>
+          <div class="chic-related">Standard Library</div>
+          <a class="chic-other-section" href="/stdlib/">Packages</a>
+          <a class="chic-other-section" href="/vendors/">Vendors</a>
+        </>}
         <div class="chic-side-note">Chic 0.7.0</div>
       </nav>
       <main class="chic-main">
