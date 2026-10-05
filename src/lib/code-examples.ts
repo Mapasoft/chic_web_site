@@ -1,4 +1,3 @@
----
 const highlights = [
   {
     title: 'Extension Methods',
@@ -57,18 +56,31 @@ mid : <span class="type">[]i32</span> = arr[<span class="number">1</span>:<span 
 &#125;`,
   },
   {
-    title: 'Generic Structs',
-    description: 'Template-based generic types that are instantiated lazily and cached. Write data structures once, use them with any type — all resolved at compile time.',
-    code: `<span class="type">Array</span> : <span class="keyword">struct</span>&lt;<span class="type">T</span>&gt; &#123;
-    data : <span class="type">^T</span> = <span class="keyword">null</span>
-    count : <span class="type">i64</span> = <span class="number">0</span>
-    capacity : <span class="type">i64</span> = <span class="number">0</span>
-&#125;
+    title: 'Generic Functions & Structs',
+    description: 'Use type parameters to write reusable functions and structs. Here, max and Pair work with both integers and floating-point values.',
+    code: `<span class="comment">// A generic function</span>
+<span class="func">max</span> : <span class="keyword">func</span><span class="operator">&lt;</span><span class="type">T</span><span class="operator">&gt;</span>(a : <span class="type">T</span>, b : <span class="type">T</span>) <span class="operator">-&gt;</span> <span class="type">T</span> {
+    <span class="keyword">if</span> (a <span class="operator">&gt;</span> b) {
+        <span class="keyword">return</span> a
+    }
+    <span class="keyword">return</span> b
+}
 
-<span class="comment">// Instantiate with different types</span>
-ints : <span class="type">Array</span>&lt;<span class="type">i32</span>&gt;
-floats : <span class="type">Array</span>&lt;<span class="type">f64</span>&gt;
-points : <span class="type">Array</span>&lt;<span class="type">Point</span>&gt;`,
+<span class="comment">// A generic struct</span>
+<span class="type">Pair</span> : <span class="keyword">struct</span><span class="operator">&lt;</span><span class="type">T</span><span class="operator">&gt;</span> {
+    first : <span class="type">T</span>
+    second : <span class="type">T</span>
+}
+
+<span class="func">main</span> : <span class="keyword">func</span>() <span class="operator">-&gt;</span> <span class="type">i32</span> {
+    integers : <span class="type">Pair</span><span class="operator">&lt;</span><span class="type">i32</span><span class="operator">&gt;</span> = { .first = <span class="number">10</span>, .second = <span class="number">20</span> }
+    decimals : <span class="type">Pair</span><span class="operator">&lt;</span><span class="type">f64</span><span class="operator">&gt;</span> = { .first = <span class="number">1.5</span>, .second = <span class="number">2.5</span> }
+
+    <span class="comment">// The same function works with both types</span>
+    biggest := <span class="func">max</span>(integers.first, integers.second) <span class="comment">// 20</span>
+    decimal := <span class="func">max</span>(decimals.first, decimals.second) <span class="comment">// 2.5</span>
+    <span class="keyword">return</span> <span class="number">0</span>
+}`,
   },
   {
     title: 'Pattern Matching',
@@ -96,24 +108,38 @@ grade : <span class="type">string</span> = <span class="keyword">match</span> (s
 &#125; <span class="comment">// grade is "A"</span>`,
   },
 ];
----
 
-<section class="py-20 px-6">
-  <div class="max-w-6xl mx-auto space-y-24">
-    {highlights.map((item, i) => (
-      <div class={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-10 items-center`}>
-        <div class="flex-1 space-y-4">
-          <h3 class="section-title text-2xl">{item.title}</h3>
-          <p class="text-chic-muted leading-relaxed">{item.description}</p>
-        </div>
-        <div class="flex-1 w-full min-w-0">
-          <div class="chic-card min-w-0 p-3">
-            <div class="code-block">
-              <pre><code set:html={item.code} /></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
+const topics = [
+  { id: 'extensions', label: 'Extensions', icon: 'M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3M9 12h6m-3-3v6' },
+  { id: 'arrays', label: 'Arrays', icon: 'M3 5h18v14H3zM9 5v14m6-14v14M3 12h18' },
+  { id: 'slices', label: 'Slices', icon: 'M3 5h18v14H3zM8 5v14m8-14v14M8 12h8' },
+  { id: 'generics', label: 'Generic', icon: 'm8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18' },
+  { id: 'matching', label: 'Matching', icon: 'M5 3v12a4 4 0 0 0 4 4h10M5 7h14m-4-4 4 4-4 4m0 4 4 4-4 4' },
+];
+
+export const codeExamples = [
+  {
+    id: 'basics',
+    label: 'Basics',
+    title: 'Structs & Functions',
+    description: 'Define a struct, create a value, and pass it to a function. This example calculates the area of a rectangle.',
+    icon: 'm8 5-6 7 6 7m8-14 6 7-6 7',
+    code: `<span class="comment">// Define a struct with two fields</span>
+<span class="type">Rectangle</span> : <span class="keyword">struct</span> {
+    width : <span class="type">i32</span>
+    height : <span class="type">i32</span>
+}
+
+<span class="comment">// Define a function that uses the struct</span>
+<span class="func">area</span> : <span class="keyword">func</span>(rectangle : <span class="type">Rectangle</span>) <span class="operator">-&gt;</span> <span class="type">i32</span> {
+    <span class="keyword">return</span> rectangle.width <span class="operator">*</span> rectangle.height
+}
+
+<span class="func">main</span> : <span class="keyword">func</span>() <span class="operator">-&gt;</span> <span class="type">i32</span> {
+    rectangle : <span class="type">Rectangle</span> = { .width = <span class="number">10</span>, .height = <span class="number">4</span> }
+    result := <span class="func">area</span>(rectangle) <span class="comment">// 40</span>
+    <span class="keyword">return</span> <span class="number">0</span>
+}`,
+  },
+  ...highlights.map((example, index) => ({ ...example, ...topics[index] })),
+];

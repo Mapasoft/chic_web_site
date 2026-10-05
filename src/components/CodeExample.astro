@@ -1,46 +1,114 @@
 ---
-const code = `<span class="comment">// Generic function - monomorphizes at compile time</span>
-<span class="func">max</span> : <span class="keyword">func</span>&lt;<span class="type">T</span>&gt;(a : <span class="type">T</span>, b : <span class="type">T</span>) -&gt; <span class="type">T</span> &#123;
-    <span class="keyword">if</span> (a &gt; b) &#123;
-        <span class="keyword">return</span> a
-    &#125;
-    <span class="keyword">return</span> b
-&#125;
-
-<span class="comment">// Slices are []T views over existing contiguous storage</span>
-<span class="func">sum</span> : <span class="keyword">func</span>(s : <span class="type">[]i32</span>) -&gt; <span class="type">i32</span> &#123;
-    total := <span class="number">0</span>
-    <span class="keyword">for</span> x <span class="keyword">in</span> s &#123;
-        total <span class="operator">+=</span> x
-    &#125;
-    <span class="keyword">return</span> total
-&#125;
-
-<span class="func">main</span> : <span class="keyword">func</span>() -&gt; <span class="type">i32</span> &#123;
-    <span class="comment">// Arrays use prefix dimensions; ? infers length from the initializer</span>
-    numbers : <span class="type">[?]i32</span> = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;
-    more := <span class="type">[?]i32</span>&#123;<span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>&#125;
-
-    window : <span class="type">[]i32</span> = numbers[<span class="number">1</span>:<span class="number">4</span>]
-    all := numbers[:]
-    result := <span class="func">sum</span>(all)      <span class="comment">// 15</span>
-    biggest := <span class="func">max</span>(<span class="number">10</span>, <span class="number">20</span>)  <span class="comment">// 20</span>
-
-    <span class="keyword">return</span> biggest <span class="operator">-</span> result <span class="operator">-</span> more[<span class="number">0</span>] <span class="operator">+</span> window[<span class="number">0</span>] <span class="operator">-</span> <span class="number">1</span>
-&#125;`;
+import { codeExamples } from '../lib/code-examples';
 ---
 
-<section class="py-20 px-6">
-  <div class="max-w-4xl mx-auto">
+<section class="py-20 px-6" aria-labelledby="features">
+  <div class="max-w-6xl mx-auto min-w-0">
     <h2 id="features" class="section-title text-3xl text-center mb-4 scroll-mt-24">See Chic in Action</h2>
     <p class="text-chic-muted text-center mb-10 max-w-xl mx-auto">
       Clean, expressive syntax with powerful type inference and zero-cost generics.
     </p>
-
-    <div class="chic-card min-w-0 p-3">
-      <div class="code-block">
-        <pre><code set:html={code} /></pre>
+    <div class="example-browser chic-card" data-example-browser>
+      <div class="example-tabs" role="tablist" aria-label="Chic code examples">
+        {codeExamples.map((example, index) => (
+          <button type="button" role="tab" id={`example-tab-${example.id}`}
+            aria-controls={`example-panel-${example.id}`} aria-selected={index === 0}
+            tabindex={index === 0 ? 0 : -1}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={example.icon} /></svg>
+            {example.label}
+          </button>
+        ))}
       </div>
+      {codeExamples.map((example, index) => (
+        <div class="example-panel" role="tabpanel" id={`example-panel-${example.id}`}
+          aria-labelledby={`example-tab-${example.id}`} hidden={index !== 0}>
+          <aside class="example-info">
+            <p class="example-eyebrow">The example</p>
+            <h3 class="section-title">{example.title}</h3>
+            <p class="example-description">{example.description}</p>
+            <div class="example-file">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Zm0 0v6h6m-10 4-2 3 2 3m4-6 2 3-2 3" /></svg>
+              <span>{example.id}.chic</span>
+            </div>
+          </aside>
+          <div class="example-editor">
+            <div class="example-editor-header">
+              <span class="example-path">examples / <span>{example.id}.chic</span></span>
+              <span class="example-language">Chic</span>
+            </div>
+            <div class="code-block example-code" tabindex="0" role="region" aria-label={`${example.title} code`}>
+              <pre><code set:html={example.code} /></pre>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
+
+<style>
+  .example-browser { width: 100%; margin-inline: auto; overflow: hidden; padding: .75rem; }
+  .example-tabs { display: flex; gap: .5rem; overflow-x: auto; padding: .25rem .25rem 1rem; scrollbar-width: thin; scrollbar-color: #514360 transparent; }
+  .example-tabs button { display: flex; flex: 1 0 auto; align-items: center; justify-content: center; gap: .6rem; padding: .85rem 1rem; border-radius: .8rem; font-size: .9rem; font-weight: 500; color: #8a8a8a; transition: color .15s, background .15s; }
+  .example-tabs button:hover { color: #f5f5f5; background: rgb(201 168 245 / 5%); }
+  .example-tabs button[aria-selected="true"] { background: #0b0820; color: #f5f5f5; box-shadow: inset 0 0 0 1px rgb(201 168 245 / 20%); }
+  .example-tabs button[aria-selected="true"] svg { color: #c9a8f5; }
+  .example-panel { display: grid; grid-template-columns: 15rem minmax(0, 1fr); border: 1px solid #2e2a40; border-radius: 1.1rem; overflow: hidden; background: rgb(11 8 32 / 55%); }
+  .example-panel[hidden] { display: none; }
+  .example-info { padding: 1.75rem 1.25rem; border-right: 1px solid #2e2a40; }
+  .example-eyebrow { color: #8a8a8a; font-size: .65rem; letter-spacing: .13em; text-transform: uppercase; margin-bottom: .85rem; }
+  .example-info h3 { font-size: 1.15rem; line-height: 1.4; }
+  .example-description { margin-top: 1rem; color: #8a8a8a; font-size: .85rem; line-height: 1.8; }
+  .example-file { display: flex; align-items: center; gap: .6rem; margin-top: 1.75rem; padding: .75rem; border: 1px solid rgb(201 168 245 / 15%); border-radius: .6rem; background: rgb(201 168 245 / 7%); color: #d4d8f5; font: .75rem/1.5 'JetBrains Mono', monospace; }
+  .example-file svg { flex-shrink: 0; color: #c9a8f5; }
+  .example-editor { min-width: 0; }
+  .example-editor-header { min-height: 3.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid #2e2a40; font: .75rem/1.5 'JetBrains Mono', monospace; }
+  .example-path { color: #8a8a8a; overflow-wrap: anywhere; }
+  .example-path span { color: #d4d8f5; }
+  .example-language { color: #8a8a8a; font-size: .65rem; }
+  .example-code { height: 32rem; padding: 1.5rem; border: 0; border-radius: 0; background: rgb(42 36 56 / 50%); overflow: auto; scrollbar-width: thin; scrollbar-color: #514360 transparent; line-height: 1.8; }
+  .example-code pre { width: max-content; min-width: 100%; }
+  .example-tabs button:focus-visible, .example-code:focus-visible { outline: 2px solid #c9a8f5; outline-offset: -2px; }
+  @media (max-width: 767px) {
+    .example-browser { padding: .5rem; border-radius: 1.3rem; }
+    .example-tabs { gap: .25rem; padding: .25rem 0 .75rem; }
+    .example-tabs button { flex: 0 0 auto; padding: .7rem .9rem; font-size: .8rem; }
+    .example-panel { grid-template-columns: minmax(0, 1fr); border-radius: .85rem; }
+    .example-info { padding: 1.25rem; border-right: 0; border-bottom: 1px solid #2e2a40; }
+    .example-description { margin-top: .5rem; }
+    .example-file { display: none; }
+    .example-eyebrow { margin-bottom: .5rem; }
+    .example-editor-header { padding: .85rem 1.25rem; }
+    .example-code { height: 26rem; padding: 1.25rem; font-size: .75rem; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-example-browser]').forEach(browser => {
+    const tabs = [...browser.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const panels = [...browser.querySelectorAll<HTMLElement>('[role="tabpanel"]')];
+    const selectTab = (selected: HTMLButtonElement) => {
+      tabs.forEach(tab => {
+        const active = tab === selected;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+      });
+      panels.forEach(panel => { panel.hidden = panel.id !== selected.getAttribute('aria-controls'); });
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', event => {
+        let next = index;
+        if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') next = (index + tabs.length - 1) % tabs.length;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        selectTab(tabs[next]);
+        tabs[next].focus();
+        tabs[next].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      });
+    });
+  });
+</script>
