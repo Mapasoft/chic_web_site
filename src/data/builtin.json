@@ -1,0 +1,84 @@
+[
+  {
+    "name": "builtin",
+    "items": [
+      {
+        "name": "OS",
+        "kind": "enum",
+        "signature": "OS : enum {\n    Windows,\n    MacOs,\n    Linux\n}",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Operating system values used by CHIC_OS. Use these enum members in compile-time platform conditions.",
+        "summary": "Operating system values used by CHIC_OS. Use these enum members in compile-time platform conditions.",
+        "source": "source/builtins/builtins_chic_structure.cpp",
+        "line": 19
+      },
+      {
+        "name": "BuildConfiguration",
+        "kind": "enum",
+        "signature": "BuildConfiguration : enum { Debug, Release }",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Build configuration values used by CHIC_BUILD_CONFIG.",
+        "summary": "Build configuration values used by CHIC_BUILD_CONFIG.",
+        "source": "source/builtins/builtins_chic_structure.cpp",
+        "line": 25
+      },
+      {
+        "name": "CHIC_OS",
+        "kind": "constant",
+        "signature": "CHIC_OS : OS",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Compile-time operating system constant with a value of OS.Windows, OS.MacOs, or OS.Linux.\n\nAvailable directly as CHIC_OS or qualified as builtin.CHIC_OS. Its value is supplied by the compiler build.",
+        "summary": "Compile-time operating system constant with a value of OS.Windows, OS.MacOs, or OS.Linux.",
+        "source": "source/builtins/builtins_chic_structure.cpp",
+        "line": 34
+      },
+      {
+        "name": "CHIC_BUILD_CONFIG",
+        "kind": "constant",
+        "signature": "CHIC_BUILD_CONFIG : BuildConfiguration",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Compile-time build configuration constant. It is BuildConfiguration.Debug when the compiler is built with CHIC_DEBUG, or BuildConfiguration.Release with CHIC_RELEASE.\n\nAvailable directly as CHIC_BUILD_CONFIG or qualified as builtin.CHIC_BUILD_CONFIG.",
+        "summary": "Compile-time build configuration constant. It is BuildConfiguration.Debug when the compiler is built with CHIC_DEBUG, or BuildConfiguration.Release with CHIC_RELEASE.",
+        "source": "source/builtins/builtins_chic_structure.cpp",
+        "line": 28
+      },
+      {
+        "name": "alloc",
+        "kind": "func",
+        "signature": "alloc : func(size : i64) -> ^void",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Allocates size bytes using the C heap and fills the storage with zeroes. Call it as builtin.alloc(size).\n\nThe memory belongs to the caller. Release it with core.libc.free when finished. For allocation status codes and arena or pool policies, use core.memory.",
+        "summary": "Allocates size bytes using the C heap and fills the storage with zeroes. Call it as builtin.alloc(size).",
+        "source": "source/builtins/compile_alloc_func.cpp",
+        "line": 58
+      },
+      {
+        "name": "get_argc",
+        "kind": "func",
+        "signature": "get_argc : func() -> i32",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Returns the number of command-line arguments, including the executable name at index 0. Call it as builtin.get_argc().",
+        "summary": "Returns the number of command-line arguments, including the executable name at index 0. Call it as builtin.get_argc().",
+        "source": "source/builtins/compile_args_func.cpp",
+        "line": 99
+      },
+      {
+        "name": "get_arg",
+        "kind": "func",
+        "signature": "get_arg : func(index : i32) -> string",
+        "attributes": [],
+        "conditions": [],
+        "comment": "Returns the command-line argument at index as a string. Call it as builtin.get_arg(index).\n\nUse an index from 0 up to, but excluding, builtin.get_argc(). Index 0 is the executable name. The returned string refers to the process argument storage; do not free it or its data pointer.",
+        "summary": "Returns the command-line argument at index as a string. Call it as builtin.get_arg(index).",
+        "source": "source/builtins/compile_args_func.cpp",
+        "line": 183
+      }
+    ]
+  }
+]

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 
-export type DocKind = 'func' | 'struct';
+export type DocKind = 'func' | 'struct' | 'enum' | 'constant';
 export interface StdlibDocItem {
   name: string;
   kind: DocKind;

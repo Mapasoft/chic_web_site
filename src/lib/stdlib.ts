@@ -1,4 +1,5 @@
 import bundledPackages from '../data/stdlib.json' with { type: 'json' };
+import builtinPackages from '../data/builtin.json' with { type: 'json' };
 import { extractStdlib, type StdlibDocItem } from './stdlib-extractor.ts';
 export type { DocKind, StdlibDocItem } from './stdlib-extractor.ts';
 
@@ -9,10 +10,13 @@ export interface StdlibPackage {
   itemCount: number;
   funcCount: number;
   structCount: number;
+  enumCount: number;
+  constantCount: number;
   items: StdlibDocItem[];
 }
 
 const packageDescriptions: Record<string, string> = {
+  builtin: 'Compiler-provided functions for heap allocation and command-line arguments, plus operating system and build configuration constants. The builtin namespace is available without an import.',
   core: 'Foundational types, numeric limits, status codes, and the allocator interface shared by core packages. Includes slice allocation, hashing, and equality helpers.',
   'core.atomic': 'Atomic load, store, exchange, and compare-exchange operations for booleans, integers, and raw pointers.',
   'core.containers': 'Generic containers for storing and organizing values: fixed-capacity arrays, growable array lists, hash maps, sets, and stacks. Includes initialization, cleanup, and container status codes.',
@@ -44,7 +48,7 @@ export function getStdlibPackages(): StdlibPackage[] {
     packages = extractStdlib(process.env.CHIC_SOURCE_DIR).packages;
   }
 
-  stdlibPackages = packages
+  stdlibPackages = [...packages, ...builtinPackages as Array<{ name: string; items: StdlibDocItem[] }>]
     .map(({ name, items }) => buildPackage(name, items))
     .sort((a, b) => a.name.localeCompare(b.name));
 
@@ -70,6 +74,8 @@ export function buildPackage(name: string, items: StdlibDocItem[], description =
     itemCount: items.length,
     funcCount,
     structCount,
+    enumCount: items.filter(item => item.kind === 'enum').length,
+    constantCount: items.filter(item => item.kind === 'constant').length,
     items,
   };
 }

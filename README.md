@@ -7,6 +7,15 @@ attributes, source conditions, structure fields, comments, and relative source r
 No compiler source checkout or private repository credentials are needed in CI.
 Package descriptions are maintained separately in `src/lib/stdlib.ts`.
 
+The Packages index also includes `/stdlib/builtin/`: the compiler-generated
+builtin namespace, with three public functions, two enums, and two compile-time
+constants. `src/data/builtin.json` is maintained from the C++ registrations in
+`source/builtins/`, rather than extracted from `.chic` files. The accompanying
+`builtin-sources.json` records the reviewed source fingerprints and entry counts.
+Compiler-internal functions and globals are excluded. Review these two files when
+builtin registrations change; `docs:refresh` continues to regenerate the Chic
+source collections. The production build verifies the builtin reference too.
+
 The **Doc → Vendors** section uses the same package cards and API reference
 template as the standard library, with separate pages under `/vendors/`.
 `src/data/vendors.json` and `src/data/vendors-sources.json` hold its API snapshot

@@ -30,7 +30,7 @@ const { modules, basePath, title, description, id } = Astro.props;
           </div>
           <p class="text-chic-muted text-sm mt-2">{mod.description}</p>
           <p class="text-xs text-chic-muted mt-4">
-            {mod.structCount} structs / {mod.funcCount} funcs
+            {[...(mod.enumCount || mod.constantCount ? (mod.structCount ? [`${mod.structCount} structs`] : []) : [`${mod.structCount} structs`]), ...(mod.enumCount ? [`${mod.enumCount} enums`] : []), ...(mod.constantCount ? [`${mod.constantCount} constants`] : []), `${mod.funcCount} funcs`].join(' / ')}
           </p>
         </a>
       ))}

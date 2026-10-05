@@ -15,6 +15,8 @@ const visibleConditions = (conditions: string[]) => conditions.filter(condition 
 );
 const groups = [
   { title: 'Structs', kind: 'struct', items: pkg.items.filter(item => item.kind === 'struct') },
+  { title: 'Enums', kind: 'enum', items: pkg.items.filter(item => item.kind === 'enum') },
+  { title: 'Constants', kind: 'constant', items: pkg.items.filter(item => item.kind === 'constant') },
   { title: 'Functions', kind: 'func', items: pkg.items.filter(item => item.kind === 'func') },
 ].filter(group => group.items.length > 0);
 ---
@@ -53,7 +55,16 @@ const groups = [
       <div id="reference-panel" class="reference-panel" role="region" aria-label={`${pkg.name} API documentation`} tabindex="0">
         <div class="reference-content">
           <p class="package-description">{pkg.description}</p>
-          <p class="reference-scope">{pkg.structCount} structs · {pkg.funcCount} functions · Public API</p>
+          <p class="reference-scope">{[`${pkg.structCount} structs`, ...(pkg.enumCount ? [`${pkg.enumCount} enums`] : []), ...(pkg.constantCount ? [`${pkg.constantCount} constants`] : []), `${pkg.funcCount} functions`, 'Public API'].join(' · ')}</p>
+
+          {pkg.name === 'builtin' && <aside class="import-note" aria-labelledby="builtin-import-title">
+            <h2 id="builtin-import-title">Automatically imported</h2>
+            <p>Chic makes <code>builtin</code> available in every package automatically. No <code>import</code> statement is needed. Use the <code>builtin.</code> prefix to access its functions and enum types, such as <code>builtin.get_argc()</code> or <code>builtin.OS</code>. The constants <code>CHIC_OS</code> and <code>CHIC_BUILD_CONFIG</code> are also available directly.</p>
+            <pre class="import-example"><code>{`// No import required
+main : func() -> i32 {
+    return builtin.get_argc()
+}`}</code></pre>
+          </aside>}
 
           {pkg.itemCount === 0 && <p class="empty-state">No public structures or functions in this package.</p>}
           {groups.map(group => (
@@ -116,6 +127,8 @@ const groups = [
   .index-group ul { margin-top: .4rem; }
   .struct { color: #a7f3d0; }
   .func { color: #c4b5fd; }
+  .enum { color: #f5e4b0; }
+  .constant { color: #e8a0ae; }
   .api-index li + li { margin-top: .1rem; }
   .api-index a { display: block; padding: .45rem .65rem; border-left: 2px solid transparent; border-radius: .25rem; font: .75rem/1.5 'JetBrains Mono', monospace; overflow-wrap: anywhere; color: #aaaabd; }
   .api-index a:hover { color: #eceafa; background: rgb(196 181 253 / 6%); }
@@ -125,6 +138,10 @@ const groups = [
   .reference-content { max-width: 64rem; margin: 0 auto; padding: 1.75rem 2rem 65vh; }
   .package-description { color: #aaaabd; font-size: .9rem; line-height: 1.7; max-width: 48rem; }
   .reference-scope { margin-top: .65rem; color: #9494ad; font-size: .75rem; }
+  .import-note { margin-top: 1.5rem; border: 1px solid #39314e; border-radius: .6rem; padding: 1.1rem; background: rgb(196 181 253 / 4%); }
+  .import-note h2 { color: #c4b5fd; font-size: .95rem; font-weight: 600; }
+  .import-note p { margin-top: .6rem; color: #aaaabd; font-size: .85rem; line-height: 1.7; }
+  .import-note p code { color: #ddd6fe; font-size: .8rem; }
   .declaration-group { margin-top: 2rem; }
   .declaration-group > h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; }
   .declaration { border: 1px solid #252538; border-radius: .6rem; padding: 1.25rem; background: rgb(255 255 255 / 2.5%); }
@@ -133,7 +150,7 @@ const groups = [
   .declaration-header { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
   h3 { font: 500 1.1rem/1.5 'JetBrains Mono', monospace; overflow-wrap: anywhere; min-width: 0; }
   .kind { border: 1px solid #39394c; padding: .2rem .4rem; border-radius: .3rem; font: .65rem/1.5 'JetBrains Mono', monospace; }
-  .signature { margin-top: 1rem; padding: 1rem; border-radius: .4rem; background: rgb(0 0 0 / 20%); border: 1px solid #252538; color: #c4c9ff; overflow-x: auto; font: .8rem/1.7 'JetBrains Mono', monospace; }
+  .signature, .import-example { margin-top: 1rem; padding: 1rem; border-radius: .4rem; background: rgb(0 0 0 / 20%); border: 1px solid #252538; color: #c4c9ff; overflow-x: auto; font: .8rem/1.7 'JetBrains Mono', monospace; }
   .conditions { margin-top: 1rem; font-size: .8rem; color: #a7f3d0; overflow-wrap: anywhere; }
   .description { white-space: pre-wrap; overflow-wrap: anywhere; margin-top: 1rem; color: #aaaabd; font: .85rem/1.7 Inter, sans-serif; }
   @media (max-width: 767px) {

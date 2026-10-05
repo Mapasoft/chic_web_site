@@ -11,6 +11,10 @@ const collections = [
   packages: JSON.parse(fs.readFileSync(new URL(`../src/data/${collection.directory}.json`, import.meta.url), 'utf8')),
   sources: JSON.parse(fs.readFileSync(new URL(`../src/data/${collection.directory}-sources.json`, import.meta.url), 'utf8')).files,
 }));
+const standardLibrary = collections.find(collection => collection.directory === 'stdlib');
+standardLibrary.packages.push(...JSON.parse(fs.readFileSync(new URL('../src/data/builtin.json', import.meta.url), 'utf8')));
+standardLibrary.sources.push(...JSON.parse(fs.readFileSync(new URL('../src/data/builtin-sources.json', import.meta.url), 'utf8')).files);
+
 const decode = text => text.replace(/&(amp|lt|gt|quot|#39|#x27);/g, (_, entity) => ({ amp: '&', lt: '<', gt: '>', quot: '"', '#39': "'", '#x27': "'" })[entity]);
 const home = fs.readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
 assert.match(home, /Chic Programming Language/);
@@ -33,7 +37,7 @@ for (const collection of collections) {
     assert.ok(!home.includes(`/${directory}/${slug}/`), `Package listing still on homepage: ${pkg.name}`);
     const html = fs.readFileSync(new URL(`../dist/${directory}/${slug}/index.html`, import.meta.url), 'utf8');
     assert.equal((html.match(/<article\b/g) ?? []).length, pkg.items.length, `Missing API entries: ${pkg.name}`);
-    const renderedSignatures = [...html.matchAll(/<pre\b[^>]*><code\b[^>]*>([\s\S]*?)<\/code><\/pre>/g)].map(m => decode(m[1])).sort();
+    const renderedSignatures = [...html.matchAll(/<pre\b[^>]*class="signature"[^>]*><code\b[^>]*>([\s\S]*?)<\/code><\/pre>/g)].map(m => decode(m[1])).sort();
     assert.deepEqual(renderedSignatures, pkg.items.map(i => i.kind === 'func' ? i.signature : [...i.attributes, i.signature].join('\n')).sort(), `Incorrect signatures or structure fields: ${pkg.name}`);
     const sidebar = html.match(/<nav\b[^>]*class="api-index"[^>]*>([\s\S]*?)<\/nav>/)?.[1];
     assert.ok(sidebar, `Missing API sidebar: ${pkg.name}`);
@@ -60,6 +64,8 @@ for (const collection of collections) {
     for (const file of sources.filter(f => f.package === pkg.name)) {
       assert.equal(pkg.items.filter(i => i.source === file.path && i.kind === 'struct').length, file.publicStructs);
       assert.equal(pkg.items.filter(i => i.source === file.path && i.kind === 'func').length, file.publicFunctions);
+      if (file.publicEnums !== undefined) assert.equal(pkg.items.filter(i => i.source === file.path && i.kind === 'enum').length, file.publicEnums);
+      if (file.publicConstants !== undefined) assert.equal(pkg.items.filter(i => i.source === file.path && i.kind === 'constant').length, file.publicConstants);
     }
     assert.doesNotMatch(html, /github|playground|open source|\/Users\//i);
   }

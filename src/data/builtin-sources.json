@@ -1,0 +1,31 @@
+{
+  "files": [
+    {
+      "path": "source/builtins/builtins_chic_structure.cpp",
+      "package": "builtin",
+      "sha256": "74e1ea989c4b6bbedb4a690e4f5fa3b1bfa5728554900c811bfb592a2e10520a",
+      "publicStructs": 0,
+      "publicFunctions": 0,
+      "publicEnums": 2,
+      "publicConstants": 2
+    },
+    {
+      "path": "source/builtins/compile_alloc_func.cpp",
+      "package": "builtin",
+      "sha256": "00a074d07e1cf8065ab69239da78897c2c3680574c733fea2c419cc541174afc",
+      "publicStructs": 0,
+      "publicFunctions": 1,
+      "publicEnums": 0,
+      "publicConstants": 0
+    },
+    {
+      "path": "source/builtins/compile_args_func.cpp",
+      "package": "builtin",
+      "sha256": "2718088f892edc8fbda69f785b7f1f89622d651db0a6c6584922a64cc52a1362",
+      "publicStructs": 0,
+      "publicFunctions": 2,
+      "publicEnums": 0,
+      "publicConstants": 0
+    }
+  ]
+}
