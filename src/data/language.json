@@ -12,7 +12,7 @@
       {
         "id": "chic-types-declarations",
         "title": "Declaring values",
-        "html": "<pre><code>count : <span class=\"chic-type\">i32</span> = <span class=\"chic-number\">42</span>       <span class=\"chic-comment\">// explicit type</span>\nname := <span class=\"chic-string\">\"Chic\"</span>         <span class=\"chic-comment\">// inferred string</span>\n<span class=\"chic-keyword\">var</span> index := <span class=\"chic-number\">0</span>         <span class=\"chic-comment\">// mutable binding</span>\nBufferSize :: <span class=\"chic-number\">4096</span>      <span class=\"chic-comment\">// compile-time constant</span></code></pre>\n          <p>Bindings are constant by default. Add <code>var</code> when you need to assign a new value.</p>"
+        "html": "<pre><code>count : <span class=\"chic-type\">i32</span> = <span class=\"chic-number\">42</span>       <span class=\"chic-comment\">// explicit type</span>\nname := <span class=\"chic-string\">\"Chic\"</span>         <span class=\"chic-comment\">// inferred string</span>\n<span class=\"chic-keyword\">var</span> index := <span class=\"chic-number\">0</span>         <span class=\"chic-comment\">// mutable binding</span></code></pre>\n          <p>Bindings are read-only by default. Add <code>var</code> when you need to assign a new value.</p>\n          <p>Use <code>::</code> to declare a compile-time constant. Its value must be known at compile time. You can let Chic infer the type from the value, or specify the type before <code>=</code>.</p>\n          <table><thead><tr><th>Form</th><th>Meaning</th></tr></thead><tbody>\n            <tr><td><code>&lt;identifier&gt; :: &lt;value&gt;</code></td><td>A compile-time constant with an inferred type.</td></tr>\n            <tr><td><code>&lt;identifier&gt; :: &lt;type&gt; = &lt;value&gt;</code></td><td>A compile-time constant with an explicit type.</td></tr>\n          </tbody></table>\n          <pre><code>BufferSize :: <span class=\"chic-number\">4096</span>            <span class=\"chic-comment\">// inferred type</span>\nPacketLimit :: <span class=\"chic-type\">u16</span> = <span class=\"chic-number\">65_535</span>  <span class=\"chic-comment\">// explicit type</span></code></pre>"
       },
       {
         "id": "chic-types-composed",
@@ -44,7 +44,7 @@
       {
         "id": "chic-keywords-constants",
         "title": "Constants",
-        "html": "<p>Chic declares compile-time constants with <code>::</code>.</p>\n          <pre><code>MaxItems :: <span class=\"chic-number\">128</span>\nPacketLimit : <span class=\"chic-type\">u16</span> :: <span class=\"chic-number\">65_535</span></code></pre>"
+        "html": "<p>Chic declares compile-time constants with <code>::</code>.</p>\n          <pre><code>MaxItems :: <span class=\"chic-number\">128</span>\nPacketLimit :: <span class=\"chic-type\">u16</span> = <span class=\"chic-number\">65_535</span></code></pre>"
       }
     ]
   },
